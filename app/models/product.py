@@ -1,10 +1,10 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy.orm import relationship
-# from app.models.shopping_cart import cartJoined
+from app.models.cart import cartJoined
 # from app.models.order import orderJoined
 
 class Product(db.Model):
-    __tablename__="product"
+    __tablename__="products"
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
@@ -15,7 +15,8 @@ class Product(db.Model):
     price = db.Column(db.Float(), nullable=False)
     image_url = db.Column(db.String(1000), nullable=False)
     size = db.Column(db.String(25), nullable=False)
-    # cartJoined = db.relationship("Cart", back_populates="products", secondary=cartJoined)
+    favorites = db.relationship('Favorite', back_populates='product')
+    cartJoined = db.relationship("Cart", back_populates="products", secondary=cartJoined)
     # orderJoined = db.relationship("Order", back_populates="products", secondary=orderJoined)
 
     def to_dict(self):
