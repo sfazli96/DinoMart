@@ -1,4 +1,4 @@
-"""empty message
+"""cart table 
 
 Revision ID: 6cada3bdd499
 Revises: b0f32a686ba6
