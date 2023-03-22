@@ -17,6 +17,7 @@ class Product(db.Model):
     size = db.Column(db.String(25), nullable=False)
     favorites = db.relationship('Favorite', back_populates='products')
     cartJoined = db.relationship("Cart", back_populates="products", secondary=cartJoined)
+    reviews = db.relationship("Review", back_populates="products")
     # orderJoined = db.relationship("Order", back_populates="products", secondary=orderJoined)
 
     def to_dict(self):

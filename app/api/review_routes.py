@@ -24,7 +24,7 @@ def createReview():
     form = ReviewForm()
     # print('FORM', form)
     # print(current_user.id, 'current')
-    form['csrf_token'].data = request.cookies['csrf_token'] # makes a csrf_token in form object
+    form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
         new_review = Review(
@@ -43,12 +43,13 @@ def createReview():
         # return form.errors
         return {"message": "Bad information, Please try again"}, 400
 
-@login_required
 @review_routes.route('/<int:id>', methods=['PUT'])
+@login_required
 def updateReview(id):
     date = datetime.datetime.now()
     jsonData = request.get_json()
     form = ReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
     review = Review.query.filter_by(id=id).first()
     print('review', review)
     if review is None:
@@ -58,11 +59,23 @@ def updateReview(id):
         review.review = jsonData["review"]
         review.rating = jsonData["rating"]
         review.product_id = jsonData["product_id"]
-        review.user_id = jsonData["user_id"]
+        review.user_id = current_user.id
         review.created_at = date
 
         db.session.commit()
 
         return review.to_dict()
     else:
-        return "Bad data, please try again", 404
+        return form.errors
+        # return "Bad data, please try again", 404
+
+
+@review_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def deleteReview(id):
+    review = Review.query.get(id)
+
+    db.session.delete(review)
+    db.session.commit()
+
+    return {"Review successfully Deleted": id}
