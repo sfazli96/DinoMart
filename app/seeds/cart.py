@@ -18,7 +18,6 @@ def seed_cart():
 
     cart_joins = []
     for cart in carts:
-        product = Product.query.filter_by(id=cart.product_id).first()
         join = {
             "cart_id": cart.id,
             "product_id": cart.product_id,
