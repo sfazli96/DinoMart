@@ -4,6 +4,9 @@ import session from './session'
 
 const rootReducer = combineReducers({
   session,
+  // productsReducer,
+  // reviewsReducer,
+  // cartReducer
 });
 
 

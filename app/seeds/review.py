@@ -5,27 +5,27 @@ import datetime
 def seed_reviews():
     reviews = [
         Review(
-            user_id=1, review='Amazing product 10/10 would buy again', product_id = 1, rating=5,
+            user_id=1, review='Amazing, 10/10 would buy again', product_id = 1, rating=5,
             created_at=datetime.datetime.now()
         ),
         Review(
-            user_id=2, review='THE GOOD', product_id = 2, rating=3,
+            user_id=2, review='Its pretty good, not bad.', product_id = 2, rating=3,
             created_at=datetime.datetime.now()
         ),
         Review(
-            user_id=3, review='THE BAD 1', product_id = 2,rating=1,
+            user_id=3, review='This was not that good', product_id = 2,rating=1,
             created_at=datetime.datetime.now()
         ),
        Review(
-            user_id=1, review='GREAT PRODUCT 10/10 would buy again', product_id = 3, rating=5,
+            user_id=1, review='This was a good product, I would buy it again', product_id = 3, rating=5,
             created_at=datetime.datetime.now()
         ),
         Review(
-            user_id=2, review='THE GOOD', product_id = 3, rating=4,
+            user_id=2, review='This product was pretty good', product_id = 3, rating=4,
             created_at=datetime.datetime.now()
         ),
         Review(
-            user_id=3, review='Terrible product, dont buy it', product_id = 3, rating=1,
+            user_id=3, review='horrible product, do not buy it please', product_id = 3, rating=1,
             created_at=datetime.datetime.now()
         ),
     ]
