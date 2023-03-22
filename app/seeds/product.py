@@ -5,7 +5,7 @@ def seed_products():
     t_rex = Product(
         name='Tyrannosaurus Rex',
         description='The fearsome "tyrant lizard king" of the Cretaceous period.',
-        image_url='https://images.ctfassets.net/cnu0m8re1exe/59qssnh6iHfxY2r3FrctNZ/195cca2a860caed3b434a2d3de1ea555/trex.jpg?fm=jpg&fl=progressive&w=660&h=433&fit=fill',
+        image_url='https://images.ctfassets.net/cnu0m8re1exe/59qssnh6iHfxY2r3FrctNZ/195cca2a860caed3b434a2d3de1ea555/trex.jpg?fm=jpg&fl=progressive&w=660&h=433&fit=fill,https://www.pnas.org/cms/asset/52f3513b-ade3-48f2-b48c-a9fb0483e75d/keyimage.jpg',
         price=99.99,
         size='Large'
     )
@@ -51,10 +51,15 @@ def seed_products():
     mammoth = Product(
         name='Mammoth',
         description='A very large species that is equipped with long, curved tusks and northern species, a coverting hair',
-        image_url='https://cdn.britannica.com/09/74609-050-21E14E52/example-museum-replica-species-Canadian-de-extinction.jpg',
+        image_url='https://cdn.britannica.com/09/74609-050-21E14E52/example-museum-replica-species-Canadian-de-extinction.jpg,https://th-thumbnailer.cdn-si-edu.com/KhQpxF9E1onrrw8Pq4s-55KUnlc=/fit-in/1600x0/filters:focal(720x533:721x534)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/51/e9/51e9c7d8-440a-46c8-88be-eec9ee55f2a0/mammoth_painting_havens_web.jpg',
         price=70.99,
         size='Large'
     )
+    
+
+
+
+
 
 
     db.session.add(t_rex)

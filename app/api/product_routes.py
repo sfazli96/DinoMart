@@ -22,8 +22,10 @@ def allProducts():
 def singleProduct(id):
     product = Product.query.get(id)
     print('PRODUCT', product)
-    if not product:
-        return {'error': ['Product has not been found']}, 404
-    return product.to_dict()
-
-
+    pd = product.to_dict()
+    product_reviews = {'reviews': [reviews.to_dict() for reviews in product.reviews]}
+    pd.update(product_reviews)
+    print(product_reviews, '-----prod----')
+    # if not product:
+    #     return {'error': ['Product has not been found']}, 404
+    # return product.to_dict()
