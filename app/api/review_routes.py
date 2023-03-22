@@ -14,3 +14,4 @@ def allReviews():
         print(review.to_dict())
         list.append(review.to_dict())
     return {'reviews': list}
+
