@@ -14,7 +14,7 @@ class Favorite(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     product_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('products.id')), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
-    product = db.relationship('Product', back_populates='favorites')
+    products = db.relationship('Product', back_populates='favorites')
     user = db.relationship('User', back_populates='favorites')
     def to_dict(self):
         return {

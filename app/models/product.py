@@ -15,7 +15,7 @@ class Product(db.Model):
     price = db.Column(db.Float(), nullable=False)
     image_url = db.Column(db.String(1000), nullable=False)
     size = db.Column(db.String(25), nullable=False)
-    favorites = db.relationship('Favorite', back_populates='product')
+    favorites = db.relationship('Favorite', back_populates='products')
     cartJoined = db.relationship("Cart", back_populates="products", secondary=cartJoined)
     # orderJoined = db.relationship("Order", back_populates="products", secondary=orderJoined)
 
