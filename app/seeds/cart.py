@@ -1,14 +1,15 @@
-from app.models import db, Product, environment, SCHEMA, Cart, cartJoined
+from app.models import db, Product, environment, SCHEMA, User, Cart, cartJoined
 from sqlalchemy.sql import text
 import datetime
 from random import choice
 
 def seed_cart():
     products = Product.query.all()
+    users = User.query.all()
     carts = []
-    for i in range(10):
+    for user in users:
         cart = Cart(
-            user_id=i + 1,
+            user_id=user.id,
             product_id=choice(products).id
         )
         carts.append(cart)
@@ -28,6 +29,7 @@ def seed_cart():
     db.session.commit()
 
     print("Cart items seeded successfully!")
+
 
 
 
