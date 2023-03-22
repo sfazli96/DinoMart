@@ -25,8 +25,8 @@ def seed_booking():
 
 def undo_booking():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.booking RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.bookings RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM booking"))
+        db.session.execute(text("DELETE FROM bookings"))
 
     db.session.commit()
