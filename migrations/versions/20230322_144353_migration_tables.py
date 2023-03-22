@@ -1,4 +1,4 @@
-"""empty message
+"""migration tables
 
 Revision ID: 84ef6c6152a9
 Revises:
