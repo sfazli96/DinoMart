@@ -8,7 +8,7 @@ import './prehistoricProducts.css'
 function PrehistoricProducts() {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
-    const animalProducts = useSelector(state => state.productsReducer.allProducts)
+    const animalProducts = useSelector(state => state.products.allProducts)
     console.log('Animal', animalProducts)
     const productsArr = Object.values(animalProducts || [])
 
