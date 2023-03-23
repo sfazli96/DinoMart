@@ -11,6 +11,7 @@ function PrehistoricProducts() {
     const animalProducts = useSelector(state => state.products.allProducts)
     console.log('Animal', animalProducts)
     const productsArr = Object.values(animalProducts || [])
+    
 
     useEffect(() => {
         dispatch(loadAnimalProduct())

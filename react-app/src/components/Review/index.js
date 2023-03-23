@@ -10,7 +10,7 @@ const Reviews = () => {
     const ID = parseInt(id.id)
     // console.log('id', ID)
     const user = useSelector(state => state.session.user)
-    const reviewsObj = useSelector(state => state.review.productReviews)
+    const reviewsObj = useSelector(state => state.reviews?.reviews || [])
     console.log('reviewObj', reviewsObj)
     const reviews = Object.values(reviewsObj)
     console.log('reviews', reviews)
@@ -25,7 +25,12 @@ const Reviews = () => {
     return (
         <div>
             <h1>TEST</h1>
-            <p>{review}</p>
+            {reviewsObj.map(review => {
+                <div key={review.id}>
+                    <p>{review.rating}</p>
+                    <p>{review.review}</p>
+                </div>
+            })}
         </div>
     )
 }

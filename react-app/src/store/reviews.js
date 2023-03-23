@@ -79,25 +79,26 @@ export const removeReview = (id) => async (dispatch) => {
     }
 }
 
-const initialState = { productReviews:{}, userSpecificReviews: {} }
+const initialState = { reviews:{}, userSpecificReviews: {} }
 
 export const reviewsReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_REVIEWS:
-            // if (!action.payload) return state
+            if (!action.payload || !action.payload.Review) return state
             newState = {...state}
             // console.log('new', newState)
             let copy = {}
-            action.payload.Review.forEach(element => {
-                // console.log('action', action.payload)
-                copy[element.id] = element
+            action.payload.Review.forEach(review => {
+                console.log('action', action.payload)
+                // console.log('review', review)
+                copy[review.id] = review
             });
-            newState.productReviews = copy
+            newState.reviews = copy
             return newState
         case ADD_REVIEWS:
-            newState = {...state, productReviews: {...state.productReviews}}
-            newState.productReviews[action.payload.id] = action.payload
+            newState = {...state, reviews: {...state.reviews}}
+            newState.reviews[action.payload.id] = action.payload
             return newState
         default:
             newState = {...state}
