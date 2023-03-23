@@ -17,6 +17,19 @@ function SinglePrehistoricProduct() {
     useEffect(() => {
         dispatch(loadOnePrehistoricProduct(id.id))
     }, [dispatch])
+    // let multiImage = () => {
+    //     let image;
+    //     productsArr.map(({image_url}) => {
+    //         // console.log(image_url, 'IMAGE')
+    //         let split = image_url.split(',')
+    //         // console.log('SPLIT', split)
+    //         split.forEach(img => {
+    //             image = img
+    //         });
+    //     })
+    //     return image
+    // }
+    // console.log('MULTI', multiImage())
 
     return (
         <div>
@@ -25,6 +38,9 @@ function SinglePrehistoricProduct() {
             <h2>{productDetail.description}</h2>
             <h2>$ {productDetail.price}</h2>
             <img src={productDetail.image_url}></img>
+             {/* <div>
+                <img src={multiImage()}></img>
+            </div> */}
             <div>
                 <Reviews />
             </div>
