@@ -2,7 +2,7 @@ from app.models import db, Product, environment, SCHEMA, User, Cart, cartJoined
 from sqlalchemy.sql import text
 import datetime
 from random import choice
-
+from random import randint
 def seed_cart():
     products = Product.query.all()
     users = User.query.all()
@@ -10,7 +10,8 @@ def seed_cart():
     for user in users:
         cart = Cart(
             user_id=user.id,
-            product_id=choice(products).id
+            product_id=choice(products).id,
+            quantity=randint(1, 50)
         )
         carts.append(cart)
         db.session.add(cart)
