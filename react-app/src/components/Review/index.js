@@ -4,14 +4,16 @@ import { useParams } from "react-router-dom";
 import { readAllReviews } from "../../store/reviews";
 
 
-export const Reviews = () => {
+const Reviews = () => {
     const dispatch = useDispatch()
     const id = useParams()
     const ID = parseInt(id.id)
-    console.log('id', ID)
+    // console.log('id', ID)
     const user = useSelector(state => state.session.user)
-    const reviewsObj = useSelector(state => state.reviewsReducer.productReviews)
+    const reviewsObj = useSelector(state => state.review.productReviews)
     console.log('reviewObj', reviewsObj)
+    const reviews = Object.values(reviewsObj)
+    console.log('reviews', reviews)
     const [rating, setRating] = useState(5)
     const [review, setReview] = useState()
 
@@ -23,7 +25,7 @@ export const Reviews = () => {
     return (
         <div>
             <h1>TEST</h1>
-            {/* <p>{review}</p> */}
+            <p>{review}</p>
         </div>
     )
 }

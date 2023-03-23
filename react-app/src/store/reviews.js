@@ -85,11 +85,12 @@ export const reviewsReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_REVIEWS:
+            // if (!action.payload) return state
             newState = {...state}
-            console.log('new', newState)
+            // console.log('new', newState)
             let copy = {}
             action.payload.Review.forEach(element => {
-                console.log('action', action.payload)
+                // console.log('action', action.payload)
                 copy[element.id] = element
             });
             newState.productReviews = copy
@@ -99,6 +100,7 @@ export const reviewsReducer = (state = initialState, action) => {
             newState.productReviews[action.payload.id] = action.payload
             return newState
         default:
+            newState = {...state}
             return newState
     }
 }

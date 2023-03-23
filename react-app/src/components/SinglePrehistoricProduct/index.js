@@ -8,9 +8,9 @@ import Reviews from "../Review";
 function SinglePrehistoricProduct() {
     const dispatch = useDispatch()
     const id = useParams()
-    console.log('ID', id)
+    // console.log('ID', id)
     const productDetail = useSelector(state => state.products.singleProduct)
-    console.log("prod", productDetail)
+    // console.log("prod", productDetail)
     const user = useSelector(state => state.session.user)
 
 
