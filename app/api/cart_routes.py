@@ -44,11 +44,26 @@ def createCart():
     return new_cart.to_dict()
 
 
-# @cart_routes.route('/', methods=["PUT"])
-# def editCart():
+@cart_routes.route('/', methods=["PUT"])
+def editCart():
+    jsonData = request.get_json()
+    product = Product.query.get(jsonData["product_id"])
+    # print('PRODUCT!!!!!!!!', product)
 
+    carts = db.session.query(Cart).filter(Cart.user_id == jsonData["user_id"]).options(joinedload(Cart.products))
+    print('CARTS!!!!', carts)
 
+    final_result = []
+    for cart in carts:
+        # print('cart loop', cart)
+        cart_object = cart.to_dict()
+        # print('cart_object', cart_object)
+        cart.products.append(product)
+        # result = [cart.to_dict() for cart in carts if cart.products.append(product)]
+        db.session.commit()
+        final_result.append(cart.to_dict())
 
+    return final_result
 
 
 
@@ -100,3 +115,14 @@ def addItemToCart(cart_id, product_id):
 
 
 
+@cart_routes.route('/delete_cart', methods=['PUT'])
+def emptyCart():
+    cart_id = request.get_json()
+    user_id = current_user.id
+    print('user_id', user_id)
+    carts = Cart.query.filter(Cart.id == cart_id).all()
+    for cart in carts:
+        cart.products.clear()
+        db.session.commit()
+
+    return {"Cart Emptied": user_id}
