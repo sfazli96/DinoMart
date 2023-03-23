@@ -24,13 +24,14 @@ function LoginFormModal() {
   return (
     <>
       <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+      <div className="login-modal">
+      <form onSubmit={handleSubmit} className='login-form'>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <label>
+        <label className=".form-label2">
           Email
           <input
             type="text"
@@ -39,7 +40,7 @@ function LoginFormModal() {
             required
           />
         </label>
-        <label>
+        <label className=".form-label2">
           Password
           <input
             type="password"
@@ -48,8 +49,10 @@ function LoginFormModal() {
             required
           />
         </label>
-        <button type="submit">Log In</button>
+        <button type="submit-button">Log In</button>
       </form>
+      <button className="DemoUserButton"onClick={() => dispatch(login("demo@aa.io", "password")).then(() => closeModal())}>Demo User</button>
+      </div>
     </>
   );
 }
