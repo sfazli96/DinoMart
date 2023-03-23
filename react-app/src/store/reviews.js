@@ -3,25 +3,26 @@ const ADD_REVIEWS = 'reviews/addReviews'
 const EDIT_REVIEWS = 'reviews/editReviews'
 const DELETE_REVIEWS = 'reviews/deleteReviews'
 
-const loadReviews = (reviews) => ({
+export const loadReviews = (reviews) => ({
     type: LOAD_REVIEWS,
     payload: reviews
 })
 
-const createReview = (reviews) => ({
+export const createReview = (reviews) => ({
     type: ADD_REVIEWS,
     payload: reviews
 })
 
-const updateReview = (reviews) => ({
+export const updateReview = (reviews) => ({
     type: EDIT_REVIEWS,
     payload: reviews
 })
 
-const deleteReviews = (reviewId) => ({
+export const deleteReviews = (reviewId) => ({
     type: DELETE_REVIEWS,
     payload: reviewId
 })
+
 
 export const readAllReviews = (id) => async (dispatch) => {
     const response = await fetch(`/api/products/${id}`)
@@ -49,6 +50,35 @@ export const addReviews = (id, review) => async (dispatch) => {
     }
 }
 
+export const editReview = (review) => async (dispatch) => {
+    const response = await fetch(`/api/reviews/${review.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(review)
+    })
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(updateReview(data))
+        return data
+    }
+}
+
+export const removeReview = (id) => async (dispatch) => {
+    const response = await fetch(`/api/reviews/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(deleteReviews(data))
+        return data
+    }
+}
+
 const initialState = { productReviews:{}, userSpecificReviews: {} }
 
 export const reviewsReducer = (state = initialState, action) => {
@@ -56,9 +86,11 @@ export const reviewsReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_REVIEWS:
             newState = {...state}
+            console.log('new', newState)
             let copy = {}
             action.payload.Review.forEach(element => {
-                copy[review.id] = element
+                console.log('action', action.payload)
+                copy[element.id] = element
             });
             newState.productReviews = copy
             return newState

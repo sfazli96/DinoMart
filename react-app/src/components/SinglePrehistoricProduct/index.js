@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadOnePrehistoricProduct } from "../../store/product"
 import { useParams } from "react-router-dom";
 import './prehistoricProduct.css'
+import Reviews from "../Review";
 
-function SinglePrehistoricProduct () {
+function SinglePrehistoricProduct() {
     const dispatch = useDispatch()
     const id = useParams()
     console.log('ID', id)
@@ -24,6 +25,9 @@ function SinglePrehistoricProduct () {
             <h2>{productDetail.description}</h2>
             <h2>$ {productDetail.price}</h2>
             <img src={productDetail.image_url}></img>
+            <div>
+                <Reviews />
+            </div>
         </div>
     )
 }
