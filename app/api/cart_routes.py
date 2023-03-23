@@ -50,3 +50,30 @@ def createCart():
 
 
 
+
+
+
+@cart_routes.route('<int:id>', methods=['DELETE'])
+def deleteCartItem(id):
+    body_info = request.get_json()
+    cart = Cart.query.get(id)
+    print('cart', cart)
+    if not cart:
+        return cart.errors
+
+    for product in cart.products:
+        if product.id == body_info:
+            cart.product.remove(product)
+
+    db.session.commit()
+
+    cart_obj = cart.to_dict()
+    cart_obj['products'] = []
+    for product in cart.products:
+        if product.id == body_info:
+            continue
+        product_obj = product.to_dict()
+        print('prod_ojb', product_obj)
+        cart_obj['products'].append(product_obj)
+
+    return cart_obj
