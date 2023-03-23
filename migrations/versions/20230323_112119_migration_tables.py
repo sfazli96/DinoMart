@@ -1,8 +1,8 @@
 """migration tables
 
-Revision ID: 84ef6c6152a9
+Revision ID: f33d126115eb
 Revises:
-Create Date: 2023-03-22 14:43:53.005950
+Create Date: 2023-03-23 11:21:19.034227
 
 """
 from alembic import op
@@ -13,8 +13,9 @@ environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 
+
 # revision identifiers, used by Alembic.
-revision = '84ef6c6152a9'
+revision = 'f33d126115eb'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -56,6 +57,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('product_id', sa.Integer(), nullable=True),
+    sa.Column('quantity', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['product_id'], ['products.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
