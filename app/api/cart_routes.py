@@ -73,7 +73,9 @@ def deleteCartItem(id):
         if product.id == body_info:
             continue
         product_obj = product.to_dict()
-        print('prod_ojb', product_obj)
+        print('prod_obj', product_obj)
         cart_obj['products'].append(product_obj)
 
     return cart_obj
+
+
