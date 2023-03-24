@@ -77,7 +77,7 @@ def deleteCartItem(id):
         return cart.errors
 
     cart.products = [product for product in cart.products if product.id != request_data]
-    print('list-----cart', cart.products)
+    # print('list-----cart', cart.products)
 
     # for product in cart.products:
     #     if product.id == request_data:
@@ -121,7 +121,7 @@ def addItemToCart(user_id, cart_id, product_id):
 
 
 
-@cart_routes.route('/delete_cart', methods=['PUT'])
+@cart_routes.route('/deletecart', methods=['PUT'])
 def emptyCart():
     cart_id = request.get_json()
     user_id = current_user.id
