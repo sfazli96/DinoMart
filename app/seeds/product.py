@@ -58,21 +58,21 @@ def seed_products():
     # https://a-z-animals.com/media/2022/06/diplodocus-dinosaur.jpg for more images mammoth
     ankylosaurus = Product(
         name='Ankylosaurus',
-        description='A heavily-armored dinosaur with a club-like tail.',
+        description='A heavily-armored dinosaur with a club-like tail. It lived dating to the very end of the Cretaceous Period, about 60-68 million years ago. Its fossils have been found in geological formation. This is something you do not want to miss, its one of the golden opportunities to buy this creature. The Ankylosaurus is 5.6ft tall and length of about 20-26ft. Since, this creature was a herbivorious, they mostly eat plants such as leaves, ferms, shrubs, etc. Only at SamMart.',
         image_url='https://static.wikia.nocookie.net/jurassicworld-evolution/images/6/65/JWEAnkylosaurus.png/revision/latest?cb=20210920183446',
         price=90.99,
         size='Medium'
     )
     brachiosaurus = Product(
         name='Brachiosaurus',
-        description='A large, dinosaur with a small head and a massive body with a long-neck.',
+        description='A large, dinosaur with a small head and a massive body with a long-neck. This creature has lived during the Late Jurassic Era about like 154 to 150 million years ago. They are very tall creatures of a length of 85-98ft. A brachiosaurus can live up to 100 years old. They had long necks, high-domed heads, short tails and longer front legs. The average the creature eats between is 400 and 900 pounds of food per day. Do not miss out on this cool opportunity to checkout this dinosaur. The brachiosaurus was a herbivorous dinosaur, meaning that it only ate plants and did not eat meat at all. Only at SamMart.',
         image_url='https://i.natgeofe.com/k/4257f9a9-a1c0-4520-86ae-1c4c610db707/brachiosasurs_3x4.jpg',
         price=199.88,
         size='Large'
     )
     diplodocus = Product(
         name='Diplodocus',
-        description='A long-necked dinosaur with a whip-like tail.',
+        description='A long-necked dinosaur with a whip-like tail. This creature lived up to 161.2 million years ago and in 1877, its fossils were discovered. This creature lived during the Late Jurassic Era. Some of the dinosaurs did weigh about 30 tons but then a few amount weighed higher than 80 tons. Their tail was very long and super flexible. This creature was also very Tall about 15 ft. ',
         image_url='https://a-z-animals.com/media/2022/06/diplodocus-dinosaur.jpg',
         price=210.66,
         size='Large'
@@ -98,6 +98,7 @@ def seed_products():
         price=210.66,
         size='Large'
     )
+    
 
 
     db.session.add(t_rex)
