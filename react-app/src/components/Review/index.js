@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { deleteReviews, readAllReviews } from "../../store/reviews";
+import { removeReview, readAllReviews } from "../../store/reviews";
 import { useModal } from "../../context/Modal";
 import { addReviews } from "../../store/reviews"
 import ReactStars from "react-rating-stars-component";
@@ -10,6 +10,7 @@ import ReactStars from "react-rating-stars-component";
 const Reviews = () => {
     const dispatch = useDispatch()
     const id = useParams()
+    // console.log(id, 'id')
     const ID = parseInt(id.id)
     // console.log('id', ID)
     const user = useSelector(state => state.session.user)
@@ -59,12 +60,13 @@ const Reviews = () => {
         setRating(newRating)
     };
 
-    const handlingDeleteReview = async (id) => {
-        await dispatch(deleteReviews(id))
-        dispatch(readAllReviews(ID))
+    const handlingDeleteReview = (id) => {
+        dispatch(removeReview(id)).then(() => {
+            dispatch(readAllReviews(ID))
+        })
     }
 
-    
+
     return (
         <div>
             {reviews.reverse().map(({ id, review, rating, user_id }) => {
@@ -72,7 +74,7 @@ const Reviews = () => {
                     <div key={id}>
                         <p className="review-rating">{rating}</p>
                         {user_id === userId && (
-                            <button style={{ width: "70px", height: "25px" }} className="delete-review-button" onClick={handlingDeleteReview}>
+                            <button style={{ width: "70px", height: "25px" }} className="delete-review-button" onClick={() => handlingDeleteReview(id)}>
                                 Delete Review
                             </button>
                         )}

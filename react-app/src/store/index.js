@@ -4,12 +4,13 @@ import session from './session'
 import products from './product';
 // import reviews from './reviews'
 import { reviewsReducer } from './reviews'
+import { cartReducer } from './cart'
 
 const rootReducer = combineReducers({
   session,
   products,
-  review: reviewsReducer
-  // cart
+  review: reviewsReducer,
+  cart: cartReducer
 });
 
 
