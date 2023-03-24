@@ -24,7 +24,7 @@ def readCart(id):
         cart_result.append(cart_object)
 
     result = {
-        "products": cart_result
+        "cart": cart_result
     }
     # print('result',result)
     return result
@@ -49,6 +49,7 @@ def editCart():
     jsonData = request.get_json()
     product = Product.query.get(jsonData["product_id"])
     # print('PRODUCT!!!!!!!!', product)
+    product_quantity = jsonData["quantity"]
 
     carts = db.session.query(Cart).filter(Cart.user_id == jsonData["user_id"]).options(joinedload(Cart.products))
     print('CARTS!!!!', carts)
@@ -58,10 +59,15 @@ def editCart():
         # print('cart loop', cart)
         cart_object = cart.to_dict()
         # print('cart_object', cart_object)
-        cart.products.append(product)
+        for prod in cart.products:
+            if prod.id == product:
+                prod.quantity = product_quantity
+                continue
+            else:
+                cart.products.append(product)
         # result = [cart.to_dict() for cart in carts if cart.products.append(product)]
-        db.session.commit()
-        final_result.append(cart.to_dict())
+            db.session.commit()
+            final_result.append(cart.to_dict())
 
     return final_result
 

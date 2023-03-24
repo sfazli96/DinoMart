@@ -100,6 +100,16 @@ export const reviewsReducer = (state = initialState, action) => {
             newState = {...state, reviews: {...state.reviews}}
             newState.reviews[action.payload.id] = action.payload
             return newState
+        case EDIT_REVIEWS:
+            const updatedReviews = {...state.reviews }
+            updatedReviews[action.payload.id] = action.payload
+            return {...state, reviews: updatedReviews }
+        case DELETE_REVIEWS:
+            newState = {...state}
+            let copy2 = {...newState.ProductReviews}
+            delete copy2[action.payload.id]
+            newState.ProductReviews = copy2
+            return newState
         default:
             newState = {...state}
             return newState

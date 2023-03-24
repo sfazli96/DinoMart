@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { removeReview, readAllReviews } from "../../store/reviews";
+import { removeReview, readAllReviews, editReview } from "../../store/reviews";
 import { useModal } from "../../context/Modal";
 import { addReviews } from "../../store/reviews"
 import ReactStars from "react-rating-stars-component";
@@ -22,11 +22,28 @@ const Reviews = () => {
     const [rating, setRating] = useState(5)
     const [review, setReview] = useState()
     const [showForm, setShowForm] = useState(false)
+    const [newReviewData, setNewReviewData] = useState({});
+    const [isEdit, setIsEdit] = useState(null)
+    const [newReview, setNewReview] = useState("")
+    const [newRating, setNewRating] = useState("")
     const [errors, setErrors] = useState([])
+    const [validationErrors, setValidationErrors] = useState([]);
 
     useEffect(() => {
-        dispatch(readAllReviews(ID))
-    }, [dispatch])
+        if (user) {
+            dispatch(readAllReviews(ID))
+        }
+    }, [dispatch, user])
+
+    useEffect(() => {
+        if (!user) {
+            setValidationErrors(["You must be logged in to see your reviews!"])
+        } else if (reviews.length === 0) {
+            setValidationErrors(["No reviews are here, make a review on a product"])
+        } else {
+            setValidationErrors([])
+        }
+    }, [reviews.length, user])
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -66,6 +83,32 @@ const Reviews = () => {
         })
     }
 
+    const handleSave = (review) => {
+        const errors = []
+        if (!newReview.length) {
+            errors.push('Please enter a review')
+        } else if (newReview.length > 255) {
+            errors.push('Review is way too long, please try again')
+        } else if (!newRating) {
+            errors.push('Please rate this product')
+        }
+        setErrors(errors)
+        if (!errors.length) {
+            dispatch(editReview({ id: newReview.id, review: newReview, rating: newRating}))
+            setIsEdit(null)
+            setNewReview("")
+            setNewRating(0)
+            dispatch(readAllReviews(ID))
+        }
+    }
+
+    const handleEdit = (id, review) => {
+        setIsEdit(id)
+        setNewReviewData({ id: id, review: review.review, rating: review.ratings })
+        setNewReview(review.review)
+        setNewRating(review.rating)
+    }
+
 
     return (
         <div>
@@ -74,14 +117,51 @@ const Reviews = () => {
                     <div key={id}>
                         <p className="review-rating">{rating}</p>
                         {user_id === userId && (
-                            <button style={{ width: "70px", height: "25px" }} className="delete-review-button" onClick={() => handlingDeleteReview(id)}>
-                                Delete Review
-                            </button>
+                            <div>
+                                <button className="delete-review-button" onClick={() => handlingDeleteReview(id)}>
+                                    Delete Review
+                                </button>
+                                <button className="edit-review-button" onClick={() => setIsEdit(id)}>
+                                    <i className="fas fa-edit"></i>
+                                </button>
+                            </div>
                         )}
                         <p className="review-text">{review}</p>
                     </div>
                 )
             })}
+            {validationErrors.length > 0 && (
+                <div className="error-message">
+                    {validationErrors.map((error, index) => (
+                    <p key={index}>{error}</p>
+                    ))}
+                </div>
+            )}
+            {isEdit === reviews?.id ? (
+                <div className="edit-review-form">
+                {errors.map((error, index) => (
+                <div key={index} className="error-msg">{error}</div>
+                ))}
+                <textarea
+                type="textbox"
+                defaultValue="Edit your amazing review here!"
+                value={newReview}
+                onChange={(e) => setNewReview(e.target.value)}
+                required
+                ></textarea>
+                <ReactStars
+                        count={5}
+                        value={rating}
+                        onChange={ratingChanged}
+                        size={24}
+                        isHalf={true}
+                        emptyIcon={<i className="far fa-star"></i>}
+                        halfIcon={<i className="fa fa-star-half-alt"></i>}
+                        fullIcon={<i className="fa fa-star"></i>}
+                        activeColor="#ffd700"
+                        />
+            </div>
+            ): null}
             <div>
                 <button onClick={() => setShowForm(true)}>Create a Review</button>
                 {showForm && (<form onSubmit={handleSubmit} noValidate>
