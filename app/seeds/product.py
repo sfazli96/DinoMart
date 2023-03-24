@@ -6,7 +6,7 @@ def seed_products():
         name='Tyrannosaurus Rex',
         description='The fearsome "tyrant lizard king" of the Cretaceous period. It is often called T.rex or T-Rex is one of the best theropods. It lived over 83.6 million years ago during the Cretaceous Era.The T-rexs speed is about 17 miles per hour and you can race with it as well. This creature is also very tall as well at height of 12-20 ft compared to an owner then they can be very tall. Sometimes they can be aggressive and then practiced cannibalism but you can just train them well to not get aggressive. This is one of the most fiercest predators of all time so if you get this now limited time, this creature will be your guard from any danger. While this creature does have a good amount of strengths, one of the weakness is that the dinosaur had small arms but no matter you can still help your creature. Some scientist say it may have been used for "vicious slashing" but its speculation. This is one of the best times to buy this creature and has alot of good information as well. Only at SamMart.',
         image_url='https://images.ctfassets.net/cnu0m8re1exe/59qssnh6iHfxY2r3FrctNZ/195cca2a860caed3b434a2d3de1ea555/trex.jpg?fm=jpg&fl=progressive&w=660&h=433&fit=fill',
-        price=99.99,
+        price=999.99,
         size='Large'
     )
 
@@ -72,33 +72,49 @@ def seed_products():
     )
     diplodocus = Product(
         name='Diplodocus',
-        description='A long-necked dinosaur with a whip-like tail. This creature lived up to 161.2 million years ago and in 1877, its fossils were discovered. This creature lived during the Late Jurassic Era. Some of the dinosaurs did weigh about 30 tons but then a few amount weighed higher than 80 tons. Their tail was very long and super flexible. This creature was also very Tall about 15 ft. ',
+        description='A long-necked dinosaur with a whip-like tail. This creature lived 161.2 million years ago and in 1877, its fossils were discovered. This creature lived during the Late Jurassic Era. Some of the dinosaurs did weigh about 30 tons but then a few amount weighed higher than 80 tons. Their tail was very long and super flexible. This creature was also very Tall about 15 ft. Only at SamMart.',
         image_url='https://a-z-animals.com/media/2022/06/diplodocus-dinosaur.jpg',
         price=210.66,
         size='Large'
     )
     allosaurus = Product(
         name='Allosaurus',
-        description='A large, carnivorous dinosaur with sharp teeth and powerful jaws.',
+        description='A large, carnivorous dinosaur with sharp teeth and powerful jaws. This creature lived 155 to 145 million years ago also during the late Jurassic Period. The name Allosaurus means "different lizard", so you can get this creature and say that you have your own amazing lizard. This creature is derived from the Greek. The allosaurus eats other dinosaurs such as Stegosaurus and Brachiosaurus. The strength of its bite is about 3,572.56 Newtons. Only at SamMart.',
         image_url='https://www.nps.gov/dino/learn/nature/images/Allosaurus-fragilis-exhibit.jpg',
         price=210.99,
         size='Medium'
     )
     plesiosaurus = Product(
         name='Plesiosaurus ',
-        description='A long-necked reptile with flippers for limbs.',
+        description='A long-necked reptile with flippers for limbs. This large reptile lived during the Early Jurassic Period. It lived about 208 million years ago. Its mass is huge, really big 1,100 lbs. From a scientific point of view, they named it a "Near Lizard" probably because it looks close to a lizard. The length of this creature is 11ft. An interesting fact about the Plesiosaurus is that they lived mostly in a marine environment so if you like to swim in the ocean, fishing or any ocean activities, heres a creature you can get, Limited time only!! This plesiosaurus was also a carnivore at its time and it was reproduced by live birth plus there is 938 different specimens have been found by Paleontologists. As of now, these creatures were predators that swam and eat fish, aquatic reptiles and other ocean animals. Only at SamMart.',
         image_url='http://images.dinosaurpictures.org/plesiosaurus_549f.jpg',
         price=199.88,
-        size='Medium'
+        size='Large'
     )
     spinosaurus = Product(
         name='spinosaurus',
-        description='A large, carnivorous dinosaur with a sail-like structure on its back.',
+        description='A large, carnivorous dinosaur with a sail-like structure on its back. This creature lived in what we know now is North Africa during the Late Cretaceous Period, about 99 to 93 million years ago. There height was pretty tall, a whopping 18ft that ate other creatures like Onchopristis and Mawsonia. The spinosaurus scientific name is called "Spine Lizard" because its spine makes the creature look like a lizard. This is a good opportunity to get this creature and have your very one like lizard creature, but be careful they can be very aggressive and territorial. It only attacks other predators only if it invades there domain. This creature is also strong with a force of 4,200 lb per square inch which is similar to a modern Nile crocodile. Only at SamMart.',
         image_url='https://cdn.britannica.com/54/128854-050-F5C98A54/Spinosaurus.jpg?w=400&h=300&c=crop',
         price=210.66,
         size='Large'
     )
+    t_rex_fossil = Product(
+        name='T.rex Fossil',
+        description='This T.rex creature is one of the largest dinosaur to ever have existed. The 1st skeleton of this creature was found in 1902 in Montana. The fossil shows that this dinosaur stood upright. Later, museum scientist were very determined that the reason was to show the Tyrannosaurus rex in a stalking position, head low, tail out extended and one foot just a bit raised. This creature lived 69 to 66 million years ago, at the very end of the Late Cretaceous Period. Many of the fossil remains of the T.rex does show wounds. It has two fused vertebrae where the neck joins the rib cage. From, these fossil there was evidence that there ribs were broken and then healed over. The first mention about the T.rex fossil was in 1902 by a legendary fossil hunter Barnum Brown. He said that this discovery was the "Large Carnivorous Dinosaur". It is one of the most crazy finding of any season. Do not miss out on this opportunity to get this fossil. Only at SamMart.',
+        image_url='https://www.amnh.org/var/ezflow_site/storage/images/media/amnh/images/exhibitions/permanent-exhibitions/fossil-halls/hall-of-saurischian-dinosaurs2/tyranosaurus-rex-full-length-2460-1384/4162802-1-eng-US/tyranosaurus-rex-full-length-2460-1384_wideexact_1230.jpg',
+        price=510.66,
+        size='Large'
+    )
+    yoshis_Trike_fossil = Product(
+        name='Triceratop Fossil',
+        description='There is a fossil with the Tricertop called the Yoshis Trike. It was discovered in 2010 in Montana, USA by a person named Yoshi Katsura. The creature was about the size of an african bull elephant and has the longest horns of any specimen discovered so far. There are different specimens of the Triceratops and from this fossil this is one of them.',
+        image_url='https://static.dw.com/image/59581750_605.jpg',
+        price=310.66,
+        size='Large'
+    )
     
+
+
 
 
     db.session.add(t_rex)
@@ -114,6 +130,9 @@ def seed_products():
     db.session.add(allosaurus)
     db.session.add(plesiosaurus)
     db.session.add(spinosaurus)
+    db.session.add(t_rex_fossil)
+    db.session.add(yoshis_Trike_fossil)
+
 
 
 
