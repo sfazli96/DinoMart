@@ -35,7 +35,7 @@ function SinglePrehistoricProduct() {
         <div>
             {/* <h1>TEST</h1> */}
             <h2>{productDetail.name}</h2>
-            <h2>{productDetail.description}</h2>
+            <p>{productDetail.description}</p>
             <h2>$ {productDetail.price}</h2>
             <img src={productDetail.image_url}></img>
              {/* <div>
