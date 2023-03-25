@@ -62,3 +62,9 @@ cursor: pointer;
 .profile-dropdown button:hover {
   background-color: rgba(0, 132, 255, 0.651)
 }
+
+.home-page {
+    text-decoration: none;
+    font-size: 28px;
+    
+}

@@ -11,7 +11,7 @@ function PrehistoricProducts() {
     const animalProducts = useSelector(state => state.products.allProducts)
     console.log('Animal', animalProducts)
     const productsArr = Object.values(animalProducts || [])
-    
+
 
     useEffect(() => {
         dispatch(loadAnimalProduct())
@@ -32,9 +32,12 @@ function PrehistoricProducts() {
     return (
         <div>
             <h1>Welcome to SamMart</h1>
+            <div className='banner-container'>
+                <img className='banner-image' src='https://idsb.tmgrup.com.tr/ly/uploads/images/2022/08/04/222563.jpg' alt='image not found'></img>
+            </div>
             {productsArr.map(({id, name, description, price, image_url, size}) => {
                 return (
-                    <div key={id}>
+                    <div key={id} className="image-container">
                         <NavLink to={`/products/${id}`}>
                             <img src={image_url} alt="image not found" className='prehistoric-image'></img>
                             <p className='price'>$ {price}</p>

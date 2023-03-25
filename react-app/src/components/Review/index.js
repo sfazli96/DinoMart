@@ -75,8 +75,7 @@ const Reviews = () => {
     }
     const ratingChanged = (newRating) => {
         setRating(newRating)
-    };
-
+    }
     const handlingDeleteReview = (id) => {
         dispatch(removeReview(id)).then(() => {
             dispatch(readAllReviews(ID))

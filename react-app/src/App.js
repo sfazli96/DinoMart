@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import AllProducts from "./components/PrehistoricProducts";
 import SinglePrehistoricProduct from "./components/SinglePrehistoricProduct";
+import Cart from "./Cart";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,12 @@ function App() {
           <Route exact path= '/products/:id'>
             <SinglePrehistoricProduct />
           </Route>
+          <Route exact path= '/cart'>
+            <Cart />
+          </Route>
+          <Route path="*">
+            <NotFound />
+          </Route>
         </Switch>
       )}
     </>
@@ -39,3 +46,12 @@ function App() {
 }
 
 export default App;
+
+function NotFound() {
+  return (
+    <div>
+      <h1>404 Not Found</h1>
+      <p>Sorry, the page you are looking for doesn't exist.</p>
+    </div>
+  )
+}

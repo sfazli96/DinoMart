@@ -30,39 +30,47 @@ const deleteCart = (item) => ({
     payload: item
 })
 
-
+export const thunkLoadCart = (id) => async (dispatch) => {
+    const res = await fetch(`/api/cart/${id}`)
+    if (res.ok) {
+        const loadData = await res.json()
+        console.log('load data', loadData)
+        dispatch(loadCart(loadData))
+    }
+    return res
+}
 
 export const thunkCreateCart = (userId) => async (dispatch) => {
-    const response = await fetch('/api/cart', {
+    const res = await fetch('/api/cart', {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(userId)
     })
-    if (response.ok) {
-        const data = await response.json()
+    if (res.ok) {
+        const data = await res.json()
+        console.log('DATA', data)
         dispatch(createCart(data))
     }
-    return response
+    return res
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export const thunkAddToCart = (id, productId) => async (dispatch) => {
+    const res = await fetch(`/api/cart/${id}/product/${productId}`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    if (res.ok) {
+        const cartData = await res.json()
+        console.log('AddToCart', cartData)
+        dispatch(addToCart(cartData))
+    }
+    return res
+}
 
 
 
@@ -74,6 +82,19 @@ let initialState = {
 export const cartReducer = (state = initialState, action) => {
     let newState;
     switch(action.type){
+        case LOAD_CART:
+            return {
+                ...state,
+                Cart: action.payload.products
+            }
+            // newState = {...state, Cart: action.payload.products.map((item) => item)}
+            // return newState
+        case ADD_TO_CART:
+            newState = {...state}
+            let copy = {...newState.Cart}
+            copy[action.payload.id] = action.payload
+            newState.Cart = copy
+            return newState
         default:
             newState = {...state}
             return newState

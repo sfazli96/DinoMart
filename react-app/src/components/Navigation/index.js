@@ -11,7 +11,7 @@ function Navigation({ isLoaded }){
 		<div className='NavStart'>
 			<div className='Navbar'>
 				<div>
-					<NavLink exact to="/">Home</NavLink>
+					<NavLink className='home-page' exact to="/">Sam-Mart</NavLink>
 				</div>
 				{isLoaded && (
 					<div>
