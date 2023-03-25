@@ -1,14 +1,16 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadOnePrehistoricProduct } from "../../store/product"
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import './prehistoricProduct.css'
 import Reviews from "../Review";
+import { thunkAddToCart } from "../../store/cart";
 
 function SinglePrehistoricProduct() {
     const dispatch = useDispatch()
     const id = useParams()
     // console.log('ID', id)
+    const history = useHistory()
     const productDetail = useSelector(state => state.products.singleProduct)
     // console.log("prod", productDetail)
     const user = useSelector(state => state.session.user)
@@ -30,7 +32,12 @@ function SinglePrehistoricProduct() {
     //     return image
     // }
     // console.log('MULTI', multiImage())
-
+    const cartButton = () => {
+        dispatch(thunkAddToCart(user.id, id.id))
+        .then(() => {
+            history.push('/cart')
+        })
+    }
     return (
         <div>
             {/* <h1>TEST</h1> */}
@@ -41,6 +48,9 @@ function SinglePrehistoricProduct() {
              {/* <div>
                 <img src={multiImage()}></img>
             </div> */}
+            <div className="add-to-cart-button">
+                <button onClick={() => cartButton(id)}>Add to Cart</button>
+            </div>
             <div>
                 <Reviews />
             </div>
