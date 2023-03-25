@@ -83,10 +83,15 @@ export const cartReducer = (state = initialState, action) => {
     let newState;
     switch(action.type){
         case LOAD_CART:
-            return {
-                ...state,
-                Cart: action.payload.products
-            }
+            newState = {...state}
+            action.payload.products.forEach(element => {
+                newState.Cart = element
+            });
+            return newState
+            // return {
+            //     ...state,
+            //     Cart: action.payload.products
+            // }
             // newState = {...state, Cart: action.payload.products.map((item) => item)}
             // return newState
         case ADD_TO_CART:

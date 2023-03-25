@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { thunkLoadCart } from "../store/cart";
+import { thunkLoadCart } from "../../store/cart";
 
 
 const Cart = () => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
-    console.log('user', user)
-    const prehistoricProducts = useSelector(state => state.cart.cartReducer)
+    // console.log('user', user)
+    const prehistoricProducts = useSelector(state => state)
     console.log('prehistoric prod', prehistoricProducts)
     const cartId = useSelector(state => state.cart.cartReducer)
 
