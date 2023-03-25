@@ -43,8 +43,8 @@ def createCart():
 
     return new_cart.to_dict()
 
-
 @cart_routes.route('/', methods=["PUT"])
+@login_required
 def editCart():
     jsonData = request.get_json()
     product = Product.query.get(jsonData["product_id"])
@@ -77,20 +77,23 @@ def editCart():
 @cart_routes.route('<int:id>', methods=['DELETE'])
 def deleteCartItem(id):
     request_data = request.get_json()
+    print('request------', request_data)
     cart = Cart.query.get(id)
     print('cart', cart)
+    print('cart', cart.to_dict())
+    print('product', cart.products)
     if not cart:
         return cart.errors
 
-    cart.products = [product for product in cart.products if product.id != request_data]
+    # cart.products = [product for product in cart.products if product.id != request_data]
     # print('list-----cart', cart.products)
 
-    # for product in cart.products:
-    #     if product.id == request_data:
-    #         cart.product.remove(product)
+    for product in cart.products:
+        if product.id == request_data["product_id"]:
+            cart.products.remove(product)
 
     db.session.commit()
-
+    print('cart loop deletion', cart.products)
     cart_obj = {
         'id': cart.id,
         'product': [product.to_dict() for product in cart.products],
@@ -107,9 +110,10 @@ def deleteCartItem(id):
 
     return cart_obj
 
-@cart_routes.route('/<int:user_id>/cart/<int:cart_id>/product/<int:product_id>', methods=['POST'])
-def addItemToCart(user_id, cart_id, product_id):
-    cart = Cart.query.filter_by(user_id=user_id, id=cart_id).first()
+@cart_routes.route('/<int:cart_id>/product/<int:product_id>', methods=['POST'])
+def addItemToCart(cart_id, product_id):
+    cart = Cart.query(cart_id)
+    print('cart', cart)
     product = Product.query.get(product_id)
     if not cart:
         return {"error": "Cart not found"}, 404
@@ -120,6 +124,7 @@ def addItemToCart(user_id, cart_id, product_id):
     for item in cart.products:
         if item.id == product.id:
             return {"error": "Item is already in cart"}, 400
+
     cart.products.append(product)
     db.session.commit()
 

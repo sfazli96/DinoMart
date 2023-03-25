@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import AllProducts from "./components/PrehistoricProducts";
 import SinglePrehistoricProduct from "./components/SinglePrehistoricProduct";
 import Cart from "./components/Cart";
+import Footer from "./components/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ function App() {
           </Route>
         </Switch>
       )}
+    <Footer/>
     </>
   );
 }
