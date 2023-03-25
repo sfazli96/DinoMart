@@ -112,20 +112,23 @@ def deleteCartItem(id):
 
 @cart_routes.route('/<int:cart_id>/product/<int:product_id>', methods=['POST'])
 def addItemToCart(cart_id, product_id):
-    cart = Cart.query(cart_id)
-    print('cart', cart)
+    print('cartid', cart_id)
+    print('product_id', product_id)
     product = Product.query.get(product_id)
+    cart = Cart.query.get(cart_id)
+    print('cart', cart)
     if not cart:
         return {"error": "Cart not found"}, 404
 
     # product = Product.query.get(body_data['product_id'])
     if not product:
         return {"error": "Product not found"}, 404
-    for item in cart.products:
-        if item.id == product.id:
-            return {"error": "Item is already in cart"}, 400
+    # for item in cart.products:
+    #     if item.id == product.id:
+    #         return {"error": "Item is already in cart"}, 400
 
     cart.products.append(product)
+    print('products', product)
     db.session.commit()
 
     return {"success": "Product added to cart"}
