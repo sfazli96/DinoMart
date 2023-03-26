@@ -58,8 +58,8 @@ export const thunkCreateCart = (userId) => async (dispatch) => {
 
 
 export const thunkAddToCart = (cartId, productId) => async (dispatch) => {
-    console.log('cartID', cartId)
-    console.log('productId', productId)
+    // console.log('cartID', cartId)
+    // console.log('productId', productId)
     const res = await fetch(`/api/cart/${cartId}/product/${productId}`, {
         method: 'POST',
         headers: {
@@ -69,7 +69,7 @@ export const thunkAddToCart = (cartId, productId) => async (dispatch) => {
     })
     if (res.ok) {
         const cartData = await res.json()
-        console.log('AddToCart', cartData)
+        // console.log('AddToCart', cartData)
         dispatch(addToCart(cartData))
         return cartData
     }
@@ -118,7 +118,7 @@ export const cartReducer = (state = initialState, action) => {
             newState = {...state}
             let copy = {...newState.Cart}
             copy[action.payload.id] = action.payload
-            console.log('ACTION----', action.payload)
+            // console.log('ACTION----', action.payload)
             newState.Cart = copy
             return newState
         case CREATE_CART:

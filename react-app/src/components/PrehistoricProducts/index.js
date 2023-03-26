@@ -31,7 +31,7 @@ function PrehistoricProducts() {
     // console.log('MULTI', multiImage())
     return (
         <div>
-            <h1>Welcome to SamMart</h1>
+            <h1>Welcome to Sam-Mart</h1>
             <div className='banner-container'>
                 <img className='banner-image' src='https://idsb.tmgrup.com.tr/ly/uploads/images/2022/08/04/222563.jpg' alt='image not found'></img>
             </div>

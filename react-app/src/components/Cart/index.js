@@ -16,7 +16,7 @@ const Cart = () => {
     const [totalPrice, setTotalPrice] = useState(0.00)
 
     useEffect(() => {
-        dispatch(thunkLoadCart(user.id))
+        dispatch(thunkLoadCart(user?.id))
     }, [dispatch])
 
     useEffect(() => {
@@ -35,7 +35,7 @@ const Cart = () => {
     return (
         <div>
             <h1>({cartItem})</h1>
-            {prehistoricProducts.map(({description, id, name, image_url, price, size}) => {
+            {prehistoricProducts.products?.map(({id, name, image_url, price, size}) => {
                 return (
                     <div key={id}>
                         <h2>{name}</h2>

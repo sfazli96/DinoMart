@@ -17,6 +17,7 @@
 
 .banner-image {
     width: 50%;
+    border-radius: 5px;
 }
 
 .image-container {
@@ -28,7 +29,8 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 20px;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center; */
+    /* justify-content: center; */
     text-decoration: none;
 }
+

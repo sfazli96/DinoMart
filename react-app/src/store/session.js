@@ -85,7 +85,7 @@ export const signUp = (username, email, password) => async (dispatch) => {
 	if (response.ok) {
 		const data = await response.json();
 		dispatch(setUser(data));
-		// dispatch(thunkCreateCart(data.id))
+		dispatch(thunkCreateCart(data.id))
 		return null;
 	} else if (response.status < 500) {
 		const data = await response.json();

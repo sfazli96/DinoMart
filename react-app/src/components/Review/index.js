@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { removeReview, readAllReviews, editReview } from "../../store/reviews";
-import { useModal } from "../../context/Modal";
+import { removeReview, readAllReviews } from "../../store/reviews";
 import { addReviews } from "../../store/reviews"
 import ReactStars from "react-rating-stars-component";
+import EditReview from "./EditReview/EditReview";
 
 
 const Reviews = () => {
@@ -22,12 +22,9 @@ const Reviews = () => {
     const [rating, setRating] = useState(5)
     const [review, setReview] = useState()
     const [showForm, setShowForm] = useState(false)
-    const [newReviewData, setNewReviewData] = useState({});
-    const [isEdit, setIsEdit] = useState(null)
-    const [newReview, setNewReview] = useState("")
-    const [newRating, setNewRating] = useState("")
     const [errors, setErrors] = useState([])
     const [validationErrors, setValidationErrors] = useState([]);
+    const [isEdit, setIsEdit] = useState(null)
 
     useEffect(() => {
         if (user) {
@@ -73,6 +70,7 @@ const Reviews = () => {
             setReview(e.target.value)
         }
     }
+
     const ratingChanged = (newRating) => {
         setRating(newRating)
     }
@@ -81,33 +79,6 @@ const Reviews = () => {
             dispatch(readAllReviews(ID))
         })
     }
-
-    const handleSave = (review) => {
-        const errors = []
-        if (!newReview.length) {
-            errors.push('Please enter a review')
-        } else if (newReview.length > 255) {
-            errors.push('Review is way too long, please try again')
-        } else if (!newRating) {
-            errors.push('Please rate this product')
-        }
-        setErrors(errors)
-        if (!errors.length) {
-            dispatch(editReview({ id: newReview.id, review: newReview, rating: newRating}))
-            setIsEdit(null)
-            setNewReview("")
-            setNewRating(0)
-            dispatch(readAllReviews(ID))
-        }
-    }
-
-    const handleEdit = (id, review) => {
-        setIsEdit(id)
-        setNewReviewData({ id: id, review: review.review, rating: review.ratings })
-        setNewReview(review.review)
-        setNewRating(review.rating)
-    }
-
 
     return (
         <div>
@@ -120,10 +91,12 @@ const Reviews = () => {
                                 <button className="delete-review-button" onClick={() => handlingDeleteReview(id)}>
                                     Delete Review
                                 </button>
-                                <button className="edit-review-button" onClick={() => setIsEdit(id)}>
-                                    <i className="fas fa-edit"></i>
-                                </button>
+                                {/* <EditReview /> */}
+                                <button onClick={() => setIsEdit(id)}>Edit Review</button>
                             </div>
+                        )}
+                        {isEdit === id && (
+                            <EditReview reviewData={{id, review, rating}} onClose={() => setIsEdit(null)}></EditReview>
                         )}
                         <p className="review-text">{review}</p>
                     </div>
@@ -136,31 +109,6 @@ const Reviews = () => {
                     ))}
                 </div>
             )}
-            {isEdit === reviews?.id ? (
-                <div className="edit-review-form">
-                {errors.map((error, index) => (
-                <div key={index} className="error-msg">{error}</div>
-                ))}
-                <textarea
-                type="textbox"
-                defaultValue="Edit your amazing review here!"
-                value={newReview}
-                onChange={(e) => setNewReview(e.target.value)}
-                required
-                ></textarea>
-                <ReactStars
-                        count={5}
-                        value={rating}
-                        onChange={ratingChanged}
-                        size={24}
-                        isHalf={true}
-                        emptyIcon={<i className="far fa-star"></i>}
-                        halfIcon={<i className="fa fa-star-half-alt"></i>}
-                        fullIcon={<i className="fa fa-star"></i>}
-                        activeColor="#ffd700"
-                        />
-            </div>
-            ): null}
             <div>
                 <button onClick={() => setShowForm(true)}>Create a Review</button>
                 {showForm && (<form onSubmit={handleSubmit} noValidate>
