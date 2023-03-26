@@ -8,7 +8,7 @@ review_routes = Blueprint('reviews', __name__)
 @review_routes.route('/')
 def allReviews():
     reviews = Review.query.all()
-    print('review', reviews)
+    # print('review', reviews)
     list = []
     for review in reviews:
         # print(review.to_dict())
@@ -44,41 +44,35 @@ def createReview():
         return {"message": "Bad information, Please try again"}, 400
 
 @review_routes.route('/<int:id>', methods=['PUT'])
-# @login_required
+@login_required
 def updateReview(id):
     review = Review.query.get(id)
     date = datetime.datetime.now()
     request_data = request.get_json()
-    print('request_data', request_data)
+    # print('request_data', request_data)
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     review = Review.query.filter_by(id=id).first()
     # review = Review.query.all()
     print('review', review)
-    print('currnet=------', current_user)
-    if review is None:
-        return "Review not found", 404
+    # print('current------', current_user)
+    # if review is None:
+    #     return "Review not found", 404
 
+    if current_user.is_authenticated:
+        review.user_id = current_user.id
+    else:
+        return 'User Not logged in'
     if form.validate_on_submit():
         review.review = request_data["review"]
         review.rating = request_data["rating"]
         review.product_id = request_data["product_id"]
-        review.user_id = current_user.id
+        # review.user_id = current_user.id
         review.created_at = date
 
         db.session.commit()
 
         return review.to_dict()
-    # if review:
-    #     review.review = request_data["review"]
-    #     review.rating = request_data["rating"]
-    #     review.product_id = request_data["product_id"]
-    #     review.user_id = current_user.id
-    #     review.created_at = date
-
-    #     db.session.commit()
-
-    #     return review
     else:
         # return form.errors
         return "Bad data, please try again", 404

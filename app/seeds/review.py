@@ -12,12 +12,20 @@ def seed_reviews():
             user_id=2, review='This was awesome, would buy again', product_id = 1, rating=4,
             created_at=datetime.datetime.now()
         ),
+         Review(
+            user_id=3, review='This was not good, would not recommend', product_id = 1, rating=2,
+            created_at=datetime.datetime.now()
+        ),
         Review(
             user_id=2, review='Its pretty good, not bad.', product_id = 2, rating=3,
             created_at=datetime.datetime.now()
         ),
         Review(
             user_id=3, review='This was not that good', product_id = 2,rating=1,
+            created_at=datetime.datetime.now()
+        ),
+        Review(
+            user_id=1, review='Amazing, 10/10 would buy again', product_id = 2, rating=5,
             created_at=datetime.datetime.now()
         ),
        Review(
