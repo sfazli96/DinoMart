@@ -1,3 +1,5 @@
+import { thunkCreateCart } from "./cart";
+
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
@@ -83,6 +85,7 @@ export const signUp = (username, email, password) => async (dispatch) => {
 	if (response.ok) {
 		const data = await response.json();
 		dispatch(setUser(data));
+		// dispatch(thunkCreateCart(data.id))
 		return null;
 	} else if (response.status < 500) {
 		const data = await response.json();

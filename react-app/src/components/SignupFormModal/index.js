@@ -16,13 +16,18 @@ function SignupFormModal() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (password === confirmPassword) {
+			if (!email.includes('@')) {
+				setErrors(["Email must contain @ symbol"])
+				return
+			}
 			const data = await dispatch(signUp(username, email, password));
 			if (data) {
 				setErrors(data);
 			} else {
 				closeModal();
 			}
-		} else {
+		}
+		else {
 			setErrors([
 				"Confirm Password field must be the same as the Password field",
 			]);
@@ -31,50 +36,54 @@ function SignupFormModal() {
 
 	return (
 		<>
-			<h1>Sign Up</h1>
-			<form onSubmit={handleSubmit}>
+			<h1 className="sign-up-title">Sign Up</h1>
+			<form onSubmit={handleSubmit} className='sign-up-form' noValidate>
 				<ul>
 					{errors.map((error, idx) => (
 						<li key={idx}>{error}</li>
 					))}
 				</ul>
-				<label>
+				<label className="form-label">
 					Email
 					<input
 						type="text"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 						required
+						style={{ width: "100%", fontSize: "20px" }}
 					/>
 				</label>
-				<label>
+				<label className="form-label">
 					Username
 					<input
 						type="text"
 						value={username}
 						onChange={(e) => setUsername(e.target.value)}
 						required
+						style={{ width: "100%", fontSize: "20px" }}
 					/>
 				</label>
-				<label>
+				<label className="form-label">
 					Password
 					<input
 						type="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
 						required
+						style={{ width: "100%", fontSize: "20px" }}
 					/>
 				</label>
-				<label>
+				<label className="form-label">
 					Confirm Password
 					<input
 						type="password"
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
 						required
+						style={{ width: "100%", fontSize: "20px" }}
 					/>
 				</label>
-				<button type="submit">Sign Up</button>
+				<button type="submit" className="sign-up-button">Sign Up</button>
 			</form>
 		</>
 	);

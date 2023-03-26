@@ -5,6 +5,7 @@ import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { NavLink } from "react-router-dom";
+import './Navigation.css'
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -40,9 +41,15 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
+    <div className="sign-in-and-cart">
+      <button onClick={openMenu} className='sign-in-home'>
         <i className="fas fa-user-circle" />
+        Sign In
       </button>
+      <NavLink exact to={`/cart`} className='cart-icon'>
+					Cart
+			</NavLink>
+    </div>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>

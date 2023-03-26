@@ -128,10 +128,13 @@ def addItemToCart(cart_id, product_id):
     #         return {"error": "Item is already in cart"}, 400
 
     cart.products.append(product)
+    prod_obj = [product.to_dict() for product in cart.products]
     print('products', product)
     db.session.commit()
-
-    return {"success": "Product added to cart"}
+    cart_obj = cart.to_dict()
+    cart_obj["products"] = prod_obj
+    return {"cart": cart_obj}
+    # return {"success": "Product added to cart"}
 
 
 

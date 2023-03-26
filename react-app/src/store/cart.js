@@ -65,6 +65,7 @@ export const thunkAddToCart = (cartId, productId) => async (dispatch) => {
         headers: {
             "Content-Type": "application/json"
         },
+        body: JSON.stringify({cartId: cartId, productId: productId})
     })
     if (res.ok) {
         const cartData = await res.json()
@@ -101,12 +102,12 @@ export const cartReducer = (state = initialState, action) => {
     let newState;
     switch(action.type){
         case LOAD_CART:
-        //     // newState = {...state}
-        //     // action.payload.products.forEach(element => {
-        //     //     console.log('action', action.payload)
-        //     //     newState.Cart = element
-        //     // });
-        //     // return newState
+            // newState = {...state}
+            // action.payload.products.forEach(element => {
+            //     console.log('action', action.payload)
+            //     newState.Cart = element
+            // });
+            // return newState
             return {
                 ...state,
                 Cart: action.payload.products

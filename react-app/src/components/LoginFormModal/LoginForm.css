@@ -1,3 +1,8 @@
+.log-in-title {
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 .login {
     margin: 0 auto;
     display: flex;
@@ -8,10 +13,11 @@
 .login-form {
     display: flex;
     flex-wrap: nowrap;
-    align-items: flex-start;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: center;
     margin-top: 20px;
     flex-direction: column;
+    text-align: center;
 }
 
 ul {
@@ -25,33 +31,34 @@ ul {
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    font: bold;
+    /* align-items: center; */
 }
 
 .submit-button {
-    /* margin: 0 auto;
+    /* margin: 0 auto; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #4CAF50;
-    color: white;
+    background-color: #253cbe;
     padding: 12px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1rem; */
+    font-size: 1rem;
     /* width: 100%; */
     text-align: center;
+    /* color: white; */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .submit-button:hover {
-    background-color: #3e8e41;
+    background-color: #1645e2cc;
 }
 
 .DemoUserButton {
-    border-radius: 2px red solid;
-    background-color: transparent;
-    color: #666;
+    /* border-radius: 2px red solid; */
+    background-color: rgba(64, 6, 199, 0.842);
     margin-bottom: 10px;
     padding: 10px;
     border: 1px solid #ccc;
@@ -60,8 +67,12 @@ ul {
     /* width: 100%; */
     text-align: center;
     border-radius: 5px;
+    /* color: white; */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-
+.DemoUserButton:hover {
+    background-color: #3109c2b4;
+}
 
 .login-modal {
     background-color: white;

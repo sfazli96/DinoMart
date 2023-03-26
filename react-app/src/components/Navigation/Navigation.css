@@ -9,7 +9,7 @@
   justify-content: space-between;
   box-shadow: 0px 0.3px 0px 0px rgba(0,0,0,0.5);
   background-color: white;
-  width: 85%;
+  width: 75%;
   height: 100px;
   padding: 0 2em;
   margin: auto;
@@ -20,19 +20,25 @@
 .profile-dropdown {
   display: flex;
   flex-direction: column;
-  background-color: #193ee7;
+  /* background-color: #193ee7; */
   padding: 10px;
   border: 1px solid #ccc;
   box-shadow: 0px 0px 10px #ccc;
   z-index: 2;
   margin-top: 1px;
-  width: 150px;
+  width: 250px;
   height: auto;
   font-weight: lighter;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   border-radius: 5%;
   position: absolute;
 }
+
+.profile-dropdown button {
+  width: 100%;
+}
+
+
 
 .hidden {
   display: none;
@@ -53,7 +59,7 @@
 .profile-dropdown button {
 padding: 10px;
 margin: 5px;
-background-color: #ccc;
+background-color: #2798e3;
 color: #fff;
 border: none;
 cursor: pointer;
@@ -66,5 +72,33 @@ cursor: pointer;
 .home-page {
     text-decoration: none;
     font-size: 28px;
-    
+
+}
+.logoutbutton {
+  background-color: #fc3239 !important;
+  border-radius: 4px !important;
+  /* border: none !important; */
+  color: #FFFFFF !important;
+  font-size: 12px !important;
+  /* padding: 6px 16px !important; */
+  text-align: center !important;
+  text-decoration: none !important;
+  /* display: inline-block !important; */
+}
+
+.logoutbutton:hover {
+  background-color: #aa0006 !important;
+}
+
+
+.sign-in-and-cart {
+  gap: 100px;
+  display: flex;
+  font-size: 22px;
+}
+
+.sign-in-home {
+  background-color: transparent;
+  border: transparent;
+  font-size: 20px;
 }
