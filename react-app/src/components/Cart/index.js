@@ -8,10 +8,10 @@ const Cart = () => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
     // console.log('user', user)
-    const prehistoricProducts = useSelector(state => state.cartReducer.Cart?.products || [])
+    const prehistoricProducts = useSelector(state => state.cartReducer.Cart)
     console.log('prehistoric prod', prehistoricProducts)
-    const cartId = useSelector(state => state.cartReducer.Cart)
-    console.log('cartId', cartId)
+    const cartId = useSelector(state => state.cartReducer.Cart?.id)
+    // console.log('cartId', cartId)
     const [cartItem, setCartItem] = useState(0)
     const [totalPrice, setTotalPrice] = useState(0.00)
 
@@ -21,21 +21,22 @@ const Cart = () => {
 
     useEffect(() => {
         if (prehistoricProducts) {
-            let count = 0
-            let price = 0.00
-            prehistoricProducts.products?.forEach(({id, price: itemPrice}) => {
-                count += 1
-                price += itemPrice
-            });
-            setCartItem(count)
-            setTotalPrice(price)
+          let itemCount = 0
+          let price = 0.00
+          prehistoricProducts.products?.forEach(({ id, price: itemPrice }) => {
+            itemCount += 1
+            price += itemPrice
+          })
+          setCartItem(itemCount)
+          setTotalPrice(price)
         }
-    }, [prehistoricProducts])
+      }, [prehistoricProducts])
+
 
     return (
         <div>
             <h1>({cartItem})</h1>
-            {prehistoricProducts.products?.map(({id, name, image_url, price, size}) => {
+            {prehistoricProducts?.products.map(({id, name, image_url, price, size}) => {
                 return (
                     <div key={id}>
                         <h2>{name}</h2>
@@ -45,7 +46,10 @@ const Cart = () => {
                 )
             })}
             <div>
-                <button className="checkout-button">CheckOut</button>
+                <p>Total Price: {totalPrice.toFixed(2)}</p>
+            </div>
+            <div>
+                <button className="checkout-button">Checkout</button>
             </div>
         </div>
     )

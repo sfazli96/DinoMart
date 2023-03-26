@@ -1,6 +1,6 @@
 const LOAD_CART = 'cart/showCart'
 const CREATE_CART = 'cart/createCart'
-const ADD_TO_CART = 'cart/addCart'
+const ADD_TO_CART = 'cart/addToCart'
 const CLEAR_CART = 'cart/updateCart'
 const EDIT_CART = 'cart/editCart'
 const DELETE_CART_ITEM = 'cart/deleteCartItem'
@@ -36,8 +36,8 @@ export const thunkLoadCart = (id) => async (dispatch) => {
         const loadData = await res.json()
         // console.log('load data', loadData)
         dispatch(loadCart(loadData))
+        return loadData
     }
-    return res
 }
 
 export const thunkCreateCart = (userId) => async (dispatch) => {
@@ -69,8 +69,8 @@ export const thunkAddToCart = (cartId, productId) => async (dispatch) => {
     })
     if (res.ok) {
         const cartData = await res.json()
-        // console.log('AddToCart', cartData)
-        dispatch(addToCart(cartData))
+        console.log('AddToCart', cartData)
+        dispatch(addToCart(cartData.cart))
         return cartData
     }
     return res.json()
@@ -91,35 +91,51 @@ export const thunkDeleteCart = (userId, productId) => async (dispatch) => {
     }
 }
 
-
-
-
-let initialState = {
-    Cart: {},
+export const thunkClearCart = (id) => async (dispatch) => {
+    const res = await fetch(`/api/cart/emptycart`, {
+        method: 'PUT',
+        body: JSON.stringify(id)
+    })
+    if (res.ok) {
+        const cartData = await res.json()
+        dispatch(clearCart(cartData))
+        return cartData
+    }
 }
 
-export const cartReducer = (state = initialState, action) => {
+
+
+
+// let initialState = {
+//     Cart: {},
+// }
+
+export const cartReducer = (state = {Cart: {}}, action) => {
     let newState;
     switch(action.type){
         case LOAD_CART:
-            // newState = {...state}
-            // action.payload.products.forEach(element => {
-            //     console.log('action', action.payload)
-            //     newState.Cart = element
-            // });
-            // return newState
-            return {
-                ...state,
-                Cart: action.payload.products
-            }
+            newState = {...state}
+            // console.log('action2', action.payload)
+            action.payload.cart.forEach(element => {
+                newState.Cart = element
+            });
+            return newState
+            //     ...state,
+            // return {
+            //     Cart: action.payload.products
+            // }
             // newState = {...state, Cart: action.payload.products.map((item) => item)}
             // return newState
         case ADD_TO_CART:
             newState = {...state}
+            // console.log('newState', state)
             let copy = {...newState.Cart}
+            // console.log('ACTION', action.payload)
             copy[action.payload.id] = action.payload
+            // console.log('COPY', copy)
             // console.log('ACTION----', action.payload)
             newState.Cart = copy
+            console.log('NEW', newState.Cart)
             return newState
         case CREATE_CART:
             newState = {...state}
@@ -131,6 +147,11 @@ export const cartReducer = (state = initialState, action) => {
             newState = {...state}
             newState.Cart = action.payload
             return newState
+        case CLEAR_CART:
+            return {
+                ...state,
+                Cart: {}
+            }
         default:
             newState = {...state}
             return newState

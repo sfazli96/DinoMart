@@ -33,7 +33,7 @@ def readCart(id):
 @cart_routes.route('/', methods=['POST'])
 def createCart():
     user = current_user
-    print('user', user)
+    # print('user', user)
     request_data = request.get_json()
     new_cart = Cart(
         user_id = user.id
@@ -46,13 +46,13 @@ def createCart():
 @cart_routes.route('/', methods=["PUT"])
 @login_required
 def editCart():
-    jsonData = request.get_json()
-    product = Product.query.get(jsonData["product_id"])
-    # print('PRODUCT!!!!!!!!', product)
-    product_quantity = jsonData["quantity"]
+    request_data = request.get_json()
+    product = Product.query.get(request_data["product_id"])
+    # print('PRODUCT!!', product)
+    product_quantity = request_data["quantity"]
 
-    carts = db.session.query(Cart).filter(Cart.user_id == jsonData["user_id"]).options(joinedload(Cart.products))
-    print('CARTS!!!!', carts)
+    carts = db.session.query(Cart).filter(Cart.user_id == request_data["user_id"]).options(joinedload(Cart.products))
+    # print('CARTS!!!!', carts)
 
     final_result = []
     for cart in carts:
@@ -77,11 +77,11 @@ def editCart():
 @cart_routes.route('<int:id>', methods=['DELETE'])
 def deleteCartItem(id):
     request_data = request.get_json()
-    print('request------', request_data)
+    # print('request------', request_data)
     cart = Cart.query.get(id)
-    print('cart', cart)
-    print('cart', cart.to_dict())
-    print('product', cart.products)
+    # print('cart', cart)
+    # print('cart', cart.to_dict())
+    # print('product', cart.products)
     if not cart:
         return cart.errors
 
@@ -112,11 +112,11 @@ def deleteCartItem(id):
 
 @cart_routes.route('/<int:cart_id>/product/<int:product_id>', methods=['POST'])
 def addItemToCart(cart_id, product_id):
-    print('cartid', cart_id)
-    print('product_id', product_id)
+    # print('cartid', cart_id)
+    # print('product_id', product_id)
     product = Product.query.get(product_id)
     cart = Cart.query.get(cart_id)
-    print('cart', cart)
+    # print('cart', cart)
     if not cart:
         return {"error": "Cart not found"}, 404
 
@@ -129,7 +129,7 @@ def addItemToCart(cart_id, product_id):
 
     cart.products.append(product)
     prod_obj = [product.to_dict() for product in cart.products]
-    print('products', product)
+    # print('products', product)
     db.session.commit()
     cart_obj = cart.to_dict()
     cart_obj["products"] = prod_obj
@@ -138,14 +138,23 @@ def addItemToCart(cart_id, product_id):
 
 
 
-@cart_routes.route('/deletecart', methods=['PUT'])
+@cart_routes.route('/emptycart', methods=['PUT'])
 def emptyCart():
-    cart_id = request.get_json()
+    data = request.get_json()
+    cart_id = data.get('cart_id')
     user_id = current_user.id
-    print('user_id', user_id)
-    carts = Cart.query.filter(Cart.id == cart_id).all()
-    for cart in carts:
-        cart.products.clear()
-        db.session.commit()
+    # print('user_id', user_id)
+    if not cart_id:
+        return "No cart Id provided"
 
-    return {"Cart Emptied": user_id}
+    # cart = Cart.query.filter(Cart.id == cart_id).all()
+    cart = Cart.query.filter_by(id=cart_id, user_id=user_id).first()
+
+    if not cart:
+        return "Cart not found"
+    # for cart in carts:
+    cart.products.clear()
+    db.session.commit()
+
+    return {"message": "Cart is empty"}
+    # return {"Cart Emptied": user_id}

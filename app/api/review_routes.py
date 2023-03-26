@@ -59,10 +59,11 @@ def updateReview(id):
     # if review is None:
     #     return "Review not found", 404
 
-    if current_user.is_authenticated:
+    if current_user.id is not None:
         review.user_id = current_user.id
     else:
         return 'User Not logged in'
+    
     if form.validate_on_submit():
         review.review = request_data["review"]
         review.rating = request_data["rating"]
