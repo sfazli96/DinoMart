@@ -8,8 +8,6 @@ import { addReviews } from "../../../store/reviews";
 
 const EditReview = ({ reviewData, onClose}) => {
     const dispatch = useDispatch()
-    const reviewId = useParams()
-    console.log('reviewId', reviewId)
     const [rating, setRating] = useState(5)
     const [review, setReview] = useState()
     // const [showForm, setShowForm] = useState(false)

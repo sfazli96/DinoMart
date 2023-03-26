@@ -49,7 +49,7 @@ function SinglePrehistoricProduct() {
                 <img src={multiImage()}></img>
             </div> */}
             <div className="add-to-cart-button">
-                <button onClick={() => cartButton(id)}>Add to Cart</button>
+                <button className="cart-button" onClick={() => cartButton(id)}>Add to Cart</button>
             </div>
             <div>
                 <Reviews />

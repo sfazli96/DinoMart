@@ -20,7 +20,7 @@ def allReviews():
 @login_required
 def createReview():
     date = datetime.datetime.now()
-    jsonData = request.get_json()
+    request_data = request.get_json()
     form = ReviewForm()
     # print('FORM', form)
     # print(current_user.id, 'current')
@@ -28,9 +28,9 @@ def createReview():
 
     if form.validate_on_submit():
         new_review = Review(
-            review = jsonData["review"],
-            rating = jsonData["rating"],
-            product_id = jsonData["product_id"],
+            review = request_data["review"],
+            rating = request_data["rating"],
+            product_id = request_data["product_id"],
             user_id = current_user.id,
             created_at=date
         )
@@ -44,30 +44,44 @@ def createReview():
         return {"message": "Bad information, Please try again"}, 400
 
 @review_routes.route('/<int:id>', methods=['PUT'])
-@login_required
+# @login_required
 def updateReview(id):
+    review = Review.query.get(id)
     date = datetime.datetime.now()
-    jsonData = request.get_json()
+    request_data = request.get_json()
+    print('request_data', request_data)
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     review = Review.query.filter_by(id=id).first()
+    # review = Review.query.all()
     print('review', review)
+    print('currnet=------', current_user)
     if review is None:
         return "Review not found", 404
 
     if form.validate_on_submit():
-        review.review = jsonData["review"]
-        review.rating = jsonData["rating"]
-        review.product_id = jsonData["product_id"]
+        review.review = request_data["review"]
+        review.rating = request_data["rating"]
+        review.product_id = request_data["product_id"]
         review.user_id = current_user.id
         review.created_at = date
 
         db.session.commit()
 
         return review.to_dict()
+    # if review:
+    #     review.review = request_data["review"]
+    #     review.rating = request_data["rating"]
+    #     review.product_id = request_data["product_id"]
+    #     review.user_id = current_user.id
+    #     review.created_at = date
+
+    #     db.session.commit()
+
+    #     return review
     else:
-        return form.errors
-        # return "Bad data, please try again", 404
+        # return form.errors
+        return "Bad data, please try again", 404
 
 
 @review_routes.route('/<int:id>', methods=['DELETE'])

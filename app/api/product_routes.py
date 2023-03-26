@@ -38,7 +38,7 @@ def singleProduct(id):
 @login_required
 def createReview(id):
     date = datetime.datetime.now()
-    jsonData = request.get_json()
+    request_data = request.get_json()
     form = ReviewForm()
     # print('FORM', form)
     # print(current_user.id, 'current')
@@ -46,9 +46,9 @@ def createReview(id):
 
     if form.validate_on_submit():
         new_review = Review(
-            review = jsonData["review"],
-            rating = jsonData["rating"],
-            product_id = jsonData["product_id"],
+            review = request_data["review"],
+            rating = request_data["rating"],
+            product_id = request_data["product_id"],
             user_id = current_user.id,
             created_at=date
         )
@@ -60,5 +60,3 @@ def createReview(id):
     else:
         # return form.errors
         return {"message": "Bad information, Please try again"}, 404
-
-

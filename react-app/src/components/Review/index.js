@@ -5,6 +5,7 @@ import { removeReview, readAllReviews } from "../../store/reviews";
 import { addReviews } from "../../store/reviews"
 import ReactStars from "react-rating-stars-component";
 import EditReview from "./EditReview/EditReview";
+import './review.css'
 
 
 const Reviews = () => {
@@ -80,35 +81,13 @@ const Reviews = () => {
         })
     }
 
+    const formatDate = (time) =>{
+        const date = new Date(time)
+        return date.toLocaleString()
+    }
+
     return (
         <div>
-            {reviews.reverse().map(({ id, review, rating, user_id }) => {
-                return (
-                    <div key={id}>
-                        <p className="review-rating">{rating}</p>
-                        {user_id === userId && (
-                            <div>
-                                <button className="delete-review-button" onClick={() => handlingDeleteReview(id)}>
-                                    Delete Review
-                                </button>
-                                {/* <EditReview /> */}
-                                <button onClick={() => setIsEdit(id)}>Edit Review</button>
-                            </div>
-                        )}
-                        {isEdit === id && (
-                            <EditReview reviewData={{id, review, rating}} onClose={() => setIsEdit(null)}></EditReview>
-                        )}
-                        <p className="review-text">{review}</p>
-                    </div>
-                )
-            })}
-            {validationErrors.length > 0 && (
-                <div className="error-message">
-                    {validationErrors.map((error, index) => (
-                    <p key={index}>{error}</p>
-                    ))}
-                </div>
-            )}
             <div>
                 <button onClick={() => setShowForm(true)}>Create a Review</button>
                 {showForm && (<form onSubmit={handleSubmit} noValidate>
@@ -133,6 +112,37 @@ const Reviews = () => {
                 </form>
                 )}
             </div>
+            {reviews.reverse().map(({ id, review, rating, user_id, created_at }) => {
+                // console.log('createdAt', created_at )
+                return (
+                    <div key={id}>
+                        <div className="review-card-container">
+                            <p className="review-rating">{rating}</p>
+                            <p className="review-text">{review}</p>
+                            <p className="createdAt">Created at: {formatDate(created_at)}</p>
+                            {user_id === userId && (
+                                <div>
+                                    <button className="delete-review-button" onClick={() => handlingDeleteReview(id)}>
+                                        Delete Review
+                                    </button>
+                                    {/* <EditReview /> */}
+                                    <button className='edit-review-button' onClick={() => setIsEdit(id)}>Edit Review</button>
+                                </div>
+                            )}
+                            {isEdit === id && (
+                                <EditReview reviewData={{id, review, rating}} onClose={() => setIsEdit(null)}></EditReview>
+                            )}
+                        </div>
+                    </div>
+                )
+            })}
+            {validationErrors.length > 0 && (
+                <div className="error-message">
+                    {validationErrors.map((error, index) => (
+                    <p key={index}>{error}</p>
+                    ))}
+                </div>
+            )}
         </div>
     )
 }

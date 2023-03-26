@@ -2,3 +2,19 @@
     max-height: 250px;
     max-width: 250px;
 }
+
+.cart-button {
+    /* position: absolute; */
+    /* top: 20px; */
+    /* right: 150px; */
+    /* text-decoration: underline; */
+    /* background-color: green; */
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 3.5px;
+    background-color: blue;
+    color: white;
+}
