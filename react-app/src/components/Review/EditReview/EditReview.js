@@ -6,18 +6,17 @@ import ReactStars from "react-rating-stars-component";
 import { addReviews } from "../../../store/reviews";
 
 
-const EditReview = ({ reviewData, onClose}) => {
+const EditReview = ({id, onClose}) => {
     const dispatch = useDispatch()
     const [rating, setRating] = useState(5)
     const [review, setReview] = useState()
-    // const [showForm, setShowForm] = useState(false)
-    // const [newReviewData, setNewReviewData] = useState({});
-    // const [isEdit, setIsEdit] = useState(null)
-    // const [newReview, setNewReview] = useState("")
-    // const [newRating, setNewRating] = useState("")
     const [errors, setErrors] = useState([])
     // const [validationErrors, setValidationErrors] = useState([]);
-
+    const reviewData = {
+        id: id.id,
+        review,
+        rating
+    }
     const handleSubmit = (e) => {
         e.preventDefault()
         setErrors([])

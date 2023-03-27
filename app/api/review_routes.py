@@ -46,7 +46,7 @@ def createReview():
 @review_routes.route('/<int:id>', methods=['PUT'])
 @login_required
 def updateReview(id):
-    review = Review.query.get(id)
+    # review = Review.query.get(id)
     date = datetime.datetime.now()
     request_data = request.get_json()
     # print('request_data', request_data)
@@ -75,8 +75,8 @@ def updateReview(id):
 
         return review.to_dict()
     else:
-        # return form.errors
-        return "Bad data, please try again", 404
+        return form.errors
+        # return "Bad data, please try again", 404
 
 
 @review_routes.route('/<int:id>', methods=['DELETE'])

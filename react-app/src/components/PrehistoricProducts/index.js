@@ -16,19 +16,7 @@ function PrehistoricProducts() {
     useEffect(() => {
         dispatch(loadAnimalProduct())
     }, [dispatch])
-    // let multiImage = () => {
-    //     let image;
-    //     productsArr.map(({image_url}) => {
-    //         // console.log(image_url, 'IMAGE')
-    //         let split = image_url.split(',')
-    //         // console.log('SPLIT', split)
-    //         split.forEach(img => {
-    //             image = img
-    //         });
-    //     })
-    //     return image
-    // }
-    // console.log('MULTI', multiImage())
+
     return (
         <div>
             <h1>Welcome to Sam-Mart</h1>
@@ -40,14 +28,12 @@ function PrehistoricProducts() {
                     <div key={id} className="image-container">
                         <NavLink to={`/products/${id}`}>
                             <img src={image_url} alt="image not found" className='prehistoric-image'></img>
+                            <p className='product-name'>{name}</p>
                             <p className='price'>$ {price}</p>
                         </NavLink>
                     </div>
                 )
             })}
-            {/* <div>
-                <img src={multiImage()}></img>
-            </div> */}
         </div>
     )
 }

@@ -57,7 +57,11 @@ export const editReview = (review) => async (dispatch) => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(review)
+        body: JSON.stringify({
+            review: review.review,
+            rating: review.rating,
+            product_id: review.id
+        })
     })
     if (response.ok) {
         const data = await response.json()
