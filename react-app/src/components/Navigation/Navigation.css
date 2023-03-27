@@ -7,9 +7,11 @@
 .Navbar {
   display: flex;
   justify-content: space-between;
-  box-shadow: 0px 0.3px 0px 0px rgba(0,0,0,0.5);
+  box-shadow: 5.7px 0.3px 0px 0px rgba(0,0,0,0.5);
+  /* box-shadow: 5.9px 0.8px 2.6px 0px rgba(0,0,0,0.5); */
+
   background-color: white;
-  width: 75%;
+  width: 85%;
   height: 100px;
   padding: 0 2em;
   margin: auto;
@@ -20,7 +22,6 @@
 .profile-dropdown {
   display: flex;
   flex-direction: column;
-  /* background-color: #193ee7; */
   padding: 10px;
   border: 1px solid #ccc;
   box-shadow: 0px 0px 10px #ccc;
@@ -72,7 +73,10 @@ cursor: pointer;
 .home-page {
     text-decoration: none;
     font-size: 28px;
-
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background: linear-gradient(to right, red, green);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 .logoutbutton {
   background-color: #fc3239 !important;
@@ -94,11 +98,12 @@ cursor: pointer;
 .sign-in-and-cart {
   gap: 100px;
   display: flex;
-  font-size: 22px;
+  font-size: 25px;
 }
 
 .sign-in-home {
   background-color: transparent;
   border: transparent;
-  font-size: 20px;
+  font-size: 25px;
+  color: rgb(5, 161, 5);
 }

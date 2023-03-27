@@ -28,7 +28,7 @@ const EditReview = ({ reviewData, onClose}) => {
             }, 2000)
             return
         }
-        dispatch(editReview(reviewData.id, {review, rating}))
+        dispatch(editReview(reviewData))
         .then(() => {
             onClose()
         })

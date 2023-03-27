@@ -53,18 +53,18 @@ const Cart = () => {
                     {prehistoricProducts?.products && prehistoricProducts.products.map(({id, name, image_url, price, size}) => {
                         return (
                             <div key={id}>
-                                <h2>{name}</h2>
-                                <img src={image_url}></img>
-                                <p>${price}</p>
+                                <h2 className="name">{name}</h2>
+                                <img src={image_url} className='product-image'></img>
+                                <p className="price">${price}</p>
                             </div>
                         )
                     })}
                 </div>
             <div>
-                <p>Total Price: ${totalPrice.toFixed(2)}</p>
+                <p className="total-price">Total Price: ${totalPrice.toFixed(2)}</p>
             </div>
             <div>
-                <button className="checkout-button" onClick={() => handleCheckoutPage(totalPrice, setShowCheckoutPending)}>Checkout</button>
+                <button className="checkout-button" onClick={() => handleCheckoutPage(dispatch, totalPrice, setShowCheckoutPending)}>Checkout</button>
             </div>
             {showCheckoutPending && <p>Your order is being processed, check again later</p>}
         </div>

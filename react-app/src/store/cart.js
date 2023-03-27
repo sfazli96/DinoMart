@@ -101,6 +101,7 @@ export const thunkClearCart = (id) => async (dispatch) => {
         dispatch(clearCart(cartData))
         return cartData
     }
+    return res.json()
 }
 
 

@@ -42,9 +42,9 @@ function SinglePrehistoricProduct() {
         <div>
             {/* <h1>TEST</h1> */}
             <h2>{productDetail.name}</h2>
-            <p>{productDetail.description}</p>
             <h2>$ {productDetail.price}</h2>
-            <img src={productDetail.image_url}></img>
+            <img clasName='product-image'src={productDetail.image_url}></img>
+            <p className="description">{productDetail.description}</p>
              {/* <div>
                 <img src={multiImage()}></img>
             </div> */}

@@ -44,7 +44,6 @@ function ProfileButton({ user }) {
     <div className="sign-in-and-cart">
       <button onClick={openMenu} className='sign-in-home'>
         <i className="fas fa-user-circle" />
-        Sign In
       </button>
       <NavLink exact to={`/cart`} className='cart-icon'>
 					Cart

@@ -14,7 +14,7 @@ const Reviews = () => {
     // console.log(id, 'id')
     const ID = parseInt(id.id)
     // console.log('id', ID)
-    const user = useSelector(state => state.session.user)
+    const user = useSelector(state => state.session?.user)
     const userId = user?.id
     const reviewsObj = useSelector(state => state.review?.reviews || {})
     const reviews = Object.values(reviewsObj)
@@ -119,10 +119,11 @@ const Reviews = () => {
             </div>
             {reviews.reverse().map(({ id, review, rating, user_id, created_at }) => {
                 // console.log('createdAt', created_at )
+                const username = user_id === user?.id ? user.username : null
                 return (
                     <div key={id}>
                         <div className="review-card-container">
-                            <p className="review-rating">{rating}</p>
+                            <p className="review-rating">{rating} - {username}</p>
                             <p className="review-text">{review}</p>
                             <p className="createdAt">Created at: {formatDate(created_at)}</p>
                             {user_id === userId && (
