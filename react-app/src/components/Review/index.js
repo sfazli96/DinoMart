@@ -91,10 +91,9 @@ const Reviews = () => {
     return (
         <div>
             <div>
-                {showCreateReview && (
+                {showCreateReview && user ? (
                     <button onClick={() => setShowForm(true)}>Create a Review</button>
-                )
-                }
+                ): null}
                 {showForm && (<form onSubmit={handleSubmit} noValidate>
                     <ul className="ul">
                         {errors.map((error, idx) => (
