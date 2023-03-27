@@ -48,7 +48,7 @@ const Cart = () => {
             setTimeout(() => {
                 dispatch(thunkClearCart(cartId))
                 setShowCheckoutPending(false)
-                // history.push("/")
+                history.push("/")
             }, 2000)
         } catch (error) {
             console.log('Error during checkout', error)
@@ -63,6 +63,13 @@ const Cart = () => {
         setTotalPrice(oldPrice => oldPrice - itemPrice)
       }
 
+      if (!user) {
+        return (
+            <div>
+                <h1>Sign in to use cart</h1>
+            </div>
+        )
+      }
     return (
         <div>
             <h1>({cartItem})</h1>

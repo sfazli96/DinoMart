@@ -140,26 +140,13 @@ def addItemToCart(cart_id, product_id):
 
 @cart_routes.route('/emptycart', methods=['PUT'])
 @login_required
-def emptyCart():
-    data = request.get_json()
-    cart_id = data.get('cart_id')
-    print('CART_ID', cart_id)
+def clearCart():
     user_id = current_user.id
-    print('USER_ID', user_id)
-    print('CURRENT=====', current_user)
-    # print('user_id', user_id)
-    if not cart_id:
-        return "No cart Id provided"
+    cart_id = request.get_json()
+    # print("BODY_DATA", user_id)
+    carts = Cart.query.filter(Cart.id == cart_id).all()
+    for cart in carts:
+        cart.products.clear()  # remove all products from the cart
+        db.session.commit()
 
-    # cart = Cart.query.filter(Cart.id == cart_id).all()
-    cart = Cart.query.filter_by(id=cart_id, user_id=user_id).first()
-
-    if not cart:
-        return "Cart not found"
-    # for cart in carts:
-    cart.products.clear()
-    db.session.commit()
-
-    # return cart.error
-    return {"message": "Cart is empty"}
-    # return {"Cart Emptied": user_id}
+    return {"Cart Cleared": user_id}

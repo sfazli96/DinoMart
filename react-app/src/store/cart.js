@@ -97,16 +97,21 @@ export const thunkDeleteCart = (userId, productId) => async (dispatch) => {
 
 export const thunkClearCart = (id) => async (dispatch) => {
     console.log('id', id)
-    const res = await fetch(`/api/cart/emptycart`, {
+    const res = await fetch('/api/cart/emptycart', {
         method: 'PUT',
+        headers: {
+            "Content-Type": "application/json"
+        },
         body: JSON.stringify(id)
     })
+    console.log('res', res)
     if (res.ok) {
         const cartData = await res.json()
         console.log('clear cartData', cartData)
         dispatch(clearCart(cartData))
         return cartData
     }
+    return res
 }
 
 
