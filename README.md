@@ -1,3 +1,19 @@
+# About Sam-Mart
+- Sam-Mart is an online e-commerce marketplace for your average day that only focuses on prehistoric products and animals that you can have as a pet. My platform offers a variety of different types of prehistoric animals or even fossils to have as a collection. In this website, you can have the ability to sign up, log in or leave a review on a dinosaur you like. Additionally, users can add there pet into the their shopping cart and checkout to buy it.
+
+To check out the live version of this website, simple follow this link: . Thank you for considering Sam-Mart for your pet needs!
+
+# Technologies Used:
+- Javascript
+- Python
+- React
+- Redux
+- Flask
+- NodeJS
+- CSS
+- Database: PostgreSQL
+- Hosting: Render
+
 # Flask React Project
 
 This is the starter for the Flask React project.
@@ -23,19 +39,10 @@ This is the starter for the Flask React project.
 
 6. Get into your pipenv, migrate your database, seed your database, and run your Flask app
 
-   ```bash
+   ```
    pipenv shell
-   ```
-
-   ```bash
    flask db upgrade
-   ```
-
-   ```bash
    flask seed all
-   ```
-
-   ```bash
    flask run
    ```
 
@@ -146,3 +153,6 @@ your site just below the name of the Web Service at the top of the page.
 
 [Render.com]: https://render.com/
 [Dashboard]: https://dashboard.render.com/# SamMart
+
+
+## Please Check out these images below to see how to use the features from this project!
