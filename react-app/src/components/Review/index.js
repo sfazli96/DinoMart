@@ -27,6 +27,7 @@ const Reviews = () => {
     const [validationErrors, setValidationErrors] = useState([]);
     const [isEdit, setIsEdit] = useState(null)
 
+
     useEffect(() => {
         if (user) {
             dispatch(readAllReviews(ID))
@@ -91,11 +92,11 @@ const Reviews = () => {
             <div>
                 <button onClick={() => setShowForm(true)}>Create a Review</button>
                 {showForm && (<form onSubmit={handleSubmit} noValidate>
-                    <ul className="ul">
+                    <div className="error-message-review">
                         {errors.map((error, idx) => (
                             <li key={idx}>{error}</li>
                         ))}
-                    </ul>
+                    </div>
                     <textarea type="textbox" defaultValue="Post your amazing review here!" value={review} onChange={handleChange} required></textarea>
                     <ReactStars
                         count={5}
@@ -110,6 +111,9 @@ const Reviews = () => {
                     />
                     <button className="submit-button" type="submit">Submit</button>
                 </form>
+                )}
+                {!showForm && (
+                    <p>Thank you for submitting a review!</p>
                 )}
             </div>
             {reviews.reverse().map(({ id, review, rating, user_id, created_at }) => {

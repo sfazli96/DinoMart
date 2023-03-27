@@ -59,7 +59,7 @@ def seed_products():
     ankylosaurus = Product(
         name='Ankylosaurus',
         description='A heavily-armored dinosaur with a club-like tail. It lived dating to the very end of the Cretaceous Period, about 60-68 million years ago. Its fossils have been found in geological formation. This is something you do not want to miss, its one of the golden opportunities to buy this creature. The Ankylosaurus is 5.6ft tall and length of about 20-26ft. Since, this creature was a herbivorious, they mostly eat plants such as leaves, ferms, shrubs, etc. Only at SamMart.',
-        image_url='https://static.wikia.nocookie.net/jurassicworld-evolution/images/6/65/JWEAnkylosaurus.png/revision/latest?cb=20210920183446',
+        image_url='https://cdn.shopify.com/s/files/1/0266/5817/7121/files/2_3828ef24-e5fb-468d-80cc-c1c023030bc1_1024x1024.png?v=1643029228',
         price=90.99,
         size='Medium'
     )
@@ -112,7 +112,7 @@ def seed_products():
         price=310.66,
         size='Large'
     )
-    
+
 
 
 

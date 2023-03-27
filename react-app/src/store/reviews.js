@@ -90,7 +90,7 @@ export const reviewsReducer = (state = initialState, action) => {
             // console.log('new', newState)
             let copy = {}
             action.payload.reviews.forEach(review => {
-                console.log('action', action.payload)
+                // console.log('action', action.payload)
                 // console.log('review', review)
                 copy[review.id] = review
             });
