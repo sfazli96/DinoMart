@@ -24,7 +24,7 @@ def singleProduct(id):
     prehistoric_product = Product.query.get(id)
     # print('PRODUCT', prehistoric_product)
     pd_dict = prehistoric_product.to_dict()
-    print('pd_dict', pd_dict)
+    # print('pd_dict', pd_dict)
     pdReviews = {'reviews': [reviews.to_dict() for reviews in prehistoric_product.reviews]}
     pd_dict.update(pdReviews)
 

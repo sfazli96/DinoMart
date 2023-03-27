@@ -38,3 +38,8 @@ div .checkout-button:hover {
     height: 400px;
     width: 450px;
 }
+
+.delete-cart-button {
+    width: 80px;
+    height: 35px;
+}

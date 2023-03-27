@@ -33,7 +33,7 @@ function SinglePrehistoricProduct() {
     // }
     // console.log('MULTI', multiImage())
     const cartButton = () => {
-        dispatch(thunkAddToCart(user.id, id.id))
+        dispatch(thunkAddToCart(user?.id, id.id))
         .then(() => {
             history.push('/cart')
         })

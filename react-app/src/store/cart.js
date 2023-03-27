@@ -1,9 +1,9 @@
 const LOAD_CART = 'cart/showCart'
 const CREATE_CART = 'cart/createCart'
 const ADD_TO_CART = 'cart/addToCart'
-const CLEAR_CART = 'cart/updateCart'
+const CLEAR_CART = 'cart/emptyCart'
 const EDIT_CART = 'cart/editCart'
-const DELETE_CART_ITEM = 'cart/deleteCartItem'
+const DELETE_CART_ITEM = 'cart/deleteCart'
 
 const loadCart = (cart) => ({
     type: LOAD_CART,
@@ -27,21 +27,21 @@ const clearCart = (cart) => ({
 
 const deleteCart = (item) => ({
     type: DELETE_CART_ITEM,
-    payload: item
+    payload: item,
 })
 
 export const thunkLoadCart = (id) => async (dispatch) => {
     const res = await fetch(`/api/cart/${id}`)
     if (res.ok) {
         const loadData = await res.json()
-        // console.log('load data', loadData)
+        console.log('load data', loadData)
         dispatch(loadCart(loadData))
         return loadData
     }
 }
 
 export const thunkCreateCart = (userId) => async (dispatch) => {
-    const res = await fetch('/api/cart/', {
+    const res = await fetch('/api/cart', {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
@@ -69,7 +69,7 @@ export const thunkAddToCart = (cartId, productId) => async (dispatch) => {
     })
     if (res.ok) {
         const cartData = await res.json()
-        console.log('AddToCart', cartData)
+        // console.log('AddToCart', cartData)
         dispatch(addToCart(cartData.cart))
         return cartData
     }
@@ -77,31 +77,36 @@ export const thunkAddToCart = (cartId, productId) => async (dispatch) => {
 }
 
 export const thunkDeleteCart = (userId, productId) => async (dispatch) => {
+    console.log('userId---', userId)
+    console.log('productId---', productId)
     const res = await fetch(`/api/cart/${userId}`, {
         method: 'DELETE',
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(productId)
+        body: JSON.stringify({productId})
     })
     if (res.ok) {
         const cartData = await res.json()
+        console.log('cartData', cartData)
         dispatch(deleteCart(cartData))
         return cartData
     }
+    return res.json()
 }
 
 export const thunkClearCart = (id) => async (dispatch) => {
+    console.log('id', id)
     const res = await fetch(`/api/cart/emptycart`, {
         method: 'PUT',
         body: JSON.stringify(id)
     })
     if (res.ok) {
         const cartData = await res.json()
+        console.log('clear cartData', cartData)
         dispatch(clearCart(cartData))
         return cartData
     }
-    return res.json()
 }
 
 
@@ -145,10 +150,14 @@ export const cartReducer = (state = {Cart: {}}, action) => {
             newState.Cart = copy2
             return newState
         case DELETE_CART_ITEM:
+            console.log('NEWSTATE', newState)
+            console.log('ACTION', action.payload)
+            console.log('NEWSTATE-----', newState.Cart)
             newState = {...state}
             newState.Cart = action.payload
             return newState
         case CLEAR_CART:
+            console.log('state', state)
             return {
                 ...state,
                 Cart: {}
