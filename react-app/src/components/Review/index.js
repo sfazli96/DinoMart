@@ -26,7 +26,7 @@ const Reviews = () => {
     const [errors, setErrors] = useState([])
     const [validationErrors, setValidationErrors] = useState([]);
     const [isEdit, setIsEdit] = useState(null)
-
+    const [showCreateReview, setShowCreateReview] = useState(true);
 
     useEffect(() => {
         if (user) {
@@ -46,6 +46,7 @@ const Reviews = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        setShowCreateReview(false);
         setErrors([])
         if (!review || review.length < 3) {
             setErrors(["Please enter a review with at least 3 characters"])
@@ -90,13 +91,16 @@ const Reviews = () => {
     return (
         <div>
             <div>
-                <button onClick={() => setShowForm(true)}>Create a Review</button>
+                {showCreateReview && (
+                    <button onClick={() => setShowForm(true)}>Create a Review</button>
+                )
+                }
                 {showForm && (<form onSubmit={handleSubmit} noValidate>
-                    <div className="error-message-review">
+                    <ul className="ul">
                         {errors.map((error, idx) => (
                             <li key={idx}>{error}</li>
                         ))}
-                    </div>
+                    </ul>
                     <textarea type="textbox" defaultValue="Post your amazing review here!" value={review} onChange={handleChange} required></textarea>
                     <ReactStars
                         count={5}
@@ -111,9 +115,6 @@ const Reviews = () => {
                     />
                     <button className="submit-button" type="submit">Submit</button>
                 </form>
-                )}
-                {!showForm && (
-                    <p>Thank you for submitting a review!</p>
                 )}
             </div>
             {reviews.reverse().map(({ id, review, rating, user_id, created_at }) => {

@@ -63,7 +63,7 @@ def updateReview(id):
         review.user_id = current_user.id
     else:
         return 'User Not logged in'
-    
+
     if form.validate_on_submit():
         review.review = request_data["review"]
         review.rating = request_data["rating"]

@@ -11,8 +11,9 @@ const Cart = () => {
     const user = useSelector(state => state.session.user)
     // console.log('user', user)
     const prehistoricProducts = useSelector(state => state.cartReducer.Cart)
-    // const prehistoricProducts = useSelector(state => state.cartReducer.Cart)
     console.log('prehistoric prod', prehistoricProducts)
+    const cartId = useSelector(state => state.cartReducer.Cart.id)
+    console.log('cartId', cartId)
     const [cartItem, setCartItem] = useState(0)
     const [totalPrice, setTotalPrice] = useState(0.00)
     const [showCheckoutPending, setShowCheckoutPending] = useState(false)
@@ -38,7 +39,7 @@ const Cart = () => {
     const handleCheckoutPage = async() => {
         setShowCheckoutPending(true)
         setTimeout(() => {
-            dispatch(thunkClearCart())
+            dispatch(thunkClearCart(cartId))
             setShowCheckoutPending(false)
             history.push("/")
         }, 2000)
