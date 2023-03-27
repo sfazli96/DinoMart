@@ -108,7 +108,7 @@ def deleteCartItem(id):
     #     print('prod_obj', product_obj)
     #     cart_obj['products'].append(product_obj)
 
-    return cart_obj
+    return jsonify(cart_obj)
 
 @cart_routes.route('/<int:cart_id>/product/<int:product_id>', methods=['POST'])
 def addItemToCart(cart_id, product_id):
@@ -146,7 +146,7 @@ def clearCart():
     # print("BODY_DATA", user_id)
     carts = Cart.query.filter(Cart.id == cart_id).all()
     for cart in carts:
-        cart.products.clear()  # remove all products from the cart
+        cart.products.clear()
         db.session.commit()
 
     return {"Cart Cleared": user_id}

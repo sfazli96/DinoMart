@@ -76,19 +76,19 @@ export const thunkAddToCart = (cartId, productId) => async (dispatch) => {
     return res.json()
 }
 
-export const thunkDeleteCart = (userId, productId) => async (dispatch) => {
-    console.log('userId---', userId)
-    console.log('productId---', productId)
+export const thunkDeleteCart = (userId, product_id) => async (dispatch) => {
+    // console.log('userId---', userId)
+    // console.log('productId---', product_id)
     const res = await fetch(`/api/cart/${userId}`, {
         method: 'DELETE',
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({productId})
+        body: JSON.stringify({product_id})
     })
     if (res.ok) {
         const cartData = await res.json()
-        console.log('cartData', cartData)
+        // console.log('cartData', cartData)
         dispatch(deleteCart(cartData))
         return cartData
     }
@@ -96,7 +96,7 @@ export const thunkDeleteCart = (userId, productId) => async (dispatch) => {
 }
 
 export const thunkClearCart = (id) => async (dispatch) => {
-    console.log('id', id)
+    // console.log('id', id)
     const res = await fetch('/api/cart/emptycart', {
         method: 'PUT',
         headers: {
@@ -107,12 +107,13 @@ export const thunkClearCart = (id) => async (dispatch) => {
     console.log('res', res)
     if (res.ok) {
         const cartData = await res.json()
-        console.log('clear cartData', cartData)
+        // console.log('clear cartData', cartData)
         dispatch(clearCart(cartData))
         return cartData
     }
     return res
 }
+
 
 
 
@@ -146,7 +147,7 @@ export const cartReducer = (state = {Cart: {}}, action) => {
             // console.log('COPY', copy)
             // console.log('ACTION----', action.payload)
             newState.Cart = copy
-            console.log('NEW', newState.Cart)
+            // console.log('NEW', newState.Cart)
             return newState
         case CREATE_CART:
             newState = {...state}
@@ -155,14 +156,12 @@ export const cartReducer = (state = {Cart: {}}, action) => {
             newState.Cart = copy2
             return newState
         case DELETE_CART_ITEM:
-            console.log('NEWSTATE', newState)
-            console.log('ACTION', action.payload)
-            console.log('NEWSTATE-----', newState.Cart)
+            // console.log('ACTION', action.payload)
             newState = {...state}
             newState.Cart = action.payload
             return newState
         case CLEAR_CART:
-            console.log('state', state)
+            // console.log('state', state)
             return {
                 ...state,
                 Cart: {}
