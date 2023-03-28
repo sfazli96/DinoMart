@@ -73,7 +73,7 @@ const EditReview = ({id, onClose}) => {
                             activeColor="#ffd700"
                             />
                     <button className="submit-button" type="submit">Submit</button>
-                    <button onClick={onClose}>Cancel</button>
+                    <button className='cancel-edit-review-button' onClick={onClose}>Cancel</button>
                 </div>
             </form>
         </div>
