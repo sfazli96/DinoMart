@@ -1,6 +1,9 @@
 .prehistoric-image {
     max-width: 100%;
+    height: 200px;
+    object-fit: cover;
     border-radius: 10px;
+    height: auto;
 }
 
 .banner-container {
@@ -20,17 +23,20 @@
     border-radius: 5px;
 }
 
-.image-container {
-    /* display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none; */
+.root-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 20px;
-    /* align-items: center; */
-    /* justify-content: center; */
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
 }
 
