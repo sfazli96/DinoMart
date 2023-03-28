@@ -112,6 +112,27 @@ def seed_products():
         price=310.66,
         size='Large'
     )
+    flint_tools = Product(
+        name='Flint Tools',
+        description='This tool was used during the stone age as it splits into thin, sharp splinters called blades that can maybe give a splinter to someone. This shows 30 different types of flint tools that was used during the stone age period. These tools were being traded from early as 4000BC and were some of the oldest technology used. Before metal was discovered, stone was the main source for making tools so do not miss your chance to get this. Only at Sam-Mart.',
+        image_url='https://www.researchgate.net/profile/Kathryn-Puseman/publication/223327343/figure/fig3/AS:305253082779655@1449789414776/Photo-of-the-30-flint-tools-analysed-The-blade-to-the-upper-left-is-65-cm-long-Sample.png',
+        price=255.55,
+        size='Small'
+    )
+    sabre_toothed_tiger = Product(
+        name='Sabre-Toothed Tiger',
+        description='A sabre-toothed tiger is one of the best known predator and famous prehistoric mammal in history but it is not related to a tiger or other cats. Its scientific name is Smilodon. The meaning for Smilodon means "Dealy knife tooth" but this purpose of the long fangs are still a mystery to today. Some sabertooth tigers showed up in fossil record about 2 million years ago and was shown to be in North and South America. These Sabertooth had short tails and heavy, muscular build. Some of the fossils show that they were social animals.',
+        image_url='https://cdn.britannica.com/99/171899-050-B1C3A12A/Sabre-cat.jpg',
+        price=822.62,
+        size='Large'
+    )
+    dunkleosteus = Product(
+        name='Dunkleosteus',
+        description='This is a large extinct fish that existed during the Late Devonian period like about 382-358 million years ago. According to scientist and researchers its considered the prehistoric king of the oceans. This is very similar to a megalodon but after that creature existed. But, over many years this creatures fossil have been discovered in different areas such as Belgium, Morocco and North America. From the appearance of the creature, it looks like it used to swim slow but they can still protect themselves from predators since they were like alphas. The fish had no teeth as well but did had some sharp bone plates like a beak similar to megaladon but much stronger than great white sharks. There body length is 26-33ft, weighs about 3 tons and has a bit force of 600 kilograms.',
+        image_url='https://dinoanimals.com/wp-content/uploads/2021/04/Dunkleosteus-1.jpg',
+        price=262.66,
+        size='Large'
+    )
 
 
 
@@ -132,6 +153,10 @@ def seed_products():
     db.session.add(spinosaurus)
     db.session.add(t_rex_fossil)
     db.session.add(yoshis_Trike_fossil)
+    db.session.add(flint_tools)
+    db.session.add(sabre_toothed_tiger)
+    db.session.add(dunkleosteus)
+
 
 
 
