@@ -18,8 +18,8 @@ function PrehistoricProducts() {
     }, [dispatch])
 
     return (
-        <div>
-            <h1>Welcome to Sam-Mart</h1>
+        <div className='whole-container'>
+            <h1 className='welcome-title'>Welcome to Sam-Mart</h1>
             <div className='banner-container'>
                 <img className='banner-image' src='https://idsb.tmgrup.com.tr/ly/uploads/images/2022/08/04/222563.jpg' alt='image not found'></img>
             </div>
