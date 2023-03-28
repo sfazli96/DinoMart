@@ -45,13 +45,13 @@ export const thunkLoadCart = (id) => async (dispatch) => {
     }
 }
 
-export const thunkCreateCart = (user_id) => async (dispatch) => {
-    const res = await fetch('/api/cart', {
+export const thunkCreateCart = (userId) => async (dispatch) => {
+    const res = await fetch('/api/cart/', {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({user_id})
+        body: JSON.stringify(userId)
     })
     if (res.ok) {
         const data = await res.json()

@@ -25,6 +25,10 @@ const Cart = () => {
         // dispatch(thunkLoadCart(user?.id))
     }, [dispatch, user])
 
+    if (!user) {
+        history.push('/login')
+    }
+
     useEffect(() => {
         if (prehistoricProducts?.products) {
           let itemCount = 0
