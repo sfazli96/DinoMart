@@ -131,12 +131,12 @@ const Reviews = () => {
             </form>
           )}
           {reviews.reverse().map(({ id, review, rating, user_id, created_at }) => {
-            const username = user_id === user?.id ? user.username : null;
+            // const username = user_id === user?.id ? user.username : null;
             return (
               <div key={id}>
                 <div className="review-card-container">
                   <p className="review-rating">
-                    {rating} - {username}
+                    {rating}
                   </p>
                   <p className="review-text">{review}</p>
                   <p className="createdAt">Created at: {formatDate(created_at)}</p>
