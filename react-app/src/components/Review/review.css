@@ -105,3 +105,13 @@
       right: 100px;
     }
   } */
+
+  .error-message {
+    color: red !important;
+    font-size: 14px !important;
+    margin-top: 25px;
+  }
+  .error-form-message {
+    color: red !important;
+    font-size: 14px !important;
+  }

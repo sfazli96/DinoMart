@@ -35,6 +35,16 @@ const Reviews = () => {
     }, [dispatch, user])
 
     useEffect(() => {
+      setShowCreateReview(true)
+    }, [])
+
+    useEffect(() => {
+      if (!user) {
+        setShowCreateReview(false)
+      }
+    }, [user])
+
+    useEffect(() => {
         if (!user) {
             setValidationErrors(["You must be logged in to see your reviews!"])
         } else if (reviews.length === 0) {
@@ -104,7 +114,7 @@ const Reviews = () => {
             <form onSubmit={handleSubmit} noValidate>
               <ul className="ul">
                 {errors.map((error, idx) => (
-                  <li key={idx}>{error}</li>
+                  <div key={idx} className='error-form-message'>{error}</div>
                 ))}
               </ul>
               <textarea

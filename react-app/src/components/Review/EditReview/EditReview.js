@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import { readAllReviews, editReview } from "../../../store/reviews";
 import ReactStars from "react-rating-stars-component";
 import { addReviews } from "../../../store/reviews";
+import './editReview.css'
 
 
 const EditReview = ({id, onClose}) => {
