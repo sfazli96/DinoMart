@@ -95,7 +95,7 @@ const Reviews = () => {
     return (
         <div>
           <div>
-            {showCreateReview  && users_id !== user.id ? (
+            {showCreateReview  && users_id !== user?.id ? (
                 <button onClick={() => setShowForm(true)}>Create a Review</button>
               ) : null
             }
