@@ -125,7 +125,7 @@ export const thunkEditCartItem = (product_id, quantity) => async (dispatch) => {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(product_id, quantity)
+        body: JSON.stringify({product_id, quantity})
     })
     if (res.ok) {
         const cartData = await res.json()
@@ -182,7 +182,7 @@ export const cartReducer = (state = {Cart: {}}, action) => {
             newState.Cart = action.payload
             return newState
         case EDIT_CART:
-            const updatedCart = {...state.Cart[action.payload.id], quantity: action.cart.quantity}
+            const updatedCart = {...state.Cart[action.payload.id], quantity: action.payload.quantity}
             return {...state, cart: {...state.Cart, [action.payload.id]: updatedCart}}
         case CLEAR_CART:
             // console.log('state', state)

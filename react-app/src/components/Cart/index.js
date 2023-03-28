@@ -67,6 +67,10 @@ const Cart = () => {
         setTotalPrice(oldPrice => oldPrice - itemPrice)
       }
 
+      const handleQuantityChange = (productId, quantity) => {
+        
+      }
+
       if (cartItem === 0) {
         return <p>You have no items in your cart</p>
       }
@@ -82,12 +86,15 @@ const Cart = () => {
         <div>
             <h1>({cartItem})</h1>
                 <div className="cart-product-container">
-                    {prehistoricProducts?.products && prehistoricProducts.products?.map(({id, name, image_url, price, size}) => {
+                    {prehistoricProducts?.products && prehistoricProducts.products?.map(({id, name, image_url, price, size, quantity}) => {
                         return (
                             <div key={id}>
                                 <h2 className="name">{name}</h2>
                                 <img src={image_url} className='product-image'></img>
                                 <p className="price">${price}</p>
+                                <select id={`quantity-${id}`}
+                                value={quantity}
+                                onChange={(e) => handleQuantityChange(id, e.target.value)}></select>
                                 <button className="delete-cart-button" onClick={() => handleDeleteItem(id, price)}>Delete Item</button>
                             </div>
                         )

@@ -108,7 +108,7 @@ const Reviews = () => {
               </ul>
               <textarea
                 type="textbox"
-                defaultValue="Post your amazing review here!"
+                // defaultValue="Post your amazing review here!"
                 value={review}
                 onChange={handleChange}
                 required

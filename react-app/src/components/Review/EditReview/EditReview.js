@@ -4,10 +4,12 @@ import { readAllReviews, editReview } from "../../../store/reviews";
 import ReactStars from "react-rating-stars-component";
 import { addReviews } from "../../../store/reviews";
 import './editReview.css'
+import { useParams } from "react-router-dom";
 
 
 const EditReview = ({id, onClose}) => {
     const dispatch = useDispatch()
+    const productId = useParams()
     const [rating, setRating] = useState(5)
     const [review, setReview] = useState()
     const [errors, setErrors] = useState([])
@@ -17,7 +19,7 @@ const EditReview = ({id, onClose}) => {
         review,
         rating
     }
-    
+
     const handleSubmit = (e) => {
         e.preventDefault()
         setErrors([])
@@ -28,7 +30,7 @@ const EditReview = ({id, onClose}) => {
             }, 2000)
             return
         }
-        dispatch(editReview(reviewData))
+        dispatch(editReview(productId, reviewData))
         .then(() => {
             onClose()
         })
@@ -54,7 +56,7 @@ const EditReview = ({id, onClose}) => {
                     <h2>Edit Review</h2>
                     <textarea
                     type="textbox"
-                    defaultValue="Edit your amazing review here!"
+                    // defaultValue="Edit your amazing review here!"
                     value={review}
                     onChange={handleChange}
                     required

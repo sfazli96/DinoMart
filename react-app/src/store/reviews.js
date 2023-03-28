@@ -50,8 +50,9 @@ export const addReviews = (id, review) => async (dispatch) => {
     }
 }
 
-export const editReview = (review) => async (dispatch) => {
+export const editReview = (id, review) => async (dispatch) => {
     console.log('review', review)
+    console.log('id', id)
     const response = await fetch(`/api/reviews/${review.id}`, {
         method: 'PUT',
         headers: {
@@ -60,7 +61,7 @@ export const editReview = (review) => async (dispatch) => {
         body: JSON.stringify({
             review: review.review,
             rating: review.rating,
-            product_id: review.id
+            product_id: id.id
         })
     })
     if (response.ok) {
@@ -106,8 +107,14 @@ export const reviewsReducer = (state = initialState, action) => {
             newState.reviews[action.payload.id] = action.payload
             return newState
         case EDIT_REVIEWS:
-            const updatedReviews = {...state.reviews }
-            updatedReviews[action.payload.id] = action.payload
+            const updateReview = action.payload
+            // console.log('ACTION', action.payload)
+            // console.log('STATe', state)
+            // console.log('PAYLOAD', action.payload.id)
+            // console.log('updatedReviews', updatedReviews)
+            // console.log('before return', {...state, reviews: updatedReviews})
+            const updatedReviews = {...state.reviews, [updateReview.id]: updateReview }
+            // updatedReviews[action.payload.id] = action.payload
             return {...state, reviews: updatedReviews }
         case DELETE_REVIEWS:
             newState = {...state}

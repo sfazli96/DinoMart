@@ -143,6 +143,7 @@ def addItemToCart(cart_id, product_id):
 def clearCart():
     user_id = current_user.id
     cart_id = request.get_json()
+    # print('cart_id', cart_id)
     # print("BODY_DATA", user_id)
     carts = Cart.query.filter(Cart.id == cart_id).all()
     for cart in carts:

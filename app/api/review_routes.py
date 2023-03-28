@@ -52,13 +52,10 @@ def updateReview(id):
     # print('request_data', request_data)
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    # review = Review.query.filter_by(id=id).first()
     review = Review.query.filter_by(id=id).first()
     # review = Review.query.all()
     print('review', review)
-    product_id = request_data["product_id"]
-    product = Product.query.filter_by(id=product_id).first()
-    if product is None:
-        return "product not found", 404
     # print('current------', current_user)
     # if review is None:
     #     return "Review not found", 404
