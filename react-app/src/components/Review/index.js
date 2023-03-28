@@ -35,16 +35,6 @@ const Reviews = () => {
     }, [dispatch, user])
 
     useEffect(() => {
-      setShowCreateReview(true)
-    }, [])
-
-    useEffect(() => {
-      if (!user) {
-        setShowCreateReview(false)
-      }
-    }, [user])
-
-    useEffect(() => {
         if (!user) {
             setValidationErrors(["You must be logged in to see your reviews!"])
         } else if (reviews.length === 0) {
@@ -105,10 +95,9 @@ const Reviews = () => {
     return (
         <div>
           <div>
-            {showCreateReview  && users_id !== user?.id ? (
+            {showCreateReview && user?.id && users_id !== user?.id ? (
                 <button onClick={() => setShowForm(true)}>Create a Review</button>
-              ) : null
-            }
+              ) : null}
           </div>
           {showForm && (
             <form onSubmit={handleSubmit} noValidate>
