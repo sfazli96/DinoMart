@@ -17,6 +17,7 @@ const EditReview = ({id, onClose}) => {
         review,
         rating
     }
+    
     const handleSubmit = (e) => {
         e.preventDefault()
         setErrors([])

@@ -1,8 +1,8 @@
-"""migration tables
+"""all tables
 
-Revision ID: f33d126115eb
+Revision ID: 1d9726afcc13
 Revises:
-Create Date: 2023-03-23 11:21:19.034227
+Create Date: 2023-03-28 11:44:55.745182
 
 """
 from alembic import op
@@ -15,7 +15,7 @@ SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
-revision = 'f33d126115eb'
+revision = '1d9726afcc13'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -89,10 +89,10 @@ def upgrade():
     sa.ForeignKeyConstraint(['product_id'], ['products.id'], ),
     sa.PrimaryKeyConstraint('product_id', 'cart_id')
     )
-
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
+
 
 
 def downgrade():
