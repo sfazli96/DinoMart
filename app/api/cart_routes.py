@@ -93,20 +93,20 @@ def deleteCartItem(id):
             cart.products.remove(product)
 
     db.session.commit()
-    print('cart loop deletion', cart.products)
-    cart_obj = {
-        'id': cart.id,
-        'product': [product.to_dict() for product in cart.products],
-        'user_id': cart.user_id
-    }
-    # cart_obj = cart.to_dict()
-    # cart_obj['products'] = []
-    # for product in cart.products:
-    #     if product.id == request_data:
-    #         continue
-    #     product_obj = product.to_dict()
-    #     print('prod_obj', product_obj)
-    #     cart_obj['products'].append(product_obj)
+    # print('cart loop deletion', cart.products)
+    # cart_obj = {
+    #     'id': cart.id,
+    #     'product': [product.to_dict() for product in cart.products],
+    #     'user_id': cart.user_id
+    # }
+    cart_obj = cart.to_dict()
+    cart_obj['products'] = []
+    for product in cart.products:
+        if product.id == request_data:
+            continue
+        product_obj = product.to_dict()
+        # print('prod_obj', product_obj)
+        cart_obj['products'].append(product_obj)
 
     return jsonify(cart_obj)
 

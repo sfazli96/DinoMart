@@ -19,7 +19,7 @@ const Reviews = () => {
     const reviewsObj = useSelector(state => state.review?.reviews || {})
     const reviews = Object.values(reviewsObj)
     // console.log('reviewObj', reviewsObj)
-    console.log('reviews', reviews)
+    // console.log('reviews', reviews)
     const [rating, setRating] = useState(5)
     const [review, setReview] = useState()
     const [showForm, setShowForm] = useState(false)

@@ -38,9 +38,9 @@ const Cart = () => {
         }
       }, [prehistoricProducts])
 
-      if (!prehistoricProducts) {
-        return <p>There are no items in your cart</p>
-      }
+    //   if (!prehistoricProducts) {
+    //     return <p>There are no items in your cart</p>
+    //   }
 
     const handleCheckoutPage = async() => {
         try {
@@ -61,6 +61,10 @@ const Cart = () => {
         dispatch(thunkDeleteCart(user.id, itemId))
         setCartItem(prev => prev - 1)
         setTotalPrice(oldPrice => oldPrice - itemPrice)
+      }
+
+      if (cartItem === 0) {
+        return <p>You have no items in your cart</p>
       }
 
       if (!user) {

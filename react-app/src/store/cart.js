@@ -39,7 +39,7 @@ export const thunkLoadCart = (id) => async (dispatch) => {
     const res = await fetch(`/api/cart/${id}`)
     if (res.ok) {
         const loadData = await res.json()
-        console.log('load data', loadData)
+        // console.log('load data', loadData)
         dispatch(loadCart(loadData))
         return loadData
     }
@@ -109,7 +109,7 @@ export const thunkClearCart = (id) => async (dispatch) => {
         },
         body: JSON.stringify(id)
     })
-    console.log('res', res)
+    // console.log('res', res)
     if (res.ok) {
         const cartData = await res.json()
         // console.log('clear cartData', cartData)
@@ -129,7 +129,7 @@ export const thunkEditCartItem = (product) => async (dispatch) => {
     })
     if (res.ok) {
         const cartData = await res.json()
-        console.log('edit product cart', cartData)
+        // console.log('edit product cart', cartData)
         dispatch(editCartItem(cartData))
         return cartData
     }
@@ -181,9 +181,9 @@ export const cartReducer = (state = {Cart: {}}, action) => {
             newState = {...state}
             newState.Cart = action.payload
             return newState
-        // case EDIT_CART:
-        //     const updatedCart = {...state.Cart[action.payload.id], quantity: action.cart.quantity}
-        //     return {...state, cart: {...state.Cart, [action.payload.id]: updatedCart}}
+        case EDIT_CART:
+            const updatedCart = {...state.Cart[action.payload.id], quantity: action.cart.quantity}
+            return {...state, cart: {...state.Cart, [action.payload.id]: updatedCart}}
         case CLEAR_CART:
             // console.log('state', state)
             return {
