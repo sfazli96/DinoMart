@@ -33,7 +33,7 @@ def readCart(id):
 @cart_routes.route('/', methods=['POST'])
 def createCart():
     user = current_user
-    # print('user', user)
+    print('user', user)
     request_data = request.get_json()
     new_cart = Cart(
         user_id = user.id
