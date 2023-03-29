@@ -43,34 +43,39 @@ def createCart():
 
     return new_cart.to_dict()
 
-@cart_routes.route('/<int:id>', methods=["PUT"])
+@cart_routes.route('/', methods=["PUT"])
 @login_required
-def editCart(id):
+def editCart():
     request_data = request.get_json()
+    print('request_data', request_data)
     product = Product.query.get(request_data["product_id"])
     # print('PRODUCT!!', product)
     product_quantity = request_data["quantity"]
     print('PRODUCT_QUANTITY-----', product_quantity)
-    carts = db.session.query(Cart).filter(Cart.id == id, Cart.user_id == request_data["user_id"]).options(joinedload(Cart.products))
+    user_id = request_data["user_id"]
+    # carts = db.session.query(Cart).filter(Cart.id == id, Cart.user_id == request_data["user_id"]).options(joinedload(Cart.products)).all()
+    carts = Cart.query.filter(Cart.user_id == user_id).options(joinedload(Cart.products)).all()
 
     # carts = db.session.query(Cart).filter(Cart.user_id == request_data["user_id"]).options(joinedload(Cart.products))
-    print('CARTS!!!!', carts)
+    # print('CARTS!!!!', carts)
 
-    final_result = []
+    # final_result = []
+    if not carts:
+        return "no carts are found for this user", 404
+
     for cart in carts:
-        print('cart loop', cart)
-        for prod in cart.products:
-            print('cart.products----', cart.products)
-            print('PROD', prod)
-            if prod.id == product.id:
-                print('product.id', product.id)
-                prod.quantity = product_quantity
-                continue
+            for cart_prod in cart.products:
+                if cart_prod.id == product.id:
+                    print('PRODUCT QUANTITY------', product_quantity)
+                    cart_prod.quantity = product_quantity
+                    break
             else:
                 cart.products.append(product)
-        db.session.commit()
-        final_result.append(cart.to_dict())
+                cart_prod = cart.products[-1]
+                cart_prod.quantity = product_quantity
+                db.session.commit()
 
+    final_result = [cart.to_dict() for cart in carts]
     return final_result
 
 

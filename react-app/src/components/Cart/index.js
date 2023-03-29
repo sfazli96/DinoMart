@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkClearCart, thunkDeleteCart, thunkEditCartItem, thunkLoadCart } from "../../store/cart";
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import './cart.css'
 
 const Cart = () => {
@@ -10,6 +10,7 @@ const Cart = () => {
     const history = useHistory()
     const user = useSelector(state => state.session.user)
     // console.log('user', user)
+    const user_id = useParams()
     const prehistoricProducts = useSelector(state => state.cartReducer.Cart)
     // console.log('prehistoric prod', prehistoricProducts)
     const cartId = useSelector(state => state.cartReducer.Cart.id)
@@ -81,7 +82,8 @@ const Cart = () => {
             }
         });
         setTotalPrice((old) => old - prevPrice + updatedPrice)
-        dispatch(thunkEditCartItem(cartId, productId, quantity))
+        console.log('quantity', quantity)
+        dispatch(thunkEditCartItem(user.id, productId, quantity))
       }
 
       if (cartItem === 0) {

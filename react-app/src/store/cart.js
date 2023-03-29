@@ -119,11 +119,11 @@ export const thunkClearCart = (id) => async (dispatch) => {
     return res
 }
 
-export const thunkEditCartItem = (cartId, userId, productId, quantity) => async (dispatch) => {
+export const thunkEditCartItem = (userId, productId, quantity) => async (dispatch) => {
     console.log('userId', userId)
     console.log('productId', productId)
     console.log('quantity', quantity)
-    const res = await fetch(`/api/cart/${cartId}`, {
+    const res = await fetch('/api/cart/', {
         method: 'PUT',
         headers: {
             "Content-Type": "application/json"
