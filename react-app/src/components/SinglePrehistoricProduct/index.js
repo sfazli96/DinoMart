@@ -15,10 +15,17 @@ function SinglePrehistoricProduct() {
     // console.log("prod", productDetail)
     const user = useSelector(state => state.session.user)
 
-
     useEffect(() => {
         dispatch(loadOnePrehistoricProduct(id.id))
     }, [dispatch])
+    if (Object.values(productDetail).length === 0) {
+        return (
+            <div>
+                <h1>404 Not found</h1>
+                <p>This page does not exist, try again</p>
+            </div>
+        )
+    }
     // let multiImage = () => {
     //     let image;
     //     productsArr.map(({image_url}) => {

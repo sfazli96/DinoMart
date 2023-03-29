@@ -3,12 +3,15 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
-
+import { Toggle } from 'react-hook-theme';
+import 'react-hook-theme/dist/styles/style.css';
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
 
 	return (
 		<div className='NavStart'>
+			    <Toggle />
+
 			<div className='Navbar'>
 				<div>
 					<NavLink className='home-page' exact to="/">Sam-Mart</NavLink>

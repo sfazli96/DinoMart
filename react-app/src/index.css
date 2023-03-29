@@ -58,3 +58,26 @@ footer {
     height: 300px;
     width: 300px;
   } */
+
+  body {
+    overflow-x: hidden;
+  }
+  :root {
+    --background: #fff;
+    --primary: #000;
+}
+
+[data-theme='light'] {
+    --background: #fff;
+    --primary: #000;
+}
+
+[data-theme='dark'] {
+    --background: #282c34;
+    /* --primary: #fff; */
+}
+
+body {
+    background-color: var(--background);
+    color: var(--primary);
+}

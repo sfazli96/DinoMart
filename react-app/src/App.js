@@ -9,6 +9,8 @@ import AllProducts from "./components/PrehistoricProducts";
 import SinglePrehistoricProduct from "./components/SinglePrehistoricProduct";
 import Cart from "./components/Cart";
 import Footer from "./components/Footer";
+import { ThemeProvider } from 'react-hook-theme';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -19,6 +21,12 @@ function App() {
 
   return (
     <>
+    <ThemeProvider
+    options={{
+        theme: 'dark',
+        save: true,
+    }}
+    >
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
@@ -42,6 +50,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      </ThemeProvider>
     <Footer/>
     </>
   );
