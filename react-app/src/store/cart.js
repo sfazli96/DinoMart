@@ -120,9 +120,9 @@ export const thunkClearCart = (id) => async (dispatch) => {
 }
 
 export const thunkEditCartItem = (userId, productId, quantity) => async (dispatch) => {
-    console.log('userId', userId)
-    console.log('productId', productId)
-    console.log('quantity', quantity)
+    // console.log('userId', userId)
+    // console.log('productId', productId)
+    // console.log('quantity', quantity)
     const res = await fetch('/api/cart/', {
         method: 'PUT',
         headers: {
@@ -191,6 +191,8 @@ export const cartReducer = (state = {Cart: {}}, action) => {
             newState.Cart = action.payload
             return newState
         case EDIT_CART:
+            // console.log('state', state)
+            // console.log('ACTION', action.payload)
             return {...state,
                 Cart: {
                     ...state.Cart,

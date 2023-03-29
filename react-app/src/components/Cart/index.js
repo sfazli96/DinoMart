@@ -81,7 +81,7 @@ const Cart = () => {
             }
         });
         setTotalPrice((old) => old - prevPrice + updatedPrice)
-        console.log('quantity', quantity)
+        // console.log('quantity', quantity)
         dispatch(thunkEditCartItem(user.id, productId, parseInt(quantity)))
       }
 
