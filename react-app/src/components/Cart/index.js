@@ -10,7 +10,6 @@ const Cart = () => {
     const history = useHistory()
     const user = useSelector(state => state.session.user)
     // console.log('user', user)
-    const user_id = useParams()
     const prehistoricProducts = useSelector(state => state.cartReducer.Cart)
     // console.log('prehistoric prod', prehistoricProducts)
     const cartId = useSelector(state => state.cartReducer.Cart.id)
@@ -83,7 +82,7 @@ const Cart = () => {
         });
         setTotalPrice((old) => old - prevPrice + updatedPrice)
         console.log('quantity', quantity)
-        dispatch(thunkEditCartItem(user.id, productId, quantity))
+        dispatch(thunkEditCartItem(user.id, productId, parseInt(quantity)))
       }
 
       if (cartItem === 0) {
