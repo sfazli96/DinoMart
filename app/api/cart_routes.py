@@ -43,31 +43,31 @@ def createCart():
 
     return new_cart.to_dict()
 
-@cart_routes.route('/', methods=["PUT"])
+@cart_routes.route('/<int:id>', methods=["PUT"])
 @login_required
-def editCart():
+def editCart(id):
     request_data = request.get_json()
     product = Product.query.get(request_data["product_id"])
     # print('PRODUCT!!', product)
     product_quantity = request_data["quantity"]
+    print('PRODUCT_QUANTITY-----', product_quantity)
+    carts = db.session.query(Cart).filter(Cart.id == id, Cart.user_id == request_data["user_id"]).options(joinedload(Cart.products))
 
-    carts = db.session.query(Cart).filter(Cart.user_id == request_data["user_id"]).options(joinedload(Cart.products))
+    # carts = db.session.query(Cart).filter(Cart.user_id == request_data["user_id"]).options(joinedload(Cart.products))
     # print('CARTS!!!!', carts)
 
     final_result = []
     for cart in carts:
         # print('cart loop', cart)
-        cart_object = cart.to_dict()
         # print('cart_object', cart_object)
         for prod in cart.products:
-            if prod.id == product:
+            if prod.id == product.id:
                 prod.quantity = product_quantity
                 continue
             else:
                 cart.products.append(product)
-        # result = [cart.to_dict() for cart in carts if cart.products.append(product)]
-            db.session.commit()
-            final_result.append(cart.to_dict())
+        db.session.commit()
+        final_result.append(cart.to_dict())
 
     return final_result
 

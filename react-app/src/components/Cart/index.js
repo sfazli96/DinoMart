@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { thunkClearCart, thunkDeleteCart, thunkLoadCart } from "../../store/cart";
+import { thunkClearCart, thunkDeleteCart, thunkEditCartItem, thunkLoadCart } from "../../store/cart";
 import { useHistory } from 'react-router-dom'
 import './cart.css'
 
@@ -68,7 +68,20 @@ const Cart = () => {
       }
 
       const handleQuantityChange = (productId, quantity) => {
-        
+        let prevPrice = 0
+        let updatedPrice = 0
+
+        prehistoricProducts.products.forEach(product => {
+            let productPrice = product.price
+            let productQuantity = product.quantity
+            console.log('productQuantity', productQuantity)
+            if (product.id === productId) {
+                prevPrice = productPrice * productQuantity
+                updatedPrice = productPrice * quantity
+            }
+        });
+        setTotalPrice((old) => old - prevPrice + updatedPrice)
+        dispatch(thunkEditCartItem(cartId, productId, quantity))
       }
 
       if (cartItem === 0) {
@@ -93,8 +106,14 @@ const Cart = () => {
                                 <img src={image_url} className='product-image'></img>
                                 <p className="price">${price}</p>
                                 <select id={`quantity-${id}`}
-                                value={quantity}
-                                onChange={(e) => handleQuantityChange(id, e.target.value)}></select>
+                                    value={quantity}
+                                    onChange={(e) => handleQuantityChange(id, e.target.value)}>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
                                 <button className="delete-cart-button" onClick={() => handleDeleteItem(id, price)}>Delete Item</button>
                             </div>
                         )

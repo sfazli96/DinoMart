@@ -119,17 +119,24 @@ export const thunkClearCart = (id) => async (dispatch) => {
     return res
 }
 
-export const thunkEditCartItem = (product_id, quantity) => async (dispatch) => {
-    const res = await fetch('/api/cart', {
+export const thunkEditCartItem = (cartId, userId, productId, quantity) => async (dispatch) => {
+    console.log('userId', userId)
+    console.log('productId', productId)
+    console.log('quantity', quantity)
+    const res = await fetch(`/api/cart/${cartId}`, {
         method: 'PUT',
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({product_id, quantity})
+        body: JSON.stringify({
+            user_id: userId,
+            product_id: productId,
+            quantity: quantity,
+        })
     })
     if (res.ok) {
         const cartData = await res.json()
-        // console.log('edit product cart', cartData)
+        console.log('edit product cart', cartData)
         dispatch(editCartItem(cartData))
         return cartData
     }
