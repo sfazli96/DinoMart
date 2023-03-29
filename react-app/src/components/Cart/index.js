@@ -74,10 +74,10 @@ const Cart = () => {
         prehistoricProducts.products.forEach(product => {
             let productPrice = product.price
             let productQuantity = product.quantity
-            console.log('productQuantity', productQuantity)
+            // console.log('productQuantity', productQuantity)
             if (product.id === productId) {
                 prevPrice = productPrice * productQuantity
-                updatedPrice = productPrice * quantity
+                updatedPrice = productPrice * parseInt(quantity)
             }
         });
         setTotalPrice((old) => old - prevPrice + updatedPrice)

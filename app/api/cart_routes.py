@@ -54,14 +54,16 @@ def editCart(id):
     carts = db.session.query(Cart).filter(Cart.id == id, Cart.user_id == request_data["user_id"]).options(joinedload(Cart.products))
 
     # carts = db.session.query(Cart).filter(Cart.user_id == request_data["user_id"]).options(joinedload(Cart.products))
-    # print('CARTS!!!!', carts)
+    print('CARTS!!!!', carts)
 
     final_result = []
     for cart in carts:
-        # print('cart loop', cart)
-        # print('cart_object', cart_object)
+        print('cart loop', cart)
         for prod in cart.products:
+            print('cart.products----', cart.products)
+            print('PROD', prod)
             if prod.id == product.id:
+                print('product.id', product.id)
                 prod.quantity = product_quantity
                 continue
             else:
