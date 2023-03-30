@@ -123,7 +123,8 @@
   }
   .error-form-message {
     color: red !important;
-    font-size: 14px !important;
+    font-size: 20px !important;
+    text-align: center;
   }
 
   .create-review-container-button {
@@ -201,4 +202,33 @@
 
   .review-form-big .submit-button:hover {
     background-color: #3e8e41;
+  }
+
+  .edit-review-submit-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    color: #27AE60;
+    padding: 5px 10px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+    transition: all 0.2s ease-in-out;
+    border: 1px solid #CCCCCC;
+    margin-right: 10px;
+    /* background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px; */
+  }
+
+  .edit-review-submit-button:hover {
+    background-color: #0baf05;
+    color: #FFFFFF;
+  }
+
+  .two-buttons {
+    display: flex;
+    margin-top: 20px;
   }

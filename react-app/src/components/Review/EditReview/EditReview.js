@@ -47,7 +47,7 @@ const EditReview = ({id, onClose}) => {
     }
 
     return (
-        <div>
+        <div className="root-edit-container">
             <form onSubmit={handleSubmit} noValidate className="edit-form-big">
                     <div className="edit-review-form">
                     {errors.map((error, index) => (
@@ -72,8 +72,10 @@ const EditReview = ({id, onClose}) => {
                             fullIcon={<i className="fa fa-star"></i>}
                             activeColor="#ffd700"
                             />
-                    <button className="submit-button" type="submit">Submit</button>
-                    <button className='cancel-edit-review-button' onClick={onClose}>Cancel</button>
+                            <div className="two-buttons">
+                                <button className="edit-review-submit-button" type="submit">Submit</button>
+                                <button className='cancel-edit-review-button' onClick={onClose}>Cancel</button>
+                            </div>
                 </div>
             </form>
         </div>
