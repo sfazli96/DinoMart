@@ -1,20 +1,50 @@
 # About Sam-Mart
 - Sam-Mart is an online e-commerce marketplace for your average day that only focuses on prehistoric products and animals that you can have as a pet. My platform offers a variety of different types of prehistoric animals or even fossils to have as a collection. In this website, you can have the ability to sign up, log in or leave a review on a dinosaur you like. Additionally, users can add there pet into the their shopping cart and checkout to buy it.
 
-To check out the live version of this website, simple follow this link: . Thank you for considering Sam-Mart for your pet needs!
+To check out the live version of this website, simple follow this link: https://sammart.onrender.com. Thank you for considering Sam-Mart for your pet needs!
 
 # Technologies Used:
-- Javascript
-- Python
-- React
-- Redux
-- Flask
-- NodeJS
-- CSS
-- Database: PostgreSQL
-- Hosting: Render
+      - Javascript
+      - Python
+      - React
+      - Redux
+      - Flask
+      - NodeJS
+      - CSS
+      - Database: PostgreSQL
+      - Hosting: Render
 
-# Flask React Project
+# Pages
+## Home Page
+- Access the login and sign up modal from the top right corner.
+(add picture here)
+
+
+
+## Sign up Modal
+- You can fill in the required information such as email, username and password to sign up.
+(add picture here)
+
+## Login Modal
+- Log in as an existing user or as demo user
+(add picture here)
+
+## Read details of prehistoric products / Animals
+(picture here)
+
+## Post/Edit/Delete a review
+(picture here)
+
+## Read/Edit/Delete Shopping Cart
+(add picture here)
+
+## Extra page (404 error page):
+(add picture here)
+
+
+- Bonus features (coming soon)
+
+# Flask React Project Setup
 
 This is the starter for the Flask React project.
 
@@ -153,6 +183,3 @@ your site just below the name of the Web Service at the top of the page.
 
 [Render.com]: https://render.com/
 [Dashboard]: https://dashboard.render.com/# SamMart
-
-
-## Please Check out these images below to see how to use the features from this project!

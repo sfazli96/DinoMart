@@ -1,5 +1,6 @@
 .cart-product-container {
     display: grid;
+    flex-direction: row;
 }
 
 div .checkout-button {
