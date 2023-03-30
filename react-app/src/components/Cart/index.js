@@ -63,16 +63,30 @@ const Cart = () => {
     }
 
     const handleDeleteItem = (itemId, itemPrice) => {
-        // console.log('item', itemId)
-        // console.log('itemPrice', itemPrice)
-        dispatch(thunkDeleteCart(user.id, itemId))
-        setCartItem(prev => prev - 1)
-        setQuantities((prev) => ({
-            ...prev,
-            [itemId]: 0,
+        const quantity = quantities[itemId] || 1;
+
+        dispatch(thunkDeleteCart(user.id, itemId));
+
+        setCartItem(prev => prev - quantity);
+        setQuantities(prevQuantities => ({
+          ...prevQuantities,
+          [itemId]: 0,
+
         }));
-        setTotalPrice(oldPrice => oldPrice - itemPrice)
-      }
+
+        const newTotalPrice = totalPrice - itemPrice * quantity
+
+        const updatedTotalPrice = prehistoricProducts.products.reduce(
+          (acc, product) => {
+            const productQuantity = quantities[product.id] || 0;
+            return acc + product.price * productQuantity;
+          },
+          newTotalPrice
+        );
+
+        setTotalPrice(updatedTotalPrice);
+      };
+
 
 
       const handleQuantityChange = (productId, newQuantity) => {
