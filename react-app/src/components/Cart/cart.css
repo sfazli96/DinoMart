@@ -54,3 +54,9 @@ div .checkout-button:hover {
     text-decoration: underline;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
+
+.empty-cart-message {
+    font-size: 1.5rem;
+    color: red;
+    text-align: center;
+}

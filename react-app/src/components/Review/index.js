@@ -85,7 +85,11 @@ const Reviews = () => {
 
     const formatDate = (time) =>{
         const date = new Date(time)
-        return date.toLocaleString()
+        const options = {
+          year:'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric',
+          timeZoneName: 'short'
+        }
+        return date.toLocaleString('en-US', options)
     }
     let users_id;
     {reviews.map(({ user_id }) => {
@@ -100,7 +104,7 @@ const Reviews = () => {
               ) : null}
           </div>
           {showForm && (
-            <form onSubmit={handleSubmit} noValidate>
+            <form onSubmit={handleSubmit} noValidate className="review-form-big">
               <ul className="ul">
                 {errors.map((error, idx) => (
                   <div key={idx} className='error-form-message'>{error}</div>
@@ -137,7 +141,13 @@ const Reviews = () => {
               <div key={id}>
                 <div className="review-card-container">
                   <p className="review-rating">
-                    {rating}
+                    {/* {rating} */}
+                    {Array.from({ length: rating }, (_, index) => (
+                        <span key={index} className="star">&#9733;</span>
+                      ))}
+                      {Array.from({ length: 5 - rating }, (_, index) => (
+                        <span key={index} className="star">&#9734;</span>
+                      ))}
                   </p>
                   <p className="review-text">{review}</p>
                   {username && <p>By: {username}</p>}

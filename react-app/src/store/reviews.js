@@ -31,8 +31,8 @@ export const readAllReviews = (id) => async (dispatch) => {
 }
 
 export const addReviews = (id, review) => async (dispatch) => {
-    console.log('id', id)
-    console.log('review', review)
+    // console.log('id', id)
+    // console.log('review', review)
     const response = await fetch(`/api/products/${id}/reviews`, {
         method: 'POST',
         headers: {

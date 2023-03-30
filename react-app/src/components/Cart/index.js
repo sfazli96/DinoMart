@@ -115,7 +115,7 @@ const Cart = () => {
 
 
       if (cartItem === 0) {
-        return <p>You have no items in your cart</p>
+        return <p className="empty-cart-message">You have no items in your cart!</p>
       }
 
       if (!user) {

@@ -48,7 +48,7 @@ const EditReview = ({id, onClose}) => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit} noValidate>
+            <form onSubmit={handleSubmit} noValidate className="edit-form-big">
                     <div className="edit-review-form">
                     {errors.map((error, index) => (
                     <div key={index} className="error-msg">{error}</div>

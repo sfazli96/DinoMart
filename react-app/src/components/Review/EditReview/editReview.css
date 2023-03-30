@@ -26,3 +26,25 @@
     background-color: rgba(189, 10, 10, 0.904);
     color: #FFFFFF;
 }
+
+.edit-form-big {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    margin: 20px 0;
+}
+
+.edit-form-big textarea {
+    width: 20%;
+    height: 120px;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    border: 2px 4px solid #ccc;
+    resize: none
+}
+
+/* .edit-form-big textarea:read-only {
+    background-color: #f8f8f8;
+    color: #555;
+    border-color: #ccc;
+  } */
