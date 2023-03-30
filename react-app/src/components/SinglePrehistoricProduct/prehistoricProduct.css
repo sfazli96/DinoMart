@@ -1,7 +1,7 @@
-.product-image {
+/* .product-image {
     max-height: 250px;
     max-width: 250px;
-}
+} */
 
 .cart-button {
     /* position: absolute; */
@@ -21,8 +21,21 @@
 
 
 .description {
+    text-align: center;
+    padding: 20px;
     font-family: 'Oswald', sans-serif;
-    row-gap: 20px;
     /* column-count: 2;
     column-gap: 20px; */
+}
+
+.product-name-price-image {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+}
+
+.add-to-cart-button {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
 }

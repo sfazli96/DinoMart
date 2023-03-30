@@ -46,11 +46,13 @@ function SinglePrehistoricProduct() {
         })
     }
     return (
-        <div>
+        <div className="single-product-page-container">
             {/* <h1>TEST</h1> */}
-            <h2>{productDetail.name}</h2>
-            <h2>$ {productDetail.price}</h2>
-            <img className='product-image'src={productDetail.image_url}></img>
+            <div className="product-name-price-image">
+                <h2>{productDetail.name}</h2>
+                <h2>$ {productDetail.price}</h2>
+                <img className='product-image'src={productDetail.image_url}></img>
+            </div>
             <p className="description">{productDetail.description}</p>
              {/* <div>
                 <img src={multiImage()}></img>
@@ -60,7 +62,7 @@ function SinglePrehistoricProduct() {
                 <button className="cart-button" onClick={() => cartButton(id)}>Add to Cart</button>
             </div>
             ): null}
-            <div>
+            <div className="review-component">
                 <Reviews />
             </div>
         </div>

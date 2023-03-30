@@ -71,6 +71,7 @@
     border-radius: 3.5px;
     background-color: rgba(9, 177, 199, 0.904);
     color: white;
+
   }
 
   .edit-review-button:hover {
@@ -123,4 +124,10 @@
   .error-form-message {
     color: red !important;
     font-size: 14px !important;
+  }
+
+  .create-review-container-button {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
   }
