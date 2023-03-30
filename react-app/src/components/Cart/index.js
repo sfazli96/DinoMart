@@ -147,7 +147,7 @@ const Cart = () => {
         )
       }
     return (
-        <div>
+        <div className="root-cart-container">
             <h1>({cartItem})</h1>
                 <div className="cart-product-container">
                     {prehistoricProducts?.products && prehistoricProducts.products?.map(({id, name, image_url, price, size}) => {
@@ -160,18 +160,20 @@ const Cart = () => {
                                 <h2 className="name">{name}</h2>
                                 <img src={image_url} className='product-image'></img>
                                 <p className="price">${price}</p>
-                                <select id={`quantity-${id}`}
-                                    value={quantity}
-                                    onChange={(e) => handleQuantityChange(id, e.target.value)}>
-                                    {/* // onChange={(e) => setQuantity(e.target.value)} */}
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                </select>
+                                <div className="quantity-dropdown">
+                                  <select id={`quantity-${id}`}
+                                      value={quantity}
+                                      onChange={(e) => handleQuantityChange(id, e.target.value)}>
+                                      {/* // onChange={(e) => setQuantity(e.target.value)} */}
+                                      <option value="1">1</option>
+                                      <option value="2">2</option>
+                                      <option value="3">3</option>
+                                      <option value="4">4</option>
+                                      <option value="5">5</option>
+                                  </select>
+                                </div>
                                 <button className="delete-cart-button" onClick={() => handleDeleteItem(id, price)}>Delete Item</button>
-                                <p className="sub-total-price">Sub-Total Price: ${subTotal.toFixed(2)}</p>
+                                <p className="sub-total-price">SubTotal: ${subTotal.toFixed(2)}</p>
                             </div>
                         )
                     })}

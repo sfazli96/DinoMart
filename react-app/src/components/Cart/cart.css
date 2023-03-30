@@ -1,37 +1,44 @@
 .cart-product-container {
     display: grid;
-    flex-direction: row;
+    /* flex-direction: row; */
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
 }
 
 div .checkout-button {
-    /* position: absolute; */
-    /* top: 20px; */
-    /* right: 150px; */
-    /* text-decoration: underline; */
-    /* background-color: green; */
+    padding: 10px 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+    transition: all 0.2s ease-in-out;
     margin-bottom: 10px;
-    padding: 10px;
     border: 1px solid #ccc;
     cursor: pointer;
     font-size: 14px;
     border-radius: 3.5px;
-    background-color: rgb(77, 77, 255);
-    color: white;
+    color: rgb(16, 19, 212);
     width: 150px;
-    text-decoration: underline;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-decoration: underline;
 }
 
 div .checkout-button:hover {
     background-color: rgb(0, 0, 151);
+    color: white;
 }
 
 .total-price, .price {
-    font-family: math;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .name {
     font-family: cursive;
+    /* font-size: 16px; */
+    font-weight: bold;
 }
 
 .product-image-cart {
@@ -40,24 +47,50 @@ div .checkout-button:hover {
     width: 450px;
 }
 
+
 .delete-cart-button {
-    /* width: 80px;
-    height: 35px; */
+    padding: 10px 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+    transition: all 0.2s ease-in-out;
     margin-bottom: 10px;
-    padding: 10px;
     border: 1px solid #ccc;
     cursor: pointer;
     font-size: 14px;
     border-radius: 3.5px;
-    background-color: rgba(240, 24, 24, 0.877);
-    color: white;
+    color: rgb(212, 16, 16);
     width: 150px;
-    text-decoration: underline;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-decoration: underline;
+}
+
+.delete-cart-button:hover {
+    background-color: rgb(151, 0, 0);
+    color: white;
 }
 
 .empty-cart-message {
     font-size: 1.5rem;
     color: red;
     text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;;
 }
+
+.quantity-dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  .quantity-dropdown select {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 3.5px;
+    color: rgb(16, 19, 212);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    width: 100px;
+  }

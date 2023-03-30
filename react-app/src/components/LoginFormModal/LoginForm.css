@@ -26,6 +26,7 @@ ul {
     width: 100%;
 }
 
+
 .form-label2 {
     width: 100%;
     margin-bottom: 10px;
@@ -57,18 +58,19 @@ ul {
 }
 
 .DemoUserButton {
-    /* border-radius: 2px red solid; */
-    background-color: rgba(64, 6, 199, 0.842);
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    cursor: pointer;
-    font-size: 14px;
-    /* width: 100%; */
-    text-align: center;
-    border-radius: 5px;
-    /* color: white; */
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+     /* border-radius: 2px red solid; */
+     background-color: rgba(64, 6, 199, 0.842);
+     padding: 10px;
+     border: 1px solid #ccc;
+     cursor: pointer;
+     font-size: 14px;
+     /* width: 100%; */
+     text-align: center;
+     border-radius: 5px;
+     /* color: white; */
+     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+     margin-left: 10px;
+
 }
 .DemoUserButton:hover {
     background-color: #3109c2b4;
