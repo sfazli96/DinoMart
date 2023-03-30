@@ -13,7 +13,7 @@ const Reviews = () => {
     const id = useParams()
     // console.log(id, 'id')
     const ID = parseInt(id.id)
-    // console.log('id', ID)
+    console.log('id', ID)
     const user = useSelector(state => state.session?.user)
     const userId = user?.id
     const reviewsObj = useSelector(state => state.review?.reviews || {})
@@ -55,9 +55,9 @@ const Reviews = () => {
             }, 2000);
             return
         }
-        return dispatch(addReviews(ID, { userId, id, review, rating }))
+        return dispatch(addReviews(ID, { userId, id: parseInt(id.id), review, rating }))
             .then(() => {
-                dispatch(readAllReviews(id.id))
+                dispatch(readAllReviews(parseInt(id.id)))
                 setShowForm(false)
                 setReview("")
             })
@@ -132,7 +132,7 @@ const Reviews = () => {
           {reviews.reverse().map(({ id, review, rating, user_id, created_at, username }) => {
             // const username = user_id === user?.id ? user.username : null;
             const userHasReview = reviews.some(({user_id}) => user_id === userId)
-            console.log('username', username)
+            // console.log('username', username)
             return (
               <div key={id}>
                 <div className="review-card-container">

@@ -40,11 +40,9 @@ def createReview(id):
     date = datetime.datetime.now()
     request_data = request.get_json()
     form = ReviewForm()
-    # print('FORM', form)
-    # print(current_user.id, 'current')
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    if form.validate_on_submit():
+    if current_user is not None and form.validate_on_submit():
         new_review = Review(
             review = request_data["review"],
             rating = request_data["rating"],
@@ -52,11 +50,10 @@ def createReview(id):
             user_id = current_user.id,
             created_at=date
         )
-        print(new_review.to_dict())
         db.session.add(new_review)
         db.session.commit()
 
         return new_review.to_dict()
     else:
-        # return form.errors
         return {"message": "Bad information, Please try again"}, 404
+

@@ -31,13 +31,15 @@ export const readAllReviews = (id) => async (dispatch) => {
 }
 
 export const addReviews = (id, review) => async (dispatch) => {
+    console.log('id', id)
+    console.log('review', review)
     const response = await fetch(`/api/products/${id}/reviews`, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            user_id: review.user_id,
+            user_id: review.userId,
             product_id: id,
             review: review.review,
             rating: review.rating
