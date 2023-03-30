@@ -18,7 +18,7 @@ const Cart = () => {
     const [totalPrice, setTotalPrice] = useState(0.00)
     const [showCheckoutPending, setShowCheckoutPending] = useState(false)
     const [quantity, setQuantity] = useState(1)
-    const [quantities, setQuantities] = useState({});
+    const [quantities, setQuantities] = useState(1);
     // console.log('quantity test', quantities)
 
     useEffect(() => {
@@ -35,15 +35,26 @@ const Cart = () => {
     useEffect(() => {
         if (prehistoricProducts?.products) {
           let itemCount = 0
-          let price = 0.00
+          // let price = 0.00
+          let newTotalPrice = 0.00
+          // let newTotalPrice = totalPrice
           prehistoricProducts.products?.forEach(({ id, price: itemPrice }) => {
             itemCount += 1
-            price += itemPrice
-          })
-          setCartItem(itemCount)
-          setTotalPrice(price)
+            // price += itemPrice
+            console.log('id', id)
+            console.log('itemPrice', itemPrice)
+            const productQuantity = quantities[id] || 1;
+            console.log('quantity', quantity)
+            console.log('quantities', quantities)
+            console.log('productQuantity', productQuantity)
+            newTotalPrice += itemPrice * productQuantity;
+            console.log('newTotalPrice', newTotalPrice)
+      })
+      setCartItem(itemCount)
+      setTotalPrice(newTotalPrice);
+          // setTotalPrice(price)
         }
-      }, [prehistoricProducts])
+      }, [quantities, prehistoricProducts])
 
     //   if (!prehistoricProducts) {
     //     return <p>There are no items in your cart</p>
@@ -74,18 +85,28 @@ const Cart = () => {
 
         }));
 
-        const newTotalPrice = totalPrice - itemPrice * quantity
+        // const newTotalPrice = totalPrice - itemPrice * quantity
 
-        const updatedTotalPrice = prehistoricProducts.products.reduce(
-          (acc, product) => {
-            const productQuantity = quantities[product.id] || 0;
-            return acc + product.price * productQuantity;
-          },
-          newTotalPrice
-        );
+        // const updatedTotalPrice = prehistoricProducts.products.reduce(
+        //   (acc, product) => {
+        //     const productQuantity = quantities[product.id] || 0;
+        //     return acc + product.price * productQuantity;
+        //   },
+        //   newTotalPrice
+        // );
 
-        setTotalPrice(updatedTotalPrice);
+        // setTotalPrice(updatedTotalPrice);
       };
+      // useEffect(() => {
+      //   let newTotalPrice = 0;
+      //   prehistoricProducts.products?.forEach(product => {
+      //     const productQuantity = quantities[product.id] || 0;
+      //     newTotalPrice += product.price * productQuantity;
+
+      //   });
+      //   console.log('newTotalPrice', newTotalPrice)
+      //   setTotalPrice(newTotalPrice);
+      // }, [cartItem, quantities, prehistoricProducts])
 
 
 
@@ -101,7 +122,7 @@ const Cart = () => {
         const newTotalPrice = prehistoricProducts.products.reduce(
           (acc, product) => {
             const quantity = updatedQuantities[product.id] || 1;
-            console.log('quantity', quantity)
+            // console.log('quantity', quantity)
             return acc + product.price * quantity;
           },
           0
