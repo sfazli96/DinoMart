@@ -19,7 +19,7 @@ const Cart = () => {
     const [showCheckoutPending, setShowCheckoutPending] = useState(false)
     const [quantity, setQuantity] = useState(1)
     const [quantities, setQuantities] = useState({});
-    console.log('quantity test', quantities)
+    // console.log('quantity test', quantities)
 
     useEffect(() => {
         if (user) {
@@ -67,13 +67,17 @@ const Cart = () => {
         // console.log('itemPrice', itemPrice)
         dispatch(thunkDeleteCart(user.id, itemId))
         setCartItem(prev => prev - 1)
+        setQuantities((prev) => ({
+            ...prev,
+            [itemId]: 0,
+        }));
         setTotalPrice(oldPrice => oldPrice - itemPrice)
       }
 
 
       const handleQuantityChange = (productId, newQuantity) => {
-        console.log(productId)
-        console.log('newQuantity', newQuantity)
+        // console.log(productId)
+        // console.log('newQuantity', newQuantity)
         const updatedQuantities = {
           ...quantities,
           [productId]: parseInt(newQuantity),
