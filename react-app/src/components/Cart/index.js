@@ -17,6 +17,9 @@ const Cart = () => {
     const [cartItem, setCartItem] = useState(0)
     const [totalPrice, setTotalPrice] = useState(0.00)
     const [showCheckoutPending, setShowCheckoutPending] = useState(false)
+    const [quantity, setQuantity] = useState(1)
+    const [quantities, setQuantities] = useState({});
+    console.log('quantity test', quantities)
 
     useEffect(() => {
         if (user) {
@@ -67,23 +70,31 @@ const Cart = () => {
         setTotalPrice(oldPrice => oldPrice - itemPrice)
       }
 
-      const handleQuantityChange = (productId, quantity) => {
-        let prevPrice = 0
-        let updatedPrice = 0
 
-        prehistoricProducts.products.forEach(product => {
-            let productPrice = product.price
-            let productQuantity = product.quantity
-            // console.log('productQuantity', productQuantity)
-            if (product.id === productId) {
-                prevPrice = productPrice * productQuantity
-                updatedPrice = productPrice * parseInt(quantity)
-            }
-        });
-        setTotalPrice((old) => old - prevPrice + updatedPrice)
-        // console.log('quantity', quantity)
-        dispatch(thunkEditCartItem(user.id, productId, parseInt(quantity)))
-      }
+      const handleQuantityChange = (productId, newQuantity) => {
+        console.log(productId)
+        console.log('newQuantity', newQuantity)
+        const updatedQuantities = {
+          ...quantities,
+          [productId]: parseInt(newQuantity),
+        };
+        setQuantities(updatedQuantities);
+
+        const newTotalPrice = prehistoricProducts.products.reduce(
+          (acc, product) => {
+            const quantity = updatedQuantities[product.id] || 1;
+            console.log('quantity', quantity)
+            return acc + product.price * quantity;
+          },
+          0
+        );
+        setTotalPrice(newTotalPrice);
+      };
+
+
+
+
+
 
       if (cartItem === 0) {
         return <p>You have no items in your cart</p>
@@ -100,7 +111,11 @@ const Cart = () => {
         <div>
             <h1>({cartItem})</h1>
                 <div className="cart-product-container">
-                    {prehistoricProducts?.products && prehistoricProducts.products?.map(({id, name, image_url, price, size, quantity}) => {
+                    {prehistoricProducts?.products && prehistoricProducts.products?.map(({id, name, image_url, price, size}) => {
+                        // let sub = price * quantity
+                        // let subTotal = parseInt(sub)
+                        const quantity = quantities[id] || 1;
+                        const subTotal = parseInt(price * quantity);
                         return (
                             <div key={id}>
                                 <h2 className="name">{name}</h2>
@@ -109,6 +124,7 @@ const Cart = () => {
                                 <select id={`quantity-${id}`}
                                     value={quantity}
                                     onChange={(e) => handleQuantityChange(id, e.target.value)}>
+                                    {/* // onChange={(e) => setQuantity(e.target.value)} */}
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -116,6 +132,7 @@ const Cart = () => {
                                     <option value="5">5</option>
                                 </select>
                                 <button className="delete-cart-button" onClick={() => handleDeleteItem(id, price)}>Delete Item</button>
+                                <p className="sub-total-price">Sub-Total Price: ${subTotal.toFixed(2)}</p>
                             </div>
                         )
                     })}
