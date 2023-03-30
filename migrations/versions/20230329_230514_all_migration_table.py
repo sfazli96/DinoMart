@@ -1,8 +1,8 @@
-"""all tables
+"""all migration table
 
-Revision ID: 1d9726afcc13
+Revision ID: cbf7b3acd9c0
 Revises:
-Create Date: 2023-03-28 11:44:55.745182
+Create Date: 2023-03-29 23:05:14.883463
 
 """
 from alembic import op
@@ -15,7 +15,7 @@ SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
-revision = '1d9726afcc13'
+revision = 'cbf7b3acd9c0'
 down_revision = None
 branch_labels = None
 depends_on = None

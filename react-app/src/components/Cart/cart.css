@@ -33,9 +33,9 @@ div .checkout-button:hover {
     font-family: cursive;
 }
 
-.product-image {
+.product-image-cart {
     border-radius: 5px;
-    height: 400px;
+    height: 350px;
     width: 450px;
 }
 

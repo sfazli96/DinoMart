@@ -129,10 +129,10 @@ const Reviews = () => {
               </button>
             </form>
           )}
-          {reviews.reverse().map(({ id, review, rating, user_id, created_at }) => {
+          {reviews.reverse().map(({ id, review, rating, user_id, created_at, username }) => {
             // const username = user_id === user?.id ? user.username : null;
             const userHasReview = reviews.some(({user_id}) => user_id === userId)
-            const username = user_id === userId ? user.username : '';
+            console.log('username', username)
             return (
               <div key={id}>
                 <div className="review-card-container">
@@ -140,7 +140,7 @@ const Reviews = () => {
                     {rating}
                   </p>
                   <p className="review-text">{review}</p>
-                  {username && <p>Username: {username}</p>}
+                  {username && <p>By: {username}</p>}
                   <p className="createdAt">Created at: {formatDate(created_at)}</p>
                   {user_id === userId && (
                     <div>

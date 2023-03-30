@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from app.models import Review, db, Product
+from app.models import Review, db, Product, User
 from app.forms import ReviewForm
 import datetime
 from flask_login import current_user, login_required, current_user
@@ -8,12 +8,16 @@ review_routes = Blueprint('reviews', __name__)
 @review_routes.route('/')
 def allReviews():
     reviews = Review.query.all()
-    # print('review', reviews)
-    list = []
+    users = User.query.all()
+    user_dict = {user.id: user.username for user in users}
+    review_list = []
     for review in reviews:
-        # print(review.to_dict())
-        list.append(review.to_dict())
-    return {'reviews': list}
+        review_dict = review.to_dict()
+        user_id = review_dict['user_id']
+        review_dict['username'] = user_dict.get(user_id)
+        review_list.append(review_dict)
+    return {'reviews': review_list}
+
 
 
 @review_routes.route('/', methods=['POST'])
