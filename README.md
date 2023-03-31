@@ -1,4 +1,5 @@
 # About Sam-Mart
+![image](https://user-images.githubusercontent.com/43709736/229159361-776029a1-ed99-4c5d-b452-437746076d2f.png)
 - Sam-Mart is an online e-commerce marketplace for your average day that only focuses on prehistoric products and animals that you can have as a pet. My platform offers a variety of different types of prehistoric animals or even fossils to have as a collection. In this website, you can have the ability to sign up, log in or leave a review on a dinosaur you like. Additionally, users can add there pet into the their shopping cart and checkout to buy it.
 
 To check out the live version of this website, simple follow this link: https://sammart.onrender.com. Thank you for considering Sam-Mart for your pet needs!
@@ -17,29 +18,30 @@ To check out the live version of this website, simple follow this link: https://
 # Pages
 ## Home Page
 - Access the login and sign up modal from the top right corner.
-(add picture here)
+![image](https://user-images.githubusercontent.com/43709736/229164360-02acace8-4fbb-4128-8bfd-a01a968cad47.png)
+
 
 
 
 ## Sign up Modal
 - You can fill in the required information such as email, username and password to sign up.
-(add picture here)
+![image](https://user-images.githubusercontent.com/43709736/229159527-b19ab74c-3862-4077-96fb-0116196636cc.png)
 
 ## Login Modal
 - Log in as an existing user or as demo user
-(add picture here)
+![image](https://user-images.githubusercontent.com/43709736/229164242-749d12aa-4472-43b1-b79b-11749bfe716b.png)
 
 ## Read details of prehistoric products / Animals
-(picture here)
+![image](https://user-images.githubusercontent.com/43709736/229164579-f06fd15b-71ac-4457-a11d-62466f409aa2.png)
 
 ## Post/Edit/Delete a review
-(picture here)
+![image](https://user-images.githubusercontent.com/43709736/229164649-264fbbbc-5d75-4aa0-b6be-cb8f35f7d07e.png)
 
 ## Read/Edit/Delete Shopping Cart
 (add picture here)
 
 ## Extra page (404 error page):
-(add picture here)
+![image](https://user-images.githubusercontent.com/43709736/229164782-f1375039-7e6e-4bda-9c18-8238954acf01.png)
 
 
 - Bonus features (coming soon)
