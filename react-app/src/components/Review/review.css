@@ -1,8 +1,8 @@
 .review-card-container {
   display: flex;
   flex-direction: column;
-  background-color: #fff;
-  border: 1px solid #e2e2e2;
+  background-color: white;
+  border: 1px solid white;
   padding: 20px;
   margin-bottom: 20px;
   position: relative;
@@ -34,17 +34,17 @@
   color: #E74C3C;
   margin-bottom: 10px;
   padding: 5px 10px;
-  border: 1px solid #CCCCCC;
+  border: 1px solid white;
   font-size: 14px;
   border-radius: 5px;
-  background-color: #FFFFFF;
+  background-color: white;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease-in-out;
 }
 
 .delete-review-button:hover {
   background-color: #E74C3C;
-  color: #FFFFFF;
+  color: white;
 }
 
 .edit-review-button {
@@ -53,10 +53,10 @@
   right: 120px;
   text-decoration: none;
   margin-bottom: 10px;
-  border: 1px solid #CCCCCC;
+  border: 1px solid white;
   font-size: 14px;
   border-radius: 5px;
-  background-color: #FFFFFF;
+  background-color: white;
   color: #27AE60;
   padding: 5px 10px;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
@@ -66,7 +66,7 @@
 .show-create-review-button {
   /* margin-bottom: 10px; */
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid white;
   font-size: 14px;
   border-radius: 3.5px;
   background-color: rgba(9, 177, 199, 0.904);
@@ -164,7 +164,7 @@
   height: 150px;
   padding: 10px 15px;
   box-sizing: border-box;
-  border: 2px solid #ccc;
+  border: 2px solid white;
   border-radius: 4px;
   background-color: #f8f8f8;
   font-size: 16px;
@@ -209,12 +209,12 @@
   padding: 10px 20px;
   font-size: 16px;
   border-radius: 5px;
-  background-color: #FFFFFF;
+  background-color: white;
   color: #27AE60;
   padding: 5px 10px;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease-in-out;
-  border: 1px solid #CCCCCC;
+  border: 1px solid white;
   margin-right: 10px;
   /* background-color: #4caf50;
     color: white;
@@ -226,7 +226,7 @@
 
 .edit-review-submit-button:hover {
   background-color: #0baf05;
-  color: #FFFFFF;
+  color: white;
 }
 
 .two-buttons {
