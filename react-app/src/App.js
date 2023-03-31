@@ -63,6 +63,7 @@ function NotFound() {
     <div>
       <h1>404 Not Found</h1>
       <p>Sorry, the page you are looking for doesn't exist.</p>
+      <img src="https://media1.giphy.com/media/14uQ3cOFteDaU/giphy.gif"></img>
     </div>
   )
 }
