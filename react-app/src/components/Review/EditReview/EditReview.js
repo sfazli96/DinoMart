@@ -17,7 +17,7 @@ const EditReview = ({id, onClose}) => {
     const reviewData = {
         id: id.id,
         review,
-        rating
+        rating: parseFloat(rating)
     }
 
     const handleSubmit = (e) => {
@@ -46,7 +46,6 @@ const EditReview = ({id, onClose}) => {
         setRating(parseFloat(newRating))
     }
 
-
     return (
         <div className="root-edit-container">
             <form onSubmit={handleSubmit} noValidate className="edit-form-big">
@@ -72,6 +71,8 @@ const EditReview = ({id, onClose}) => {
                             halfIcon={<i className="fa fa-star-half-alt"></i>}
                             fullIcon={<i className="fa fa-star"></i>}
                             activeColor="#ffd700"
+                            edit={true}
+                            fraction={2}
                             />
                             <div className="two-buttons">
                                 <button className="edit-review-submit-button" type="submit">Submit</button>

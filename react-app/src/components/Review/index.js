@@ -31,6 +31,7 @@ const Reviews = () => {
     useEffect(() => {
         if (user) {
             dispatch(readAllReviews(ID))
+            setShowCreateReview(true);
         }
     }, [dispatch, user])
 
@@ -43,6 +44,10 @@ const Reviews = () => {
             setValidationErrors([])
         }
     }, [reviews.length, user])
+
+    useEffect(() => {
+      setShowCreateReview(!reviews.some((review) => review.users_id === user?.id));
+    }, [reviews, user]);
 
     const handleSubmit = (e) => {
         e.preventDefault()
