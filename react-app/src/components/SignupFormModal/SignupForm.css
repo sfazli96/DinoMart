@@ -1,5 +1,6 @@
 .sign-up-title {
     text-align: center;
+    color: black;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -40,3 +41,29 @@
     color: white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+.sign-up-err-message {
+    color: red;
+}
+
+[data-theme='dark'] {
+    --background: #282c34;
+    --primary: white;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--primary);
+  }
+
+  [data-theme='dark'] .form-label  {
+    border-color: white;
+    /* background-color: #282c34; */
+    color: rgb(8, 7, 7);
+  }
+
+  [data-theme='dark'] .sign-up-err-message  {
+    border-color: white;
+    /* background-color: #282c34; */
+    color: rgba(240, 6, 6, 0.781);
+  }

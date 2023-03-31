@@ -40,7 +40,7 @@ function SignupFormModal() {
 			<form onSubmit={handleSubmit} className='sign-up-form' noValidate>
 				<ul>
 					{errors.map((error, idx) => (
-						<li key={idx}>{error}</li>
+						<div key={idx} className="sign-up-err-message">{error}</div>
 					))}
 				</ul>
 				<label className="form-label">
