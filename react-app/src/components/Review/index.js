@@ -46,8 +46,9 @@ const Reviews = () => {
     }, [reviews.length, user])
 
     useEffect(() => {
-      setShowCreateReview(!reviews.some((review) => review.users_id === user?.id));
+      setShowCreateReview(!reviews.find((review) => review.users_id === user?.id));
     }, [reviews, user]);
+
 
     const handleSubmit = (e) => {
         e.preventDefault()
