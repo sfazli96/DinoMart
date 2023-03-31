@@ -94,3 +94,14 @@ div .checkout-button:hover {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     width: 100px;
   }
+
+  .empty-cart {
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+  }
+
+  .image-gif {
+    display: flex;
+    align-items: center;
+  }
