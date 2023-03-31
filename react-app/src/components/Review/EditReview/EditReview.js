@@ -43,8 +43,9 @@ const EditReview = ({id, onClose}) => {
     }
 
     const ratingChanged = (newRating) => {
-        setRating(newRating)
+        setRating(parseFloat(newRating))
     }
+
 
     return (
         <div className="root-edit-container">
