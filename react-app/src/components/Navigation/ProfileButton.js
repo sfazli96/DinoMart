@@ -46,7 +46,7 @@ function ProfileButton({ user }) {
         <i className="fas fa-user-circle" />
       </button>
       <NavLink exact to={`/cart`} className='cart-icon'>
-					Cart
+        <i className="fas fa-shopping-cart" />
 			</NavLink>
     </div>
       <ul className={ulClassName} ref={ulRef}>

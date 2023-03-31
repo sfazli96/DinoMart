@@ -37,8 +37,9 @@ div .checkout-button:hover {
 
 .name {
     font-family: cursive;
-    /* font-size: 16px; */
+    font-size: 16px;
     font-weight: bold;
+    text-align: center;
 }
 
 .product-image-cart {
@@ -99,9 +100,20 @@ div .checkout-button:hover {
     display: flex;
     align-items: center;
     flex-direction: column-reverse;
+    /* padding-top: 10px; */
   }
 
   .image-gif {
     display: flex;
     align-items: center;
+  }
+
+
+  .sub-total-price {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    /* font-weight: bold; */
   }
