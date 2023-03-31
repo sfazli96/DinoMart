@@ -5,7 +5,7 @@
 }
 
 .log-in-title {
-
+    font-family: fantasy;
 }
 
 .login-form-label {
@@ -28,5 +28,19 @@
 }
 
 .submit-cart-log-in {
-    
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    color: #27AE60;
+    padding: 5px 10px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-in-out;
+    border: 1px solid #CCCCCC;
+    margin-right: 10px;
+}
+
+.submit-cart-log-in:hover {
+    background-color: #27AE60;
+    color: white;
 }

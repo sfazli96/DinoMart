@@ -48,7 +48,10 @@ function LoginFormPage() {
             required
           />
         </label>
-        <button type="submit-cart-log-in">Log In</button>
+        <div>
+          <button type="submit" className="submit-cart-log-in">Log In</button>
+
+        </div>
       </form>
     </div>
   );
