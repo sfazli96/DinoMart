@@ -22,15 +22,15 @@ function LoginFormPage() {
   };
 
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="log-in-root-container">
+      <h1 className="log-in-title">Log In</h1>
+      <form onSubmit={handleSubmit} className="log-in-form">
         <ul>
           {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
+            <div key={idx}>{error}</div>
           ))}
         </ul>
-        <label>
+        <label className="login-form-label">
           Email
           <input
             type="text"
@@ -39,7 +39,7 @@ function LoginFormPage() {
             required
           />
         </label>
-        <label>
+        <label className="login-form-label">
           Password
           <input
             type="password"
@@ -48,9 +48,9 @@ function LoginFormPage() {
             required
           />
         </label>
-        <button type="submit">Log In</button>
+        <button type="submit-cart-log-in">Log In</button>
       </form>
-    </>
+    </div>
   );
 }
 

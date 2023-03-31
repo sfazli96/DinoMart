@@ -36,9 +36,9 @@ const initialState = {
 
 export const productsReducer = (state = initialState, action) => {
     let newState;
-    switch(action.type){
+    switch (action.type) {
         case LOAD_PREHISTORIC_PRODUCTS:
-            newState = {...state}
+            newState = { ...state }
             let allProductsCopy = {}
             action.payload.products.forEach(product => {
                 allProductsCopy[product.id] = product
@@ -46,7 +46,7 @@ export const productsReducer = (state = initialState, action) => {
             newState.allProducts = allProductsCopy
             return newState
         case LOAD_ONE_PREHISTORIC_PRODUCT:
-            newState = {...state}
+            newState = { ...state }
             newState.singleProduct = action.payload
             return newState
         default:

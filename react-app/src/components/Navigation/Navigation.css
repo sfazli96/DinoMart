@@ -7,7 +7,7 @@
 .Navbar {
   display: flex;
   justify-content: space-between;
-  box-shadow: 0.7px 0.3px 0px 0px rgba(0,0,0,0.5);
+  box-shadow: 0.7px 0.3px 0px 0px rgba(0, 0, 0, 0.5);
   /* box-shadow: 5.9px 0.8px 2.6px 0px rgba(0,0,0,0.5); */
 
   background-color: white;
@@ -47,9 +47,9 @@
 
 
 .profilebutton {
- border: hidden;
- padding: 0;
- padding-bottom: white;
+  border: hidden;
+  padding: 0;
+  padding-bottom: white;
 }
 
 .profile-dropdown li {
@@ -58,12 +58,12 @@
 }
 
 .profile-dropdown button {
-padding: 10px;
-margin: 5px;
-background-color: #2798e3;
-color: #fff;
-border: none;
-cursor: pointer;
+  padding: 10px;
+  margin: 5px;
+  background-color: #2798e3;
+  color: #fff;
+  border: none;
+  cursor: pointer;
 }
 
 .profile-dropdown button:hover {
@@ -71,13 +71,14 @@ cursor: pointer;
 }
 
 .home-page {
-    text-decoration: none;
-    font-size: 28px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    background: linear-gradient(to right, red, green);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  text-decoration: none;
+  font-size: 28px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  background: linear-gradient(to right, red, green);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+
 .logoutbutton {
   background-color: #fc3239 !important;
   border-radius: 4px !important;
@@ -119,14 +120,14 @@ body {
   color: var(--primary);
 }
 
-[data-theme='dark'] .Navbar  {
+[data-theme='dark'] .Navbar {
   border-color: white;
   background-color: #282c34;
   color: white;
 }
 
-@media screen and (max-width: 768px){
-  .Navbar .sign-in-and-cart{
+@media screen and (max-width: 768px) {
+  .Navbar .sign-in-and-cart {
     flex-direction: column;
   }
 

@@ -70,7 +70,7 @@ export const thunkAddToCart = (cartId, productId) => async (dispatch) => {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({cartId: cartId, productId: productId})
+        body: JSON.stringify({ cartId: cartId, productId: productId })
     })
     if (res.ok) {
         const cartData = await res.json()
@@ -89,7 +89,7 @@ export const thunkDeleteCart = (userId, product_id) => async (dispatch) => {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({product_id})
+        body: JSON.stringify({ product_id })
     })
     if (res.ok) {
         const cartData = await res.json()
@@ -152,26 +152,26 @@ export const thunkEditCartItem = (userId, productId, quantity) => async (dispatc
 //     Cart: {},
 // }
 
-export const cartReducer = (state = {Cart: {}}, action) => {
+export const cartReducer = (state = { Cart: {} }, action) => {
     let newState;
-    switch(action.type){
+    switch (action.type) {
         case LOAD_CART:
-            newState = {...state}
+            newState = { ...state }
             // console.log('action2', action.payload)
             action.payload.cart.forEach(element => {
                 newState.Cart = element
             });
             return newState
-            //     ...state,
-            // return {
-            //     Cart: action.payload.products
-            // }
-            // newState = {...state, Cart: action.payload.products.map((item) => item)}
-            // return newState
+        //     ...state,
+        // return {
+        //     Cart: action.payload.products
+        // }
+        // newState = {...state, Cart: action.payload.products.map((item) => item)}
+        // return newState
         case ADD_TO_CART:
-            newState = {...state}
+            newState = { ...state }
             // console.log('newState', state)
-            let copy = {...newState.Cart}
+            let copy = { ...newState.Cart }
             // console.log('ACTION', action.payload)
             copy[action.payload.id] = action.payload
             // console.log('COPY', copy)
@@ -180,19 +180,20 @@ export const cartReducer = (state = {Cart: {}}, action) => {
             // console.log('NEW', newState.Cart)
             return newState
         case CREATE_CART:
-            newState = {...state}
-            let copy2 = {...newState.Cart}
+            newState = { ...state }
+            let copy2 = { ...newState.Cart }
             copy2[action.payload.id] = action.payload
             newState.Cart = copy2
             return newState
         case DELETE_CART_ITEM:
             // console.log('ACTION', action.payload)
-            newState = {...state}
+            newState = { ...state }
             newState.Cart = action.payload
             return newState
         case EDIT_CART:
             // console.log('STATE', state.Cart.products)
-            return {...state,
+            return {
+                ...state,
                 Cart: {
                     ...state.Cart,
                     ...action.payload,
@@ -201,15 +202,15 @@ export const cartReducer = (state = {Cart: {}}, action) => {
             }
 
 
-            // return {...state, Cart: {
-            //         ...state.Cart,
-            //         [productId]: {...state.Cart[productId],
-            //             quantity: quantity
-            //         }
-            //     }
-            // }
-            // const updatedCart = {...state.Cart[action.payload.id], quantity: action.payload.quantity}
-            // return {...state, cart: {...state.Cart, [action.payload.id]: updatedCart}}
+        // return {...state, Cart: {
+        //         ...state.Cart,
+        //         [productId]: {...state.Cart[productId],
+        //             quantity: quantity
+        //         }
+        //     }
+        // }
+        // const updatedCart = {...state.Cart[action.payload.id], quantity: action.payload.quantity}
+        // return {...state, cart: {...state.Cart, [action.payload.id]: updatedCart}}
         case CLEAR_CART:
             // console.log('state', state)
             return {
@@ -217,7 +218,7 @@ export const cartReducer = (state = {Cart: {}}, action) => {
                 Cart: {}
             }
         default:
-            newState = {...state}
+            newState = { ...state }
             return newState
     }
 }

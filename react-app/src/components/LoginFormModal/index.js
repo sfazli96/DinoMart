@@ -17,7 +17,7 @@ function LoginFormModal() {
     if (data) {
       setErrors(data);
     } else {
-        closeModal()
+      closeModal()
     }
   };
 
@@ -56,7 +56,7 @@ function LoginFormModal() {
             Log In
           </button>
         </form>
-      <button className="DemoUserButton"onClick={() => dispatch(login("demo@aa.io", "password")).then(() => closeModal())}>Demo User</button>
+        <button className="DemoUserButton" onClick={() => dispatch(login("demo@aa.io", "password")).then(() => closeModal())}>Demo User</button>
       </div>
     </>
   );

@@ -1,106 +1,106 @@
 .review-card-container {
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    border: 1px solid #e2e2e2;
-    padding: 20px;
-    margin-bottom: 20px;
-    position: relative;
-  }
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid #e2e2e2;
+  padding: 20px;
+  margin-bottom: 20px;
+  position: relative;
+}
 
-  .review-rating {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 0;
-  }
+.review-rating {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
 
-  .review-text {
-    margin: 10px 0;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    word-break: break-all;
-  }
+.review-text {
+  margin: 10px 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  word-break: break-all;
+}
 
-  .createdAt {
-    font-style: italic;
-    font-size: 12px;
-    margin-top: 20px;
-  }
+.createdAt {
+  font-style: italic;
+  font-size: 12px;
+  margin-top: 20px;
+}
 
-  .delete-review-button {
-    position: absolute;
-    top: 20px;
-    right: 5px;
-    text-decoration: none;
-    color: #E74C3C;
-    margin-bottom: 10px;
-    padding: 5px 10px;
-    border: 1px solid #CCCCCC;
-    font-size: 14px;
-    border-radius: 5px;
-    background-color: #FFFFFF;
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
-    transition: all 0.2s ease-in-out;
-  }
+.delete-review-button {
+  position: absolute;
+  top: 20px;
+  right: 5px;
+  text-decoration: none;
+  color: #E74C3C;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  border: 1px solid #CCCCCC;
+  font-size: 14px;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
+}
 
-  .delete-review-button:hover {
-    background-color: #E74C3C;
-    color: #FFFFFF;
-  }
+.delete-review-button:hover {
+  background-color: #E74C3C;
+  color: #FFFFFF;
+}
 
-  .edit-review-button {
-    position: absolute;
-    top: 20px;
-    right: 120px;
-    text-decoration: none;
-    margin-bottom: 10px;
-    border: 1px solid #CCCCCC;
-    font-size: 14px;
-    border-radius: 5px;
-    background-color: #FFFFFF;
-    color: #27AE60;
-    padding: 5px 10px;
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
-    transition: all 0.2s ease-in-out;
-  }
+.edit-review-button {
+  position: absolute;
+  top: 20px;
+  right: 120px;
+  text-decoration: none;
+  margin-bottom: 10px;
+  border: 1px solid #CCCCCC;
+  font-size: 14px;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+  color: #27AE60;
+  padding: 5px 10px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
+}
 
-  .show-create-review-button {
-    /* margin-bottom: 10px; */
-    padding: 10px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-    border-radius: 3.5px;
-    background-color: rgba(9, 177, 199, 0.904);
-    color: white;
+.show-create-review-button {
+  /* margin-bottom: 10px; */
+  padding: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  border-radius: 3.5px;
+  background-color: rgba(9, 177, 199, 0.904);
+  color: white;
 
-  }
+}
 
-  .edit-review-button:hover {
-    background-color: #27AE60;
-    color: #FFFFFF;
-  }
+.edit-review-button:hover {
+  background-color: #27AE60;
+  color: #FFFFFF;
+}
 
-  /* .review-card-container:hover {
+/* .review-card-container:hover {
     display: block;
   } */
 
-  .delete-review-button {
-    display: block;
-  }
+.delete-review-button {
+  display: block;
+}
 
-  /* .review-card-container:hover {
+/* .review-card-container:hover {
     display: block;
   } */
 
-  .review-card-container button {
-    display: block;
+.review-card-container button {
+  display: block;
 
-  }
+}
 
-  .edit-review-button {
-    display: block;
-  }
+.edit-review-button {
+  display: block;
+}
 
-  /* @media only screen and (max-width: 768px) {
+/* @media only screen and (max-width: 768px) {
     .review-card-container {
       padding: 10px;
     }
@@ -116,30 +116,31 @@
     }
   } */
 
-  .error-message {
-    color: red !important;
-    font-size: 14px !important;
-    margin-top: 25px;
-  }
-  .error-form-message {
-    color: red !important;
-    font-size: 20px !important;
-    text-align: center;
-  }
+.error-message {
+  color: red !important;
+  font-size: 14px !important;
+  margin-top: 25px;
+}
 
-  .create-review-container-button {
-    display: flex;
-    justify-content: center;
-    flex-wrap: nowrap;
-  }
+.error-form-message {
+  color: red !important;
+  font-size: 20px !important;
+  text-align: center;
+}
 
-  .star {
-    font-size: 20px;
-    color: gold;
-  }
+.create-review-container-button {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.star {
+  font-size: 20px;
+  color: gold;
+}
 
 
-  /* textarea.input {
+/* textarea.input {
     width: 50%;
     height: 150px;
     padding: 12px 20px;
@@ -151,101 +152,101 @@
     resize: none;
   }
 */
-  .review-form-big {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px 0;
-  }
+.review-form-big {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
 
-  .review-form-big textarea {
-    width: 70%;
-    height: 150px;
-    padding: 10px 15px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    background-color: #f8f8f8;
-    font-size: 16px;
-    resize: none;
-    margin-bottom: 20px;
-  }
+.review-form-big textarea {
+  width: 70%;
+  height: 150px;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+  margin-bottom: 20px;
+}
 
-  .star-rating {
-    margin-bottom: 20px;
-  }
+.star-rating {
+  margin-bottom: 20px;
+}
 
-  .star-rating .react-stars {
-    display: flex;
-    justify-content: center;
-  }
+.star-rating .react-stars {
+  display: flex;
+  justify-content: center;
+}
 
-  .star-rating .react-stars .star {
-    font-size: 28px;
-    color: #ffd700;
-  }
+.star-rating .react-stars .star {
+  font-size: 28px;
+  color: #ffd700;
+}
 
-  .star-rating .react-stars .empty-star {
-    font-size: 28px;
-    color: #d8d8d8;
-  }
+.star-rating .react-stars .empty-star {
+  font-size: 28px;
+  color: #d8d8d8;
+}
 
-  .review-form-big .submit-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
+.review-form-big .submit-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
-  .review-form-big .submit-button:hover {
-    background-color: #3e8e41;
-  }
+.review-form-big .submit-button:hover {
+  background-color: #3e8e41;
+}
 
-  .edit-review-submit-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    background-color: #FFFFFF;
-    color: #27AE60;
-    padding: 5px 10px;
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
-    transition: all 0.2s ease-in-out;
-    border: 1px solid #CCCCCC;
-    margin-right: 10px;
-    /* background-color: #4caf50;
+.edit-review-submit-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+  color: #27AE60;
+  padding: 5px 10px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
+  border: 1px solid #CCCCCC;
+  margin-right: 10px;
+  /* background-color: #4caf50;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     margin-right: 10px; */
-  }
+}
 
-  .edit-review-submit-button:hover {
-    background-color: #0baf05;
-    color: #FFFFFF;
-  }
+.edit-review-submit-button:hover {
+  background-color: #0baf05;
+  color: #FFFFFF;
+}
 
-  .two-buttons {
-    display: flex;
-    margin-top: 20px;
-  }
+.two-buttons {
+  display: flex;
+  margin-top: 20px;
+}
 
 
-  [data-theme='dark'] {
-    --background: #282c34;
-    --primary: white;
-  }
+[data-theme='dark'] {
+  --background: #282c34;
+  --primary: white;
+}
 
-  body {
-    background-color: var(--background);
-    color: var(--primary);
-  }
+body {
+  background-color: var(--background);
+  color: var(--primary);
+}
 
-  [data-theme='dark'] .review-card-container {
-    border-color: white;
-    background-color: #4a4e69;
-    color: white
-  }
+[data-theme='dark'] .review-card-container {
+  border-color: white;
+  background-color: #4a4e69;
+  color: white
+}

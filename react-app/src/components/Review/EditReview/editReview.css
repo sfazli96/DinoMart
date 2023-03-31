@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     margin-top: 50px;
-  }
+}
 
 
 .error-msg {
@@ -53,5 +53,3 @@
     color: #555;
     border-color: #ccc;
   } */
-
-

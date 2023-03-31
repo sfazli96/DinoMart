@@ -41,9 +41,9 @@ function SinglePrehistoricProduct() {
     // console.log('MULTI', multiImage())
     const cartButton = () => {
         dispatch(thunkAddToCart(user?.id, id.id))
-        .then(() => {
-            history.push('/cart')
-        })
+            .then(() => {
+                history.push('/cart')
+            })
     }
     return (
         <div className="single-product-page-container">
@@ -51,17 +51,17 @@ function SinglePrehistoricProduct() {
             <div className="product-name-price-image">
                 <h2>{productDetail.name}</h2>
                 <h2>$ {productDetail.price}</h2>
-                <img className='product-image'src={productDetail.image_url}></img>
+                <img className='product-image' src={productDetail.image_url}></img>
             </div>
             <p className="description">{productDetail.description}</p>
-             {/* <div>
+            {/* <div>
                 <img src={multiImage()}></img>
             </div> */}
             {user ? (
                 <div className="add-to-cart-button">
-                <button className="cart-button" onClick={() => cartButton(id)}>Add to Cart</button>
-            </div>
-            ): null}
+                    <button className="cart-button" onClick={() => cartButton(id)}>Add to Cart</button>
+                </div>
+            ) : null}
             <div className="review-component">
                 <Reviews />
             </div>

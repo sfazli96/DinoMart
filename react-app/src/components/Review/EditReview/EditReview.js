@@ -7,7 +7,7 @@ import './editReview.css'
 import { useParams } from "react-router-dom";
 
 
-const EditReview = ({id, onClose}) => {
+const EditReview = ({ id, onClose }) => {
     const dispatch = useDispatch()
     const productId = useParams()
     const [rating, setRating] = useState(5)
@@ -31,9 +31,9 @@ const EditReview = ({id, onClose}) => {
             return
         }
         dispatch(editReview(productId, reviewData))
-        .then(() => {
-            onClose()
-        })
+            .then(() => {
+                onClose()
+            })
     }
 
     const handleChange = (e) => {
@@ -49,35 +49,35 @@ const EditReview = ({id, onClose}) => {
     return (
         <div className="root-edit-container">
             <form onSubmit={handleSubmit} noValidate className="edit-form-big">
-                    <div className="edit-review-form">
+                <div className="edit-review-form">
                     {errors.map((error, index) => (
-                    <div key={index} className="error-msg">{error}</div>
+                        <div key={index} className="error-msg">{error}</div>
                     ))}
                     <h2>Edit Review</h2>
                     <textarea
-                    type="textbox"
-                    // defaultValue="Edit your amazing review here!"
-                    value={review}
-                    onChange={handleChange}
-                    required
+                        type="textbox"
+                        // defaultValue="Edit your amazing review here!"
+                        value={review}
+                        onChange={handleChange}
+                        required
                     ></textarea>
                     <ReactStars
-                            count={5}
-                            value={rating}
-                            onChange={ratingChanged}
-                            size={24}
-                            isHalf={true}
-                            emptyIcon={<i className="far fa-star"></i>}
-                            halfIcon={<i className="fa fa-star-half-alt"></i>}
-                            fullIcon={<i className="fa fa-star"></i>}
-                            activeColor="#ffd700"
-                            edit={true}
-                            fraction={2}
-                            />
-                            <div className="two-buttons">
-                                <button className="edit-review-submit-button" type="submit">Submit</button>
-                                <button className='cancel-edit-review-button' onClick={onClose}>Cancel</button>
-                            </div>
+                        count={5}
+                        value={rating}
+                        onChange={ratingChanged}
+                        size={24}
+                        isHalf={true}
+                        emptyIcon={<i className="far fa-star"></i>}
+                        halfIcon={<i className="fa fa-star-half-alt"></i>}
+                        fullIcon={<i className="fa fa-star"></i>}
+                        activeColor="#ffd700"
+                        edit={true}
+                        fraction={2}
+                    />
+                    <div className="two-buttons">
+                        <button className="edit-review-submit-button" type="submit">Submit</button>
+                        <button className='cancel-edit-review-button' onClick={onClose}>Cancel</button>
+                    </div>
                 </div>
             </form>
         </div>
