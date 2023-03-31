@@ -7,7 +7,7 @@
 .Navbar {
   display: flex;
   justify-content: space-between;
-  box-shadow: 5.7px 0.3px 0px 0px rgba(0,0,0,0.5);
+  box-shadow: 0.7px 0.3px 0px 0px rgba(0,0,0,0.5);
   /* box-shadow: 5.9px 0.8px 2.6px 0px rgba(0,0,0,0.5); */
 
   background-color: white;
@@ -106,4 +106,21 @@ cursor: pointer;
   border: transparent;
   font-size: 25px;
   color: rgb(5, 161, 5);
+}
+
+
+[data-theme='dark'] {
+  --background: #282c34;
+  --primary: white;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--primary);
+}
+
+[data-theme='dark'] .Navbar  {
+  border-color: white;
+  background-color: #282c34;
+  color: white;
 }

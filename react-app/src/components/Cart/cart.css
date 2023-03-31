@@ -80,7 +80,7 @@ div .checkout-button:hover {
 .quantity-dropdown {
     display: flex;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     margin-bottom: 10px;
     margin-top: 10px;
   }
@@ -109,11 +109,68 @@ div .checkout-button:hover {
   }
 
 
-  .sub-total-price {
+  /* .sub-total-price {
     margin-top: 5px;
     margin-bottom: 5px;
     font-size: 14px;
     text-align: center;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
     /* font-weight: bold; */
+  /* } */
+
+  .sub-total-price {
+    font-size: 14px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }
+
+
+  [data-theme='dark'] {
+    --background: #282c34;
+    --primary: white;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--primary);
+  }
+
+  [data-theme='dark'] .cart-product-container {
+    border-color: white;
+    background-color: #444;
+    color: white;
+  }
+
+  [data-theme='dark'] .checkout-button {
+    background-color: white;
+    color: blue;
+  }
+
+  [data-theme='dark'] .checkout-button:hover {
+    background-color: #000097;
+  }
+
+  [data-theme='dark'] .delete-cart-button {
+    background-color: white;
+    color: red;
+  }
+
+  [data-theme='dark'] .delete-cart-button:hover {
+    background-color: #970000;
+  }
+
+  [data-theme='dark'] .total-price,
+  [data-theme='dark'] .price,
+  [data-theme='dark'] .name,
+  [data-theme='dark'] .sub-total-price {
+    color: white
+  }
+
+  [data-theme='dark'] .quantity-dropdown select {
+    background-color: #444;
+    color: white;
+    border-color: white;
+  }
+
+  [data-theme='dark'] .empty-cart-message {
+    color: red;
   }
