@@ -33,7 +33,7 @@ def readCart(id):
 @cart_routes.route('/', methods=['POST'])
 def createCart():
     user = current_user
-    print('user', user)
+    # print('user', user)
     request_data = request.get_json()
     new_cart = Cart(
         user_id = user.id
@@ -47,11 +47,11 @@ def createCart():
 @login_required
 def editCart():
     request_data = request.get_json()
-    print('request_data', request_data)
+    # print('request_data', request_data)
     product = Product.query.get(request_data["product_id"])
     # print('PRODUCT!!', product)
     product_quantity = request_data["quantity"]
-    print('PRODUCT_QUANTITY-----', product_quantity)
+    # print('PRODUCT_QUANTITY-----', product_quantity)
     user_id = request_data["user_id"]
     # carts = db.session.query(Cart).filter(Cart.id == id, Cart.user_id == request_data["user_id"]).options(joinedload(Cart.products)).all()
     carts = Cart.query.filter(Cart.user_id == user_id).options(joinedload(Cart.products)).all()
@@ -66,7 +66,7 @@ def editCart():
     for cart in carts:
             for cart_prod in cart.products:
                 if cart_prod.id == product.id:
-                    print('PRODUCT QUANTITY------', product_quantity)
+                    # print('PRODUCT QUANTITY------', product_quantity)
                     cart_prod.quantity = product_quantity
                     break
             else:

@@ -53,8 +53,8 @@ export const addReviews = (id, review) => async (dispatch) => {
 }
 
 export const editReview = (id, review) => async (dispatch) => {
-    console.log('review', review)
-    console.log('id', id)
+    // console.log('review', review)
+    // console.log('id', id)
     const response = await fetch(`/api/reviews/${review.id}`, {
         method: 'PUT',
         headers: {

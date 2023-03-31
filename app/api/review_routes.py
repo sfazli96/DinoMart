@@ -59,7 +59,7 @@ def updateReview(id):
     # review = Review.query.filter_by(id=id).first()
     review = Review.query.filter_by(id=id).first()
     # review = Review.query.all()
-    print('review', review)
+    # print('review', review)
     # print('current------', current_user)
     # if review is None:
     #     return "Review not found", 404

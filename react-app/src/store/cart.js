@@ -55,7 +55,7 @@ export const thunkCreateCart = (userId) => async (dispatch) => {
     })
     if (res.ok) {
         const data = await res.json()
-        console.log('DATA', data)
+        // console.log('DATA', data)
         dispatch(createCart(data))
     }
     return res
@@ -191,7 +191,7 @@ export const cartReducer = (state = {Cart: {}}, action) => {
             newState.Cart = action.payload
             return newState
         case EDIT_CART:
-            console.log('STATE', state.Cart.products)
+            // console.log('STATE', state.Cart.products)
             return {...state,
                 Cart: {
                     ...state.Cart,

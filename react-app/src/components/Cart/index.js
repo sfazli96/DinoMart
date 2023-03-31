@@ -41,14 +41,14 @@ const Cart = () => {
           prehistoricProducts.products?.forEach(({ id, price: itemPrice }) => {
             itemCount += 1
             // price += itemPrice
-            console.log('id', id)
-            console.log('itemPrice', itemPrice)
+            // console.log('id', id)
+            // console.log('itemPrice', itemPrice)
             const productQuantity = quantities[id] || 1;
-            console.log('quantity', quantity)
-            console.log('quantities', quantities)
-            console.log('productQuantity', productQuantity)
+            // console.log('quantity', quantity)
+            // console.log('quantities', quantities)
+            // console.log('productQuantity', productQuantity)
             newTotalPrice += itemPrice * productQuantity;
-            console.log('newTotalPrice', newTotalPrice)
+            // console.log('newTotalPrice', newTotalPrice)
       })
       setCartItem(itemCount)
       setTotalPrice(newTotalPrice);

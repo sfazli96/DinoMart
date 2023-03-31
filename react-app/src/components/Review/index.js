@@ -13,7 +13,7 @@ const Reviews = () => {
     const id = useParams()
     // console.log(id, 'id')
     const ID = parseInt(id.id)
-    console.log('id', ID)
+    // console.log('id', ID)
     const user = useSelector(state => state.session?.user)
     const userId = user?.id
     const reviewsObj = useSelector(state => state.review?.reviews || {})
