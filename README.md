@@ -38,7 +38,7 @@ To check out the live version of this website, simple follow this link: https://
 ![image](https://user-images.githubusercontent.com/43709736/229164649-264fbbbc-5d75-4aa0-b6be-cb8f35f7d07e.png)
 
 ## Read/Edit/Delete Shopping Cart
-(add picture here)
+![image](https://user-images.githubusercontent.com/43709736/229241152-b07c99ed-e81c-4fd6-9aa7-ad7416a1e41d.png)
 
 ## Extra page (404 error page):
 ![image](https://user-images.githubusercontent.com/43709736/229164782-f1375039-7e6e-4bda-9c18-8238954acf01.png)
