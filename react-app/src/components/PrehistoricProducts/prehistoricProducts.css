@@ -72,3 +72,35 @@
     background-color: #282c34;
     color: white;
   }
+
+  @media only screen and (min-width: 1025px) {
+    .banner-container {
+        height: 100%;
+    }
+    .banner-image {
+        width: 50%;
+        margin-bottom: 0;
+    }
+}
+
+  @media only screen and (max-width:780px) {
+    .root-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .banner-container {
+        flex-direction: column;
+    }
+
+    .banner-image {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+  }
+
+
+  @media screen and (min-width: 769px) and (max-width: 1024px){
+    .root-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+  }

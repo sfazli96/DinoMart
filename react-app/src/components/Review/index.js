@@ -93,9 +93,22 @@ const Reviews = () => {
         const date = new Date(time)
         const options = {
           year:'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric',
-          timeZoneName: 'short'
+          // timeZoneName: 'short'
         }
-        return date.toLocaleString('en-US', options)
+        const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        const est = date.toLocaleString('en-US', { ...options, timeZone: 'America/New_York' });
+        const pst = date.toLocaleString('en-US', { ...options, timeZone: 'America/Los_Angeles' });
+        const cst = date.toLocaleString('en-US', { ...options, timeZone: 'America/Chicago' });
+        if (timeZone === 'America/New_York') {
+          return `${est} EST`;
+        } else if (timeZone === 'America/Los_Angeles') {
+          return `${pst} PST`;
+        } else if (timeZone === 'America/Chicago') {
+          return `${cst} CST`;
+        } else {
+          return `${est} EST`;
+        }
+        // return date.toLocaleString('en-US', options)
     }
     let users_id;
     {reviews.map(({ user_id }) => {
