@@ -5,18 +5,18 @@
     align-items: center;
     margin-bottom: 20px;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid white;
     /* overflow-x: auto; */
     /* width: 100%; */
 }
 
 div .checkout-button {
     padding: 10px 20px;
-    background-color: #FFFFFF;
+    background-color: white;
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
     transition: all 0.2s ease-in-out;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid white;
     cursor: pointer;
     font-size: 14px;
     border-radius: 3.5px;
@@ -53,11 +53,11 @@ div .checkout-button:hover {
 
 .delete-cart-button {
     padding: 10px 20px;
-    background-color: #FFFFFF;
+    background-color: white;
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
     transition: all 0.2s ease-in-out;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid white;
     cursor: pointer;
     font-size: 14px;
     border-radius: 3.5px;
