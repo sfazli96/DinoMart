@@ -1,33 +1,20 @@
 from flask import Blueprint, jsonify, request
-import datetime
 from app.models import Booking, User, db
 from flask_login import login_required, current_user
 from app.forms import BookingForm
 
 booking_routes = Blueprint('bookings', __name__)
 
+@booking_routes.route('/user/<int:user_id>')
+def get_user_bookings(user_id):
+    user = User.query.get(user_id)
+    print('user', user)
+    bookings = Booking.query.filter_by(user_id=user_id).all()
+    print('bookings', bookings)
 
-@booking_routes.route('/users/<int:user_id>', methods=['POST'])
-# @login_required
-def create_bookings(user_id):
-    user_booking = User.query.get(user_id)
-    print('user', user_booking)
+    if user is None:
+        return {'message': 'User not found'}, 404
 
-    form = BookingForm()
-    print('FORM', form)
+    booking_list = [booking.to_dict() for booking in bookings]
 
-    if form.validate_on_submit():
-        booking = Booking(
-            name = form.name.data,
-            type = form.type.data,
-            user = user_booking,
-            image_url = form.image_url.data,
-            color = form.color.data,
-            weight = form.weight.data,
-            birthday = form.birthday.data
-        )
-
-        db.session.add(booking)
-        db.session.commit()
-
-    return jsonify({'message': 'Booking created successfully'})
+    return {'bookings': booking_list}
