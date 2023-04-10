@@ -10,15 +10,13 @@ booking_routes = Blueprint('bookings', __name__)
 @login_required
 def get_user_bookings(user_id):
     user = User.query.get(user_id)
-    print('user', user)
+    # print('user', user)
     bookings = Booking.query.filter(Booking.user_id == user_id).all()
-    print('bookings', bookings)
+    # print('bookings', bookings)
 
     if user is None:
         return {'message': 'User not found'}, 404
-
     booking_list = [booking.to_dict() for booking in bookings]
-
     return jsonify(bookings=booking_list)
 
 
@@ -27,7 +25,7 @@ def get_user_bookings(user_id):
 def create_booking(user_id):
     if current_user.id == user_id:
         booking_data = request.get_json()
-        print('booking---------', booking_data)
+        # print('booking---------', booking_data)
         birthday = datetime.strptime(booking_data['birthday'], '%Y-%m-%d')
         booking = Booking(
             name=booking_data['name'],
@@ -46,3 +44,18 @@ def create_booking(user_id):
         return {"message": "Bad information, Please try again"}
 
 
+@booking_routes.route('/<int:booking_id>', methods=['DELETE'])
+@login_required
+def delete_booking(booking_id):
+    booking = Booking.query.get(booking_id)
+    print('BOOKING', booking)
+    if not booking:
+        return "Booking not found", 404
+
+    if current_user.id != booking.user_id:
+        return "Unauthorized", 401
+
+    db.session.delete(booking)
+    db.session.commit()
+
+    return {"message": "Booking deleted successfully"}
