@@ -29,4 +29,18 @@ def get_favorites(user_id):
     print('FAV---------', favorites)
     fav_dict = [favorite.to_dict() for favorite in favorites]
     print('DICT----------', fav_dict)
-    return fav_dict
+    return jsonify(fav_dict)
+
+
+@favorite_routes.route('/<int:id>', methods=['DELETE'])
+def delete_favorite(id):
+    favorite = Favorite.query.filter_by(id = id).first()
+    print('FAVOR', favorite)
+    if favorite:
+        db.session.delete(favorite)
+        db.session.commit()
+        return {"message": "Favorite deleted successfully"}
+    else:
+        return {"error": "Favorite not found"}, 404
+
+    
