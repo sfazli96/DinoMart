@@ -12,7 +12,7 @@ import Footer from "./components/Footer";
 import { ThemeProvider } from 'react-hook-theme';
 import Bookings from "./components/Bookings";
 import Search from "./components/Search";
-
+import UserBookings from "./components/UserBookings";
 
 
 function App() {
@@ -42,14 +42,17 @@ function App() {
           <Route exact path="/">
             <AllProducts />
           </Route>
-          <Route exact path= '/products/:id'>
+          <Route exact path = '/products/:id'>
             <SinglePrehistoricProduct />
           </Route>
-          <Route exact path= '/cart'>
+          <Route exact path = '/cart'>
             <Cart />
           </Route>
-          <Route exact path= '/bookings'>
+          <Route exact path = '/bookings'>
             <Bookings />
+          </Route>
+          <Route exact path = '/myBookings'>
+            <UserBookings />
           </Route>
           <Route exact path='/search'>
             <Search />

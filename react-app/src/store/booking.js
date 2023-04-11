@@ -34,10 +34,10 @@ export const getUserBooking = (user_id) => async (dispatch) => {
     }
   };
 
-export const addBookings = (user_id) => async (dispatch) => {
+export const addBookings = (user_id, bookingInfo) => async (dispatch) => {
     const response = await fetch(`/api/bookings/user/${user_id}/bookings`, {
         method: 'POST',
-        body: JSON.stringify(user_id)
+        body: JSON.stringify(bookingInfo)
     })
     if (response.ok) {
         const booking = await response.json()
