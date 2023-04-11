@@ -10,6 +10,8 @@ import SinglePrehistoricProduct from "./components/SinglePrehistoricProduct";
 import Cart from "./components/Cart";
 import Footer from "./components/Footer";
 import { ThemeProvider } from 'react-hook-theme';
+import Bookings from "./components/Bookings";
+
 
 
 function App() {
@@ -44,6 +46,9 @@ function App() {
           </Route>
           <Route exact path= '/cart'>
             <Cart />
+          </Route>
+          <Route exact path= '/bookings'>
+            <Bookings />
           </Route>
           <Route path="*">
             <NotFound />

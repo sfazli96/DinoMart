@@ -49,11 +49,21 @@ function ProfileButton({ user }) {
         <i className="fas fa-shopping-cart" />
 			</NavLink>
     </div>
+    {/* <div className="booking-icon">
+      <NavLink exact to={`/bookings`} className='icon'>
+        Booking
+      </NavLink>
+    </div> */}
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
             <div>{user.username}</div>
             <div>{user.email}</div>
+            <div className="booking-icon">
+            <NavLink exact to={`/bookings`} className='icon'>
+              Create a Booking
+            </NavLink>
+          </div>
             <div>
               <button className="logoutbutton" onClick={handleLogout}>Log Out</button>
             </div>

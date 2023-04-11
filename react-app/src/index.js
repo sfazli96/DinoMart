@@ -9,6 +9,7 @@ import * as sessionActions from "./store/session";
 import * as productActions from "./store/product";
 import * as reviewActions from "./store/reviews";
 import * as cartActions from "./store/cart"
+import * as bookingActions from "./store/booking"
 
 import App from "./App";
 
@@ -22,6 +23,7 @@ if (process.env.NODE_ENV !== "production") {
 	window.productActions = productActions;
 	window.reviewActions = reviewActions;
 	window.cartActions = cartActions;
+	window.bookingActions = bookingActions;
 }
 
 // Wrap the application with the Modal provider and render the Modal component
