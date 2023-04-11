@@ -54,6 +54,9 @@ function App() {
           <Route exact path = '/myBookings'>
             <UserBookings />
           </Route>
+          {/* <Route exact path = '/favorites'>
+            <Favorites />
+          </Route> */}
           <Route exact path='/search'>
             <Search />
           </Route>
