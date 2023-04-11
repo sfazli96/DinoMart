@@ -37,7 +37,16 @@ export const getUserBooking = (user_id) => async (dispatch) => {
 export const addBookings = (user_id, bookingInfo) => async (dispatch) => {
     const response = await fetch(`/api/bookings/user/${user_id}/bookings`, {
         method: 'POST',
-        body: JSON.stringify(bookingInfo)
+        // body: JSON.stringify(bookingInfo)
+        body: JSON.stringify({
+            name: bookingInfo.name,
+            type: bookingInfo.type,
+            user_id: bookingInfo.user_id,
+            image_url: bookingInfo.image_url,
+            color: bookingInfo.color,
+            weight: bookingInfo.weight,
+            birthday: bookingInfo.birthday
+        })
     })
     if (response.ok) {
         const booking = await response.json()
@@ -79,22 +88,23 @@ export const bookingsReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_BOOKINGS:
-            if (!action.payload || !action.payload.booking) return state
-            newState = { ...state }
-            let copy = {}
-            action.payload.booking.forEach(booking => {
-                console.log('booking', booking)
-                console.log('action', action.payload)
-                copy[booking.id] = booking
+            if (!action.payload) return state;
+            const bookings = action.payload.bookings;
+            const allBookings = {};
+            bookings.forEach((booking) => {
+                allBookings[booking.id] = booking;
             });
-            newState.allBookings = copy
-            return newState
-        case ADD_BOOKINGS:
-            newState = { ...state }
-            let copy2 = { ...newState.allBookings }
-            copy[action.payload.id] = action.payload
-            newState.allBookings = copy2
-            return newState;
+            return { ...state, allBookings };
+
+            case ADD_BOOKINGS:
+                return {
+                  ...state,
+                  allBookings: {
+                    ...state.allBookings,
+                    [action.payload.id]: action.payload,
+                  },
+                };
+
         case EDIT_BOOKINGS:
             const updatedBookings = { ...state.singleBooking }
             updatedBookings[action.payload.id] = action.payload

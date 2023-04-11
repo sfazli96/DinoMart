@@ -60,10 +60,15 @@ function ProfileButton({ user }) {
             <div>{user.username}</div>
             <div>{user.email}</div>
             <div className="booking-icon">
-            <NavLink exact to={`/bookings`} className='icon'>
-              Create a Booking
-            </NavLink>
-          </div>
+              <NavLink exact to={`/bookings`} className='icon'>
+                Create a Booking
+              </NavLink>
+            </div>
+            <div className="my-bookings">
+              <NavLink exact to={`/myBookings`} className='icon'>
+                My Bookings
+              </NavLink>
+            </div>
             <div>
               <button className="logoutbutton" onClick={handleLogout}>Log Out</button>
             </div>

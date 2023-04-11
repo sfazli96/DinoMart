@@ -19,7 +19,7 @@ function Bookings() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const bookingInfo = {
@@ -32,7 +32,7 @@ function Bookings() {
       user_id: user.id,
     };
 
-    const newBooking = await dispatch(addBookings(parseInt(user.id), bookingInfo));
+    const newBooking = dispatch(addBookings(parseInt(user.id), bookingInfo));
 
     if (newBooking) {
       setName('');
