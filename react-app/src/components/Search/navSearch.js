@@ -12,7 +12,9 @@ const NavSearch = () => {
 
     const handleSearch = async () => {
       dispatch(searchThunk(searchTerm))
-      .then(() => history.push(`/search`))
+      .then(() =>
+        history.push(`/search`)
+      )
     };
 
     const enterKey = (e) => {
