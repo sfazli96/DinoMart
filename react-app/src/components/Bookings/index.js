@@ -19,6 +19,13 @@ function Bookings() {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  if (!user) {
+    return (
+        <div>
+            <h1>Sign in to create a booking</h1>
+        </div>
+    )
+}
   const handleSubmit = (e) => {
     e.preventDefault();
 

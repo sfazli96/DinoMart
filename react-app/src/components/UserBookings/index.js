@@ -31,6 +31,14 @@ function UserBookings() {
         return null
     }
 
+    if (!user) {
+        return (
+            <div>
+                <h1>Sign in to see your bookings</h1>
+            </div>
+        )
+    }
+
       return (
         <div>
             <h1>TEST</h1>

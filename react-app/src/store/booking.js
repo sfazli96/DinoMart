@@ -95,6 +95,13 @@ export const bookingsReducer = (state = initialState, action) => {
                 allBookings[booking.id] = booking;
             });
             return { ...state, allBookings };
+            // newState = { ...state }
+            // let copy = {}
+            // action.payload.bookings.forEach(booking => {
+            //     copy[booking.id] = booking
+            // });
+            // newState.allBookings = copy
+            // return newState
 
             case ADD_BOOKINGS:
                 return {
