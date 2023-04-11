@@ -24,7 +24,7 @@ class Booking(db.Model):
         return {
             'id': self.id,
             'name': self.name,
-            'description': self.type,
+            'type': self.type,
             'user_id': self.user_id,
             'image_url': self.image_url,
             'color': self.color,

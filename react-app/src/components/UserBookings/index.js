@@ -10,11 +10,13 @@ import { useHistory } from 'react-router-dom'
 function UserBookings() {
     const {user_id} = useParams()
     const user = useSelector(state => state.session.user);
-    const booking = useSelector(state => state.bookingsReducer.singleBooking)
-    console.log('booking---', booking)
+    const booking = useSelector(state => state.bookingsReducer.allBookings)
+    // console.log('booking---', booking)
     const bookingObj = Object.values(booking)
-    console.log('bookingOBJ---', bookingObj)
+    // console.log('bookingOBJ---', bookingObj)
     const dispatch = useDispatch();
+    const [bookings, setBookings] = useState(bookingObj);
+
 
     useEffect(() => {
         if (user) {
@@ -22,10 +24,27 @@ function UserBookings() {
           };
       }, [dispatch, user]);
 
+    // useEffect(() => {
+    //     if (bookingObj.length > 0) {
+    //         dispatch(getUserBooking(user.id))
+    //     }
+    // }, [dispatch, bookingObj.length, user?.id])
+
     const handleDeleteBooking = (e, id) => {
         e.preventDefault()
         dispatch(deleteBooking(id))
+        setBookings(bookings.filter(booking => booking.id !== id));
+
     }
+
+    // if (!bookingObj.length) {
+    //     return (
+    //         <div>
+    //             <h2>You don't have any bookings</h2>
+    //         </div>
+    //     )
+    // }
+
 
     if (!booking) {
         return null
@@ -41,16 +60,16 @@ function UserBookings() {
 
       return (
         <div>
-            <h1>TEST</h1>
             <h2>Bookings</h2>
             {bookingObj.map((booking) => {
                 return (
                     <div key={booking.id}>
-                        <h3>{booking.name}</h3>
-                        <p>{booking.type}</p>
-                        <p>{booking.color}</p>
-                        <p>{booking.weight}</p>
-                        <p>{booking.birthday}</p>
+                        <h3>Name: {booking.name}</h3>
+                        <p>Type: {booking.type}</p>
+                        <p>Color: {booking.color}</p>
+                        <p>Weight: {booking.weight}lb</p>
+                        <p>Birthday: {booking.birthday}</p>
+                        {/* <img className='booking-image' src={booking.image_url}></img> */}
                         <button onClick={(e) => handleDeleteBooking(e, booking.id)}>Delete</button>
                     </div>
                 )

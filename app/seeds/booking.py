@@ -10,10 +10,10 @@ def seed_booking():
     marnie = User.query.filter_by(username='marnie').first()
     bobbie = User.query.filter_by(username='bobbie').first()
 
-    booking1 = Booking(name='Jurassic World', type='grooming', user=demo,
+    booking1 = Booking(name='Jurassic World', type='Stegosaurus', user=demo,
                     image_url='https://static.wikia.nocookie.net/jurassicworld-evolution/images/1/1b/Stegosaurus_JWE2_Profile.png/revision/latest?cb=20220613214856', color='brown',
                     weight=1000, birthday=datetime(2010, 1, 1))
-    booking2 = Booking(name='Jungle', type='bath', user=marnie,
+    booking2 = Booking(name='Jungle', type='tyrannosaurus-rex', user=marnie,
                     image_url='https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2021-04/210415-tyrannosaurus-rex-mn-1550-9612a9.jpg', color='white',
                     weight=1000, birthday=datetime(2015, 1, 1))
     booking3 = Booking(name='Rex', type='grooming', user=bobbie,

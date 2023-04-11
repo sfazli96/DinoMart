@@ -35,6 +35,8 @@ export const getUserBooking = (user_id) => async (dispatch) => {
   };
 
 export const addBookings = (user_id, bookingInfo) => async (dispatch) => {
+    console.log('user_id', user_id)
+    console.log('INFO_-----', bookingInfo)
     const response = await fetch(`/api/bookings/user/${user_id}/bookings`, {
         method: 'POST',
         // body: JSON.stringify(bookingInfo)
@@ -117,9 +119,10 @@ export const bookingsReducer = (state = initialState, action) => {
             updatedBookings[action.payload.id] = action.payload
             return { ...state, singleBooking: updatedBookings }
         case DELETE_BOOKINGS:
-            newState = { ...state, allBookings: { ...state.allBookings } }
-            delete newState.allBookings[action.payload.id]
-            return newState
+            const newAllBookings = { ...state.allBookings };
+            delete newAllBookings[action.payload.id];
+            return { ...state, allBookings: newAllBookings };
+
         default:
             return state
     }
