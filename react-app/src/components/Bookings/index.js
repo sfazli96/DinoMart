@@ -32,7 +32,7 @@ function Bookings() {
       user_id: user.id,
     };
 
-    const newBooking = await dispatch(addBookings(bookingInfo));
+    const newBooking = await dispatch(addBookings(parseInt(user.id), bookingInfo));
 
     if (newBooking) {
       setName('');
