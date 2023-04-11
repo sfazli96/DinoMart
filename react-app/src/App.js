@@ -11,6 +11,7 @@ import Cart from "./components/Cart";
 import Footer from "./components/Footer";
 import { ThemeProvider } from 'react-hook-theme';
 import Bookings from "./components/Bookings";
+import Search from "./components/Search";
 
 
 
@@ -49,6 +50,9 @@ function App() {
           </Route>
           <Route exact path= '/bookings'>
             <Bookings />
+          </Route>
+          <Route exact path='/search'>
+            <Search />
           </Route>
           <Route path="*">
             <NotFound />

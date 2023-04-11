@@ -6,13 +6,16 @@ import products from './product';
 import { reviewsReducer } from './reviews'
 import { cartReducer } from './cart'
 import { bookingsReducer } from './booking';
+import { searchReducer } from './search';
+
 
 const rootReducer = combineReducers({
   session,
   products,
   review: reviewsReducer,
   cartReducer,
-  bookingsReducer
+  bookingsReducer,
+  searchReducer
 });
 
 

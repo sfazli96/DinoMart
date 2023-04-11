@@ -5,6 +5,8 @@ import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import { Toggle } from 'react-hook-theme';
 import 'react-hook-theme/dist/styles/style.css';
+import NavSearch from '../Search/navSearch';
+
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
 
@@ -15,6 +17,9 @@ function Navigation({ isLoaded }){
 			<div className='Navbar'>
 				<div>
 					<NavLink className='home-page' exact to="/">Sam-Mart</NavLink>
+				</div>
+				<div className="nav-search">
+					<NavSearch  />
 				</div>
 				{isLoaded && (
 					<div>
