@@ -64,31 +64,36 @@ const initialState = {
 }
 
 export const favoriteReducer = (state = initialState, action) => {
-    let newState;
+    let newState = {...state};
     switch (action.type) {
         case LOAD_FAVORITES:
-            newState = {...state, favorites: {},};
-            if (action.payload.Favorites) {
-                action.payload.favorites.forEach((fav) => {
-                newState.favorites[fav.id] = fav;
-                });
-            }
-            return newState;
+            let copy = {}
+           action.payload.forEach((favorite) => {
+                console.log('action', action.payload)
+                copy[favorite.id] = favorite
+            })
+            newState.favorites = copy
+            return newState
         case ADD_FAVORITE:
-            newState = { ...state };
-            if (action.payload.Favorite) {
-                newState.favorites[action.payload.favorite.id] = action.payload.favorite;
-            }
-            return newState;
-            // newState.favorites[action.payload.id] = action.payload
-            // return newState
+            // newState = { ...state };
+            // if (action.payload.Favorite) {
+            //     newState.favorites[action.payload.id] = action.payload;
+            // }
+            // return newState;
+            newState = {...state, favorites: {...state.favorites}}
+            newState.favorites[action.payload.id] = action.payload
+            return newState
         case REMOVE_FAVORITE:
-            newState = { ...state };
-            if (newState.favorites[action.payload.id]) {
-                delete newState.favorites[action.payload.id];
-            }
-            return newState;
-
+            // newState = { ...state };
+            // if (newState.favorites[action.payload.id]) {
+            //     delete newState.favorites[action.payload.id];
+            // }
+            // return newState;
+            newState = {...state}
+            let copy2 = {...newState.favorites}
+            delete copy2[action.payload.product_id]
+            newState.favorites = copy2
+            return newState
         default:
             newState = {...state}
             return newState

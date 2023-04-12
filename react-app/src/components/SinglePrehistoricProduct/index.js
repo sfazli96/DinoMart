@@ -16,11 +16,13 @@ function SinglePrehistoricProduct() {
     // const ID = parseInt(id.id)
     const history = useHistory()
     const productDetail = useSelector(state => state.products.singleProduct)
-    // console.log("prod", productDetail)
+    console.log("prod", productDetail)
     const user = useSelector(state => state.session.user)
     const userId = user?.id
     const favoriteDetail = useSelector(state => state.favoriteReducer?.favorites || [] || {});
-    console.log(favoriteDetail, 'FAVORITE----')
+    // console.log(favoriteDetail, 'FAVORITE----')
+    const favoriteObj = Object.values(favoriteDetail)
+    console.log('favoriteObj', favoriteObj)
     const [isFavorite, setIsFavorite] = useState(false);
     const [errors, setErrors] = useState([])
 
@@ -29,19 +31,12 @@ function SinglePrehistoricProduct() {
         if (user) {
             dispatch(readFavorites(userId))
         }
-        if (favoriteDetail.id === productDetail.id) {
+        if (favoriteObj.find(favorite => favorite.product_id === productDetail.id && userId === favorite.user_id)) {
             setIsFavorite(true)
-        } 
-    }, [dispatch, id.id, user, isFavorite, productDetail.id])
-
-    // useEffect(() => {
-    //     if (favoriteDetail && Array.isArray(favoriteDetail) && favoriteDetail.some(favorite => favorite.id === productDetail.id)) {
-    //       setIsFavorite(true);
-    //     } else {
-    //       setIsFavorite(false);
-    //     }
-    //   }, [favoriteDetail, productDetail.id]);
-
+        } else {
+            setIsFavorite(false)
+        }
+    }, [dispatch, id.id, user, productDetail.id])
 
     if (Object.values(productDetail).length === 0) {
         return (
@@ -67,7 +62,7 @@ function SinglePrehistoricProduct() {
     const handleClick = () => {
         if (user && productDetail) {
           if (isFavorite) {
-            dispatch(removeFavorites(userId, productDetail.id))
+            dispatch(removeFavorites(productDetail.id))
               .then(() => setIsFavorite(false));
           } else {
             dispatch(addFavorites(userId, productDetail.id))

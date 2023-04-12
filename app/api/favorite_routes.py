@@ -16,7 +16,7 @@ def create_favorites():
         product_id = request_data["product_id"],
         created_at = created_at
     )
-    print('FAV-----------------------', favorite)
+    # print('FAV-----------------------', favorite)
     db.session.add(favorite)
     db.session.commit()
 
@@ -26,21 +26,20 @@ def create_favorites():
 @favorite_routes.route('/<int:user_id>', methods=['GET'])
 def get_favorites(user_id):
     favorites = Favorite.query.filter_by(user_id = user_id).all()
-    print('FAV---------', favorites)
+    # print('FAV---------', favorites)
     fav_dict = [favorite.to_dict() for favorite in favorites]
-    print('DICT----------', fav_dict)
+    # print('DICT----------', fav_dict)
     return jsonify(fav_dict)
 
 
 @favorite_routes.route('/<int:id>', methods=['DELETE'])
 def delete_favorite(id):
-    favorite = Favorite.query.filter_by(id = id).first()
-    print('FAVOR', favorite)
+    favorite = Favorite.query.filter_by(product_id = id).first()
+    # favorite = Favorite.query.get(id)
+    # print('FAVOR', favorite.to_dict())
     if favorite:
         db.session.delete(favorite)
         db.session.commit()
         return {"message": "Favorite deleted successfully"}
     else:
         return {"error": "Favorite not found"}, 404
-
-    
