@@ -13,6 +13,7 @@ import { ThemeProvider } from 'react-hook-theme';
 import Bookings from "./components/Bookings";
 import Search from "./components/Search";
 import UserBookings from "./components/UserBookings";
+import UserFavorites from "./components/MyFavorites";
 
 
 function App() {
@@ -54,9 +55,9 @@ function App() {
           <Route exact path = '/myBookings'>
             <UserBookings />
           </Route>
-          {/* <Route exact path = '/favorites'>
-            <Favorites />
-          </Route> */}
+          <Route exact path = '/myFavorites'>
+            <UserFavorites />
+          </Route>
           <Route exact path='/search'>
             <Search />
           </Route>
