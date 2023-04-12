@@ -27,17 +27,20 @@ function SinglePrehistoricProduct() {
     useEffect(() => {
         dispatch(loadOnePrehistoricProduct(id.id))
         if (user) {
-            dispatch(readFavorites(user?.id))
+            dispatch(readFavorites(userId))
         }
-    }, [dispatch, id.id, user])
+        if (favoriteDetail.id === productDetail.id) {
+            setIsFavorite(true)
+        } 
+    }, [dispatch, id.id, user, isFavorite, productDetail.id])
 
-    useEffect(() => {
-        if (favoriteDetail && Array.isArray(favoriteDetail) && favoriteDetail.some(favorite => favorite.id === productDetail.id)) {
-            setIsFavorite(true);
-        } else {
-          setIsFavorite(false);
-        }
-      }, [favoriteDetail, productDetail.id]);
+    // useEffect(() => {
+    //     if (favoriteDetail && Array.isArray(favoriteDetail) && favoriteDetail.some(favorite => favorite.id === productDetail.id)) {
+    //       setIsFavorite(true);
+    //     } else {
+    //       setIsFavorite(false);
+    //     }
+    //   }, [favoriteDetail, productDetail.id]);
 
 
     if (Object.values(productDetail).length === 0) {
@@ -61,30 +64,6 @@ function SinglePrehistoricProduct() {
     //     return image
     // }
     // console.log('MULTI', multiImage())
-    // const handleClick = () => {
-    //     setErrors([])
-    //     const productId = productDetail.id
-    //     if (isFavorite) {
-    //         dispatch(removeFavorites(productId))
-    //         .then(() => {
-    //             dispatch(readFavorites(parseInt(userId)))
-    //         })
-    //         .catch(async (res) => {
-    //             const data = await res.json()
-    //             if (data && data.errors) setErrors(data.errors)
-    //         })
-    //     } else {
-    //         return dispatch(addFavorites({userId, productId}))
-    //         .then(() => {
-    //             dispatch(readFavorites(parseInt(userId)))
-    //         })
-    //         .catch(async (res) => {
-    //             const data = await res.json()
-    //             if (data && data.errors) setErrors(data.errors)
-    //         })
-    //     }
-
-    // }
     const handleClick = () => {
         if (user && productDetail) {
           if (isFavorite) {
@@ -96,12 +75,6 @@ function SinglePrehistoricProduct() {
           }
         }
       };
-
-    // const handleDeleteFavorite = (id) => {
-    //     dispatch(removeFavorites(id)).then(() => {
-    //         dispatch(readFavorites(id))
-    //     })
-    // }
 
     const cartButton = () => {
         dispatch(thunkAddToCart(user?.id, id.id))

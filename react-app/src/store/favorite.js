@@ -67,23 +67,21 @@ export const favoriteReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_FAVORITES:
-            newState = { ...state }
-            let allFavoritesCopy = {}
+            newState = {...state, favorites: {},};
             if (action.payload.Favorites) {
-                action.payload.Favorites.forEach(fav => {
-                    allFavoritesCopy[fav.id] = fav
-                });
-            }
-            newState.favorites = allFavoritesCopy
-            return newState
-        case ADD_FAVORITE:
-            newState = { ...state };
-            if (action.payload.Favorites) {
-                action.payload.Favorites.forEach((element) => {
-                    newState.favorites[element.id] = element;
+                action.payload.favorites.forEach((fav) => {
+                newState.favorites[fav.id] = fav;
                 });
             }
             return newState;
+        case ADD_FAVORITE:
+            newState = { ...state };
+            if (action.payload.Favorite) {
+                newState.favorites[action.payload.favorite.id] = action.payload.favorite;
+            }
+            return newState;
+            // newState.favorites[action.payload.id] = action.payload
+            // return newState
         case REMOVE_FAVORITE:
             newState = { ...state };
             if (newState.favorites[action.payload.id]) {
