@@ -96,18 +96,19 @@ const Reviews = () => {
       // timeZoneName: 'short'
     }
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const est = date.toLocaleString('en-US', { ...options, timeZone: 'America/New_York' });
-    const pst = date.toLocaleString('en-US', { ...options, timeZone: 'America/Los_Angeles' });
-    const cst = date.toLocaleString('en-US', { ...options, timeZone: 'America/Chicago' });
-    if (timeZone === 'America/New_York') {
-      return `${est} EST`;
-    } else if (timeZone === 'America/Los_Angeles') {
-      return `${pst} PST`;
-    } else if (timeZone === 'America/Chicago') {
-      return `${cst} CST`;
-    } else {
-      return `${est} EST`;
-    }
+    const pst = date.toLocaleString('en-US', { ...options, timeZone: 'America/Los_Angeles' }) + ' PST;';
+    const est = date.toLocaleString('en-US', { ...options, timeZone: 'America/New_York' }) + ' EST;';
+    const cst = date.toLocaleString('en-US', { ...options, timeZone: 'America/Chicago' }) + ' CST';
+    return `${pst}\n${est}\n${cst}`
+    // if (timeZone === 'America/New_York') {
+    //   return `${est} EST`;
+    // } else if (timeZone === 'America/Los_Angeles') {
+    //   return `${pst} PST`;
+    // } else if (timeZone === 'America/Chicago') {
+    //   return `${cst} CST`;
+    // } else {
+    //   return `${est} EST`;
+    // }
     // return date.toLocaleString('en-US', options)
   }
   let users_id;

@@ -19,18 +19,19 @@ const Search = () => {
 
   return (
     <div className='search-root'>
-      <input type="text"
+      {/* <input type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-      />
+      /> */}
       {searchObj.length ? (
         searchObj.map((product) => (
-          <div key={product.id}>
-            <Link to={`/products/${product.id}`}>
+          <div className='search-products' key={product.id}>
+            <Link className='search-product-name' to={`/products/${product.id}`}>
               <h3>{product.name}</h3>
             </Link>
-            <p>{product.description}</p>
-            <p>{product.price}</p>
+            <p className='search-product-description'>{product.description}</p>
+            <p className='search-product-price'>${product.price}</p>
+            <p className='search-product-size'>{product.size}</p>
           </div>
         ))
       ) : (

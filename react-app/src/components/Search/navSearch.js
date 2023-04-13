@@ -9,12 +9,14 @@ const NavSearch = () => {
   const history = useHistory();
   const [searchTerm, setSearchTerm] = useState('');
 
-    const handleSearch = async () => {
-      dispatch(searchThunk(searchTerm))
-      .then(() =>
+  const handleSearch = async () => {
+    if (searchTerm.trim() !== '') {
+      dispatch(searchThunk(searchTerm.trim())).then(() =>
         history.push(`/search`)
-      )
-    };
+      );
+    }
+  };
+
 
     const enterKey = (e) => {
       if (e.key === 'Enter') {
