@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { NavLink, Switch, Route } from 'react-router-dom'
 import { loadBookings, getUserBooking, deleteBooking, addBookings } from '../../store/booking'
 import { useParams } from "react-router-dom";
 import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
 import { useHistory } from 'react-router-dom'
+import './userBookings.css'
+
 
 function UserBookings() {
     const {user_id} = useParams()
@@ -34,7 +35,6 @@ function UserBookings() {
         e.preventDefault()
         dispatch(deleteBooking(id))
         setBookings(bookings.filter(booking => booking.id !== id));
-
     }
 
     // if (!bookingObj.length) {
@@ -64,12 +64,12 @@ function UserBookings() {
             {bookingObj.map((booking) => {
                 return (
                     <div key={booking.id}>
-                        <h3>Name: {booking.name}</h3>
+                        <h3 className='booking-name'>Name: {booking.name}</h3>
                         <p>Type: {booking.type}</p>
                         <p>Color: {booking.color}</p>
                         <p>Weight: {booking.weight}lb</p>
                         <p>Birthday: {booking.birthday}</p>
-                        {/* <img className='booking-image' src={booking.image_url}></img> */}
+                        <img className='booking-image' src={booking.image_url}></img>
                         <button onClick={(e) => handleDeleteBooking(e, booking.id)}>Delete</button>
                     </div>
                 )

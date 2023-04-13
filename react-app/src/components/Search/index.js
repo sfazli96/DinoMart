@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { searchThunk } from '../../store/search';
 import { Link } from 'react-router-dom';
+import './search.css'
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -15,7 +16,7 @@ const Search = () => {
   }, [dispatch, searchTerm]);
 
   return (
-    <div>
+    <div className='search-root'>
       <input type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}

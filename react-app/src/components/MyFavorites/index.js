@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import { useHistory } from 'react-router-dom'
 import { readFavorites, removeFavorites } from '../../store/favorite';
 import { thunkAddToCart } from '../../store/cart';
+import './myFavorite.css'
+
 
 function UserFavorites() {
     const {user_id} = useParams()
@@ -42,7 +44,7 @@ function UserFavorites() {
     }
 
     return (
-        <div>
+        <div className='favorite-root'>
             <h2>Favorites</h2>
             {favoriteObj.map((favorite) => {
                 const product = favorite.product;

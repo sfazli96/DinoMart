@@ -1,3 +1,7 @@
+.root-cart-container {
+  padding-top: 80px;
+}
+
 .cart-product-container {
     display: grid;
     /* flex-direction: row; */

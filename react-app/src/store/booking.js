@@ -29,14 +29,14 @@ export const getUserBooking = (user_id) => async (dispatch) => {
     if (response.ok) {
       const bookingData = await response.json();
       dispatch(loadBookings(bookingData));
-      console.log(bookingData, 'DATA----')
+    //   console.log(bookingData, 'DATA----')
       return bookingData;
     }
   };
 
 export const addBookings = (user_id, bookingInfo) => async (dispatch) => {
-    console.log('user_id', user_id)
-    console.log('INFO_-----', bookingInfo)
+    // console.log('user_id', user_id)
+    // console.log('INFO_-----', bookingInfo)
     const response = await fetch(`/api/bookings/user/${user_id}/bookings`, {
         method: 'POST',
         // body: JSON.stringify(bookingInfo)

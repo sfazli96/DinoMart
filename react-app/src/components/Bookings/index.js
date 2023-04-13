@@ -57,7 +57,7 @@ function Bookings() {
   const colorOptions = ['Black', 'White', 'Brown', 'Gray', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple'];
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='booking-form'>
       <input
         type="text"
         value={name}
