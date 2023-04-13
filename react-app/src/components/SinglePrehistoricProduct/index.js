@@ -16,13 +16,13 @@ function SinglePrehistoricProduct() {
     // const ID = parseInt(id.id)
     const history = useHistory()
     const productDetail = useSelector(state => state.products.singleProduct)
-    console.log("prod", productDetail)
+    // console.log("prod", productDetail)
     const user = useSelector(state => state.session.user)
     const userId = user?.id
     const favoriteDetail = useSelector(state => state.favoriteReducer?.favorites || [] || {});
     // console.log(favoriteDetail, 'FAVORITE----')
     const favoriteObj = Object.values(favoriteDetail)
-    console.log('favoriteObj', favoriteObj)
+    // console.log('favoriteObj', favoriteObj)x
     const [isFavorite, setIsFavorite] = useState(false);
     const [errors, setErrors] = useState([])
 

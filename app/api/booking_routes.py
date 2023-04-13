@@ -48,7 +48,7 @@ def create_booking(user_id):
 @login_required
 def delete_booking(booking_id):
     booking = Booking.query.get(booking_id)
-    print('BOOKING', booking)
+    # print('BOOKING', booking)
     if not booking:
         return "Booking not found", 404
 

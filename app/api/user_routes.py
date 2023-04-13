@@ -31,10 +31,10 @@ def user(id):
 # @login_required
 def create_bookings(user_id):
     user_booking = User.query.get(user_id)
-    print('user', user_booking)
+    # print('user', user_booking)
 
     form = BookingForm()
-    print('FORM', form)
+    # print('FORM', form)
 
     if form.validate_on_submit():
         booking = Booking(
