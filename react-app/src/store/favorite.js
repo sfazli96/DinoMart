@@ -60,29 +60,39 @@ export const removeFavorites = (id) => async (dispatch) => {
 }
 
 const initialState = {
-    favorites: []
+    favorites: {}
 }
 
 export const favoriteReducer = (state = initialState, action) => {
     let newState = {...state};
     switch (action.type) {
+        // case LOAD_FAVORITES:
+        //     let copy = {}
+        //    action.payload.forEach((favorite) => {
+        //         console.log('action', action.payload)
+        //         copy[favorite.id] = favorite
+        //     })
+        //     newState.favorites = copy
+        //     return newState
+        // case ADD_FAVORITE:
+        //     // newState = { ...state };
+        //     // if (action.payload.Favorite) {
+        //     //     newState.favorites[action.payload.id] = action.payload;
+        //     // }
+        //     // return newState;
+        //     newState = {...state, favorites: {...state.favorites}}
+        //     newState.favorites[action.payload.id] = action.payload
+        //     return newState
         case LOAD_FAVORITES:
-            let copy = {}
-           action.payload.forEach((favorite) => {
-                console.log('action', action.payload)
-                copy[favorite.id] = favorite
-            })
-            newState.favorites = copy
-            return newState
+            return {
+                ...state,
+                favorites: [...action.payload]
+            }
         case ADD_FAVORITE:
-            // newState = { ...state };
-            // if (action.payload.Favorite) {
-            //     newState.favorites[action.payload.id] = action.payload;
-            // }
-            // return newState;
-            newState = {...state, favorites: {...state.favorites}}
-            newState.favorites[action.payload.id] = action.payload
-            return newState
+            return {
+                ...state,
+                favorites: [...state.favorites, action.payload]
+            }
         case REMOVE_FAVORITE:
             // newState = { ...state };
             // if (newState.favorites[action.payload.id]) {
