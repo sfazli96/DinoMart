@@ -15,6 +15,7 @@ function Bookings() {
   const dispatch = useDispatch();
   const history = useHistory();
   const [errorMessage, setErrorMessage] = useState('');
+  const [errors, setErrors] = useState([]);
 
   if (!user) {
     return (
@@ -25,7 +26,7 @@ function Bookings() {
 }
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    setErrors([])
     const bookingInfo = {
       name,
       type,
@@ -36,6 +37,37 @@ function Bookings() {
       birthday,
     };
 
+    const selectedBirthday = new Date(birthday)
+    const presentDate = new Date()
+
+    if (name.length === 0 || name.length > 25) {
+      setErrors(errors => [...errors, 'Please enter a valid name (less than 25 characters)'])
+      return
+    }
+    if (weight <= 0 || !weight || weight > 50000) {
+      setErrors(errors => [...errors, 'Please enter a valid price (must be a positive number between 0 and 50000'])
+      return
+    }
+    if (!Number(weight)) {
+      setErrors(errors => [...errors, "Weight must be a number"])
+      return
+    }
+
+    if (selectedBirthday > presentDate) {
+      setErrors(errors => [...errors, 'Please select a date that is not in the future']);
+      return;
+    }
+
+    try {
+      const imageUrlObj = new URL(imageUrl)
+      if (imageUrlObj.protocol !== 'http:' && imageUrlObj.protocol !== 'https:') {
+        setErrors(errors => [...errors, 'Please enter a valid image link (http/https protocol)']);
+        return;
+      }
+    } catch (error) {
+      setErrors(errors => [...errors, 'Please enter a valid image link']);
+      return;
+    }
     const newBooking = dispatch(addBookings(parseInt(user.id), bookingInfo));
 
     if (newBooking) {
@@ -55,6 +87,13 @@ function Bookings() {
 
   return (
     <form onSubmit={handleSubmit} className='booking-form'>
+       <ul className="error-message">
+          {errors.map((error, idx) => (
+          <div key={idx} className="error-text">
+            {error}
+          </div>
+        ))}
+      </ul>
       <input
         type="text"
         value={name}
