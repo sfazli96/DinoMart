@@ -48,7 +48,10 @@ export const addBookings = (user_id, bookingInfo) => async (dispatch) => {
             color: bookingInfo.color,
             weight: bookingInfo.weight,
             birthday: bookingInfo.birthday
-        })
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
     })
     if (response.ok) {
         const booking = await response.json()

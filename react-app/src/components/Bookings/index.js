@@ -32,11 +32,11 @@ function Bookings() {
     const bookingInfo = {
       name,
       type,
+      user_id: user.id,
       image_url: imageUrl,
       color,
       weight,
       birthday,
-      user_id: user.id,
     };
 
     const newBooking = dispatch(addBookings(parseInt(user.id), bookingInfo));
