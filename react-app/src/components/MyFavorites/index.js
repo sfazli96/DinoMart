@@ -37,7 +37,7 @@ function UserFavorites() {
     if (!productDetail) {
         return (
             <div>
-                <h1>Loading...</h1>
+                <h1>Not found</h1>
             </div>
         )
     }
@@ -64,15 +64,10 @@ function UserFavorites() {
             <h2>Favorites</h2>
             {favorites && favorites.map((favorite) => {
                 const product = favorite.product_id;
-                console.log('product', productDetail[product])
-                const productData = productDetail[product]
-                console.log('DATA', productData)
+                console.log('product', product)
                 return (
                     <div key={favorite.id}>
                         <img src={product.image_url} alt={product.name} />
-                        <p>{productDetail[product]?.name}</p>
-                        <p>{productDetail[product]?.price}</p>
-                        <p>{productDetail[product]?.size}</p>
                         <button onClick={() => handleAddToCart(id)}>Add to cart</button>
                         <button onClick={() => dispatch(removeFavorites(favorite.id))}>Remove from favorites</button>
                     </div>

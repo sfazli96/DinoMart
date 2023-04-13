@@ -5,10 +5,12 @@ import { Link } from 'react-router-dom';
 import './search.css'
 
 const Search = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const searchResult = useSelector(state => state.searchReducer);
   const dispatch = useDispatch();
-  const searchResultDetails = Object.values(searchResult)
+  const searchDetails = useSelector(state => state.searchReducer);
+  const searchObj = Object.values(searchDetails)
+  const searchKeys = Object.keys(searchDetails)
+  const [searchTerm, setSearchTerm] = useState('');
+
   useEffect(() => {
     if (searchTerm) {
       dispatch(searchThunk(searchTerm));
@@ -21,8 +23,8 @@ const Search = () => {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      {searchResult && Object.keys(searchResult).length > 0 ? (
-        searchResultDetails.map((product) => (
+      {searchObj.length ? (
+        searchObj.map((product) => (
           <div key={product.id}>
             <Link to={`/products/${product.id}`}>
               <h3>{product.name}</h3>
@@ -32,7 +34,7 @@ const Search = () => {
           </div>
         ))
       ) : (
-        <p>No search results found.</p>
+        searchKeys ? <p>No search results found.</p> : null
       )}
     </div>
   );

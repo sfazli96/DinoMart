@@ -5,10 +5,9 @@ import { useHistory } from 'react-router-dom';
 import "../Navigation/Navigation.css"
 
 const NavSearch = () => {
-    const [searchTerm, setSearchTerm] = useState('');
-    let history = useHistory();
-    // const searchResult = useSelector(state => state.searchReducer);
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const [searchTerm, setSearchTerm] = useState('');
 
     const handleSearch = async () => {
       dispatch(searchThunk(searchTerm))
@@ -24,9 +23,13 @@ const NavSearch = () => {
     }
     return (
       <div className="search-bar">
-        <input type="input" className="inputbar" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} onKeyDown={enterKey}/>
-        <button className="searchbutton"onClick={handleSearch}><i class="fa-solid fa-magnifying-glass"></i></button>
-
+        <input type="input"
+          className="input-border"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyDown={enterKey}
+        />
+        <button className="search-button" onClick={handleSearch}></button>
       </div>
     );
   };

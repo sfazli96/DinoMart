@@ -1,11 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, Switch, Route } from 'react-router-dom';
-import { loadBookings, getUserBooking, deleteBooking, addBookings } from '../../store/booking';
+import { addBookings } from '../../store/booking';
 import './bookings.css';
-import { useParams } from 'react-router-dom';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
 import { useHistory } from 'react-router-dom';
 
 function Bookings() {
@@ -18,6 +14,7 @@ function Bookings() {
   const [birthday, setBirthday] = useState('');
   const dispatch = useDispatch();
   const history = useHistory();
+  const [errorMessage, setErrorMessage] = useState('');
 
   if (!user) {
     return (
@@ -89,6 +86,7 @@ function Bookings() {
         placeholder="Weight"
         required
       />
+      <label className='birthday'>Birthday: </label>
       <input
         type="date"
         value={birthday}

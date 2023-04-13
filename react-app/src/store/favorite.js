@@ -69,7 +69,7 @@ export const favoriteReducer = (state = initialState, action) => {
         case LOAD_FAVORITES:
             let copy = {}
            action.payload.forEach((favorite) => {
-                console.log('action', action.payload)
+                // console.log('action', action.payload)
                 copy[favorite.id] = favorite
             })
             newState.favorites = copy
@@ -94,11 +94,6 @@ export const favoriteReducer = (state = initialState, action) => {
         //         favorites: [...state.favorites, action.payload]
         //     }
         case REMOVE_FAVORITE:
-            // newState = { ...state };
-            // if (newState.favorites[action.payload.id]) {
-            //     delete newState.favorites[action.payload.id];
-            // }
-            // return newState;
             newState = {...state}
             let copy2 = {...newState.favorites}
             delete copy2[action.payload.product_id]

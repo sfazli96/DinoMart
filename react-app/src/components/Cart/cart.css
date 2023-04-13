@@ -105,8 +105,9 @@ div .checkout-button:hover {
   .empty-cart {
     display: flex;
     align-items: center;
-    flex-direction: column-reverse;
     /* padding-top: 10px; */
+    flex-direction: column;
+    padding-top: 120px;
   }
 
   .image-gif {

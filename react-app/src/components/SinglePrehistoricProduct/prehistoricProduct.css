@@ -41,3 +41,11 @@
     justify-content: center;
     flex-wrap: nowrap;
 }
+
+.single-prehistoricError {
+    padding-top: 70px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 210px;
+}

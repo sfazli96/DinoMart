@@ -40,9 +40,10 @@ function SinglePrehistoricProduct() {
 
     if (Object.values(productDetail).length === 0) {
         return (
-            <div>
+            <div className="single-prehistoricError">
                 <h1>404 Not found</h1>
                 <p>This page does not exist, try again</p>
+                <img src="https://media1.giphy.com/media/14uQ3cOFteDaU/giphy.gif"></img>
             </div>
         )
     }

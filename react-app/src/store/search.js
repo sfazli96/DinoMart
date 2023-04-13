@@ -10,6 +10,7 @@ export const searchThunk = (search) => async (dispatch) => {
 
     if (response.ok){
         const data = await response.json()
+        // console.log('data', data)
         dispatch(createSearch(data))
         return data
     }
@@ -25,9 +26,8 @@ export const searchReducer = (state = initialState, action) => {
             newState= {}
             action.payload.forEach(result =>
                 newState[result.id] = result)
+                // console.log('action', action.payload)
             return newState
-
-
       default:
         return state;
     }

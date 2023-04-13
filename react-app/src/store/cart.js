@@ -200,17 +200,6 @@ export const cartReducer = (state = { Cart: {} }, action) => {
                     quantity: action.payload.quantity
                 }
             }
-
-
-        // return {...state, Cart: {
-        //         ...state.Cart,
-        //         [productId]: {...state.Cart[productId],
-        //             quantity: quantity
-        //         }
-        //     }
-        // }
-        // const updatedCart = {...state.Cart[action.payload.id], quantity: action.payload.quantity}
-        // return {...state, cart: {...state.Cart, [action.payload.id]: updatedCart}}
         case CLEAR_CART:
             // console.log('state', state)
             return {
