@@ -12,10 +12,10 @@ function Bookings() {
   const [color, setColor] = useState('');
   const [weight, setWeight] = useState('');
   const [birthday, setBirthday] = useState('');
-  const dispatch = useDispatch();
-  const history = useHistory();
   const [errorMessage, setErrorMessage] = useState('');
   const [errors, setErrors] = useState([]);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   if (!user) {
     return (
@@ -86,55 +86,64 @@ function Bookings() {
   const colorOptions = ['Black', 'White', 'Brown', 'Gray', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple'];
 
   return (
-    <form onSubmit={handleSubmit} className='booking-form'>
-       <ul className="error-message">
-          {errors.map((error, idx) => (
-          <div key={idx} className="error-text">
-            {error}
-          </div>
-        ))}
-      </ul>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Name"
-        required
-      />
-      <select value={type} onChange={(e) => setType(e.target.value)}>
-        {typeOptions.map((type) => (
-          <option key={type} value={type}>{type}</option>
-        ))}
-      </select>
-      <input
-        type="text"
-        value={imageUrl}
-        onChange={(e) => setImageUrl(e.target.value)}
-        placeholder="Image URL"
-        required
-      />
-      <select value={color} onChange={(e) => setColor(e.target.value)}>
-        {colorOptions.map((color) => (
-          <option key={color} value={color}>{color}</option>
-        ))}
-      </select>
-      <input
-        type="number"
-        value={weight}
-        onChange={(e) => setWeight(e.target.value)}
-        placeholder="Weight"
-        required
-      />
-      <label className='birthday'>Birthday: </label>
-      <input
-        type="date"
-        value={birthday}
-        onChange={(e) => setBirthday(e.target.value)}
-        placeholder="Birthday"
-        required
-      />
-      <button type="submit">Create Booking</button>
-    </form>
+    <div className='booking-form-root'>
+      <h1>Add a booking</h1>
+      <form onSubmit={handleSubmit} className='booking-form'>
+        <ul className="error-message">
+            {errors.map((error, idx) => (
+            <div key={idx} className="error-text">
+              {error}
+            </div>
+          ))}
+        </ul>
+        <input className='booking-input'
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Pet Name"
+          required
+          />
+          Type of Animal:
+        <select value={type} onChange={(e) => setType(e.target.value)}>
+          {typeOptions.map((type) => (
+            <option key={type}
+              value={type}>{type}
+            </option>
+          ))}
+        </select>
+        <input className='booking-image'
+          type="text"
+          value={imageUrl}
+          onChange={(e) => setImageUrl(e.target.value)}
+          placeholder="Image URL"
+          required
+          />
+          Color:
+        <select value={color} onChange={(e) => setColor(e.target.value)}>
+          {colorOptions.map((color) => (
+            <option key={color}
+              value={color}>{color}
+            </option>
+          ))}
+        </select>
+        <input className='booking-number'
+          type="number"
+          value={weight}
+          onChange={(e) => setWeight(e.target.value)}
+          placeholder="Weight"
+          required
+          />
+        <label className='birthday'>Birthday: </label>
+        <input className='booking-birthday'
+          type="date"
+          value={birthday}
+          onChange={(e) => setBirthday(e.target.value)}
+          placeholder="Birthday"
+          required
+          />
+        <button type="submit-booking-button">Create Booking</button>
+      </form>
+  </div>
   );
 }
 
