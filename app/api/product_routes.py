@@ -26,7 +26,9 @@ def singleProduct(id):
     pd_dict = prehistoric_product.to_dict()
     # print('pd_dict', pd_dict)
     pdReviews = {'reviews': [reviews.to_dict() for reviews in prehistoric_product.reviews]}
+    pdFavorites = {'favorites': [favorites.to_dict() for favorites in prehistoric_product.favorites]}
     pd_dict.update(pdReviews)
+    pd_dict.update(pdFavorites)
 
     return pd_dict
     # if not product:
@@ -56,4 +58,3 @@ def createReview(id):
         return new_review.to_dict()
     else:
         return {"message": "Bad information, Please try again"}, 404
-
