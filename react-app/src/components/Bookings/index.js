@@ -45,7 +45,7 @@ function Bookings() {
       return
     }
     if (weight <= 0 || !weight || weight > 50000) {
-      setErrors(errors => [...errors, 'Please enter a valid price (must be a positive number between 0 and 50000'])
+      setErrors(errors => [...errors, 'Please enter a valid weight (must be a positive weight between 0 and 50000 lb'])
       return
     }
     if (!Number(weight)) {
