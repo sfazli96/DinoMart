@@ -20,7 +20,7 @@ def create_favorites():
     db.session.add(favorite)
     db.session.commit()
 
-    return {"message": "Favorite created successfully"}
+    return favorite.to_dict()
 
 
 @favorite_routes.route('/<int:user_id>', methods=['GET'])
@@ -40,6 +40,6 @@ def delete_favorite(id):
     if favorite:
         db.session.delete(favorite)
         db.session.commit()
-        return {"message": "Favorite deleted successfully"}
+        return favorite.to_dict()
     else:
         return {"error": "Favorite not found"}, 404

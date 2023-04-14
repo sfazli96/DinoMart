@@ -14,15 +14,15 @@ function UserFavorites() {
     const userId = user?.id
     console.log('userId', userId)
     const productDetail = useSelector(state => state.products?.singleProduct);
-    // const pId = useParams()
+    const pId = useParams()
     const productId = productDetail?.id
-    // console.log('productId', productId)
+    console.log('productId', productId)
     const favoriteDetail = useSelector(state => state.favoriteReducer?.favorites || [] || {});
     const favoriteObj = Object.values(favoriteDetail)
     const favorite = favoriteObj?.find(favorite => favorite?.product_id === productDetail?.id && userId === favorite.user_id)
-    // console.log('favorite', favorite)
+    console.log('favorite', favorite)
     const favProductId = favorite?.product_id
-    // console.log('favProductId', favProductId)
+    console.log('favProductId', favProductId)
     const history = useHistory()
 
     const dispatch = useDispatch();

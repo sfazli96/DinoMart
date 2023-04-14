@@ -22,7 +22,7 @@ function SinglePrehistoricProduct() {
     const favoriteDetail = useSelector(state => state.favoriteReducer?.favorites || [] || {});
     // console.log(favoriteDetail, 'FAVORITE----')
     const favoriteObj = Object.values(favoriteDetail)
-    // console.log('favoriteObj', favoriteObj)x
+    // console.log('favoriteObj', favoriteObj)
     const [isFavorite, setIsFavorite] = useState(false);
     const [errors, setErrors] = useState([])
 
@@ -36,7 +36,7 @@ function SinglePrehistoricProduct() {
         } else {
             setIsFavorite(false)
         }
-    }, [dispatch, id.id, user, productDetail.id])
+    }, [dispatch, id.id, user, productDetail.id, isFavorite])
 
     if (Object.values(productDetail).length === 0) {
         return (
