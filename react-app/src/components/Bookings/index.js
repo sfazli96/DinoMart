@@ -20,7 +20,7 @@ function Bookings() {
   if (!user) {
     return (
         <div>
-            <h1>Sign in to create a booking</h1>
+            <h1 className='sign-in-create-booking'>Sign in to create a booking</h1>
         </div>
     )
 }
@@ -87,8 +87,8 @@ function Bookings() {
 
   return (
     <div className='booking-form-root'>
-      <h1>Add a booking</h1>
       <form onSubmit={handleSubmit} className='booking-form'>
+      <h1 className='add-booking'>Add a booking</h1>
         <ul className="error-message">
             {errors.map((error, idx) => (
             <div key={idx} className="error-text">
@@ -96,6 +96,8 @@ function Bookings() {
             </div>
           ))}
         </ul>
+        <label className='booking-form-label'>
+          Pet Name:
         <input className='booking-input'
           type="text"
           value={name}
@@ -103,7 +105,9 @@ function Bookings() {
           placeholder="Pet Name"
           required
           />
-          Type of Animal:
+        </label>
+        <label className='booking-form-label'>
+          Type:
         <select value={type} onChange={(e) => setType(e.target.value)}>
           {typeOptions.map((type) => (
             <option key={type}
@@ -111,30 +115,39 @@ function Bookings() {
             </option>
           ))}
         </select>
-        <input className='booking-image'
+        </label>
+        <label className='booking-form-label'>
+          Image Url:
+        <input className='booking-input'
           type="text"
           value={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}
           placeholder="Image URL"
           required
           />
+        </label>
+        <label className='booking-form-label'>
           Color:
-        <select value={color} onChange={(e) => setColor(e.target.value)}>
-          {colorOptions.map((color) => (
-            <option key={color}
+          <select value={color} onChange={(e) => setColor(e.target.value)}>
+            {colorOptions.map((color) => (
+              <option key={color}
               value={color}>{color}
-            </option>
-          ))}
-        </select>
-        <input className='booking-number'
-          type="number"
-          value={weight}
-          onChange={(e) => setWeight(e.target.value)}
-          placeholder="Weight"
-          required
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className='booking-form-label'>
+          Weight:
+          <input className='booking-input'
+            type="number"
+            value={weight}
+            onChange={(e) => setWeight(e.target.value)}
+            placeholder="Weight"
+            required
           />
+        </label>
         <label className='birthday'>Birthday: </label>
-        <input className='booking-birthday'
+        <input className='booking-input'
           type="date"
           value={birthday}
           onChange={(e) => setBirthday(e.target.value)}

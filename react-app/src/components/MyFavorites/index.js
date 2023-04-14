@@ -9,20 +9,20 @@ import { useHistory} from "react-router-dom";
 
 function UserFavorites() {
     const id  = useParams()
-    console.log('id', id)
+    // console.log('id', id)
     const user = useSelector(state => state.session.user);
     const userId = user?.id
     console.log('userId', userId)
     const productDetail = useSelector(state => state.products?.singleProduct);
     // const pId = useParams()
     const productId = productDetail?.id
-    console.log('productId', productId)
+    // console.log('productId', productId)
     const favoriteDetail = useSelector(state => state.favoriteReducer?.favorites || [] || {});
     const favoriteObj = Object.values(favoriteDetail)
     const favorite = favoriteObj?.find(favorite => favorite?.product_id === productDetail?.id && userId === favorite.user_id)
-    console.log('favorite', favorite)
+    // console.log('favorite', favorite)
     const favProductId = favorite?.product_id
-    console.log('favProductId', favProductId)
+    // console.log('favProductId', favProductId)
     const history = useHistory()
 
     const dispatch = useDispatch();
@@ -64,7 +64,7 @@ function UserFavorites() {
             <h2>Favorites</h2>
             {favorites && favorites.map((favorite) => {
                 const product = favorite.product_id;
-                console.log('product', product)
+                // console.log('product', product)
                 return (
                     <div key={favorite.id}>
                         <img src={product.image_url} alt={product.name} />

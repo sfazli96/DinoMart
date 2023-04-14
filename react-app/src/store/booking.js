@@ -122,9 +122,14 @@ export const bookingsReducer = (state = initialState, action) => {
             updatedBookings[action.payload.id] = action.payload
             return { ...state, singleBooking: updatedBookings }
         case DELETE_BOOKINGS:
-            const newAllBookings = { ...state.allBookings };
-            delete newAllBookings[action.payload.id];
-            return { ...state, allBookings: newAllBookings };
+            newState = {...state}
+            let copy2 = {...newState.allBookings}
+            delete copy2[action.payload.id]
+            newState.allBookings = copy2
+            return newState
+            // const newAllBookings = { ...state.allBookings };
+            // delete newAllBookings[action.payload.id];
+            // return { ...state, allBookings: newAllBookings };
 
         default:
             return state

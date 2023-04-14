@@ -34,7 +34,7 @@ function UserBookings() {
     const handleDeleteBooking = (e, id) => {
         e.preventDefault()
         dispatch(deleteBooking(id))
-        setBookings(bookings.filter(booking => booking.id !== id));
+        // setBookings(bookings.filter(booking => booking.id !== id));
     }
 
     // if (!bookingObj.length) {
@@ -59,8 +59,8 @@ function UserBookings() {
     }
 
       return (
-        <div>
-            <h2>Bookings</h2>
+        <div className='user-booking-root'>
+            <h2 className='user-booking-title'>Bookings</h2>
             {bookingObj.map((booking) => {
                 return (
                     <div key={booking.id}>

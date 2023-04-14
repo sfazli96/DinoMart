@@ -1,3 +1,7 @@
+.whole-container {
+    padding-top: 90px;
+}
+
 .prehistoric-image {
     /* max-width: 100%; */
     width: 300px;
@@ -16,7 +20,7 @@
     margin: 0 auto;
     max-width: 1240px;
     width: 100%;
-    padding-top: 40px;
+    /* padding-top: 40px; */
 }
 
 .banner-image {
