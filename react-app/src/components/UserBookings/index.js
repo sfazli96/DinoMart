@@ -62,11 +62,11 @@ function UserBookings() {
                             <div key={booking.id}>
                                 <h3 className='booking-name'>Name: {booking.name}</h3>
                                 <p className='booking-type'>Type: {booking.type}</p>
-                                <p className='booking-type'>Color: {booking.color}</p>
+                                <p className='booking-color'>Color: {booking.color}</p>
                                 <p className='booking-weight'>Weight: {booking.weight}lb</p>
                                 <p className='booking-birthday'>Birthday: {booking.birthday}</p>
                                 <img className='booking-image' src={booking.image_url}></img>
-                                <button onClick={() => handleDeleteBooking(booking.id)}>Delete</button>
+                                <button className='booking-delete-button' onClick={() => handleDeleteBooking(booking.id)}>Delete</button>
                             </div>
                         )
                     })}
