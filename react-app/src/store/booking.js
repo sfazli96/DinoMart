@@ -61,13 +61,15 @@ export const addBookings = (user_id, bookingInfo) => async (dispatch) => {
 }
 
 export const deleteBooking = (booking_id) => async (dispatch) => {
+    // console.log('booking_id', booking_id)
     const response = await fetch(`/api/bookings/${booking_id}`, {
         method: 'DELETE'
     })
     if (response.ok) {
         const data = await response.json()
+        console.log('data', data)
         dispatch(removeBooking(data))
-        dispatch(loadBookings(data))
+        // dispatch(loadBookings(data))
         return data
     }
 }

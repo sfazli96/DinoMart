@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import { loadBookings, getUserBooking, deleteBooking, addBookings } from '../../store/booking'
 import { useParams } from "react-router-dom";
-import Calendar from "react-calendar";
-import 'react-calendar/dist/Calendar.css';
 import { useHistory } from 'react-router-dom'
 import './userBookings.css'
 
@@ -17,7 +15,7 @@ function UserBookings() {
     // console.log('bookingOBJ---', bookingObj)
     const dispatch = useDispatch();
     // const [bookings, setBookings] = useState(bookingObj);
-    const [refreshPage, setRefreshPage] = useState(false)
+    // const [refreshPage, setRefreshPage] = useState(false)
     const history = useHistory()
 
     useEffect(() => {
@@ -27,7 +25,7 @@ function UserBookings() {
       }, [dispatch, user]);
 
     const handleDeleteBooking = (id) => {
-        console.log('id', id)
+        // console.log('id', id)
         dispatch(deleteBooking(id))
         history.push(`/myBookings`)
         // setRefreshPage(true)
@@ -57,7 +55,6 @@ function UserBookings() {
 
       return (
         <div className='user-booking-root-container'>
-            {refreshPage ? (<p className='refresh-page'>Page is refreshing</p>) :
                 <div className='user-booking-root'>
                     <h2 className='user-booking-title'>Bookings</h2>
                     {bookingObj.map((booking) => {
@@ -74,7 +71,6 @@ function UserBookings() {
                         )
                     })}
                 </div>
-            }
         </div>
       )
 }
