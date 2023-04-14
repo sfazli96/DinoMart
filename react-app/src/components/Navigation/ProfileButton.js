@@ -64,11 +64,11 @@ function ProfileButton({ user }) {
                 My Bookings
               </NavLink>
             </div>
-            {/* <div className="my-favorites">
+            <div className="my-favorites">
               <NavLink exact to={`/myFavorites`} className='icon'>
                 My Favorites
               </NavLink>
-            </div> */}
+            </div>
             <div>
               <button className="logoutbutton" onClick={handleLogout}>Log Out</button>
             </div>

@@ -60,13 +60,14 @@ export const addBookings = (user_id, bookingInfo) => async (dispatch) => {
     }
 }
 
-export const deleteBooking = (booking) => async (dispatch) => {
-    const response = await fetch(`/api/bookings/${booking}`, {
+export const deleteBooking = (booking_id) => async (dispatch) => {
+    const response = await fetch(`/api/bookings/${booking_id}`, {
         method: 'DELETE'
     })
     if (response.ok) {
         const data = await response.json()
         dispatch(removeBooking(data))
+        dispatch(loadBookings(data))
         return data
     }
 }
@@ -96,7 +97,7 @@ export const bookingsReducer = (state = initialState, action) => {
             if (!action.payload) return state;
             const bookings = action.payload.bookings;
             const allBookings = {};
-            bookings.forEach((booking) => {
+            bookings?.forEach((booking) => {
                 allBookings[booking.id] = booking;
             });
             return { ...state, allBookings };

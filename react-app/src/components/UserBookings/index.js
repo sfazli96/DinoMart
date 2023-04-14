@@ -16,8 +16,9 @@ function UserBookings() {
     const bookingObj = Object.values(booking)
     // console.log('bookingOBJ---', bookingObj)
     const dispatch = useDispatch();
-    const [bookings, setBookings] = useState(bookingObj);
-
+    // const [bookings, setBookings] = useState(bookingObj);
+    const [refreshPage, setRefreshPage] = useState(false)
+    const history = useHistory()
 
     useEffect(() => {
         if (user) {
@@ -25,15 +26,11 @@ function UserBookings() {
           };
       }, [dispatch, user]);
 
-    // useEffect(() => {
-    //     if (bookingObj.length > 0) {
-    //         dispatch(getUserBooking(user.id))
-    //     }
-    // }, [dispatch, bookingObj.length, user?.id])
-
-    const handleDeleteBooking = (e, id) => {
-        e.preventDefault()
+    const handleDeleteBooking = (id) => {
+        console.log('id', id)
         dispatch(deleteBooking(id))
+        history.push(`/myBookings`)
+        // setRefreshPage(true)
         // setBookings(bookings.filter(booking => booking.id !== id));
     }
 
@@ -52,28 +49,32 @@ function UserBookings() {
 
     if (!user) {
         return (
-            <div>
+            <div className='booking-sign-in'>
                 <h1>Sign in to see your bookings</h1>
             </div>
         )
     }
 
       return (
-        <div className='user-booking-root'>
-            <h2 className='user-booking-title'>Bookings</h2>
-            {bookingObj.map((booking) => {
-                return (
-                    <div key={booking.id}>
-                        <h3 className='booking-name'>Name: {booking.name}</h3>
-                        <p>Type: {booking.type}</p>
-                        <p>Color: {booking.color}</p>
-                        <p>Weight: {booking.weight}lb</p>
-                        <p>Birthday: {booking.birthday}</p>
-                        <img className='booking-image' src={booking.image_url}></img>
-                        <button onClick={(e) => handleDeleteBooking(e, booking.id)}>Delete</button>
-                    </div>
-                )
-            })}
+        <div className='user-booking-root-container'>
+            {refreshPage ? (<p className='refresh-page'>Page is refreshing</p>) :
+                <div className='user-booking-root'>
+                    <h2 className='user-booking-title'>Bookings</h2>
+                    {bookingObj.map((booking) => {
+                        return (
+                            <div key={booking.id}>
+                                <h3 className='booking-name'>Name: {booking.name}</h3>
+                                <p className='booking-type'>Type: {booking.type}</p>
+                                <p className='booking-type'>Color: {booking.color}</p>
+                                <p className='booking-weight'>Weight: {booking.weight}lb</p>
+                                <p className='booking-birthday'>Birthday: {booking.birthday}</p>
+                                <img className='booking-image' src={booking.image_url}></img>
+                                <button onClick={() => handleDeleteBooking(booking.id)}>Delete</button>
+                            </div>
+                        )
+                    })}
+                </div>
+            }
         </div>
       )
 }
