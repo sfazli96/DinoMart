@@ -70,6 +70,10 @@
     outline: none;
   }
 
+  /* .favorite-button i {
+    margin-right: 0.5rem;
+  } */
+
   .favorite-button i.fas {
     color: #f44336;
   }

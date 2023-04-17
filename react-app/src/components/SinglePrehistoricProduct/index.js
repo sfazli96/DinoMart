@@ -27,16 +27,19 @@ function SinglePrehistoricProduct() {
     const [errors, setErrors] = useState([])
 
     useEffect(() => {
-        dispatch(loadOnePrehistoricProduct(id.id))
+        dispatch(loadOnePrehistoricProduct(id.id));
         if (user) {
-            dispatch(readFavorites(userId))
+          dispatch(readFavorites(user.id));
         }
-        if (favoriteObj.find(favorite => favorite.product_id === productDetail.id && userId === favorite.user_id)) {
-            setIsFavorite(true)
+      }, [dispatch, id.id, user]);
+
+      useEffect(() => {
+        if (favoriteObj.find(favorite => favorite.product_id === productDetail.id && user?.id === favorite.user_id)) {
+          setIsFavorite(true);
         } else {
-            setIsFavorite(false)
+          setIsFavorite(false);
         }
-    }, [dispatch, id.id, user, productDetail.id, isFavorite])
+      }, [favoriteDetail, productDetail.id, user]);
 
     if (Object.values(productDetail).length === 0) {
         return (
@@ -64,7 +67,10 @@ function SinglePrehistoricProduct() {
         if (user && productDetail) {
           if (isFavorite) {
             dispatch(removeFavorites(productDetail.id))
-              .then(() => setIsFavorite(false));
+              .then(() => {
+                setIsFavorite(false);
+                setTimeout(() => setIsFavorite(false), 500);
+              });
           } else {
             dispatch(addFavorites(userId, productDetail.id))
               .then(() => setIsFavorite(true));

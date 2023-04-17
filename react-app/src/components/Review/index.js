@@ -191,7 +191,7 @@ const Reviews = () => {
                   </div>
                 )}
                 {isEdit === id && <EditReview id={{ id }} onClose={() => setIsEdit(null)}
-                initialReview={reviews.find((r) => r.id === isEdit).review}
+                initialReview={reviews.find((r) => r.id === isEdit).text}
                 initialRating={reviews.find((r) => r.id === isEdit).rating}/>}
               </div>
             </div>
