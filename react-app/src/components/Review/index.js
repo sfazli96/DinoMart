@@ -99,16 +99,16 @@ const Reviews = () => {
     const pst = date.toLocaleString('en-US', { ...options, timeZone: 'America/Los_Angeles' });
     const est = date.toLocaleString('en-US', { ...options, timeZone: 'America/New_York' });
     const cst = date.toLocaleString('en-US', { ...options, timeZone: 'America/Chicago' });
-    // return `${pst}\n${est}\n${cst}`
-    if (timeZone === 'America/New_York') {
-      return `${est} EST`;
-    } else if (timeZone === 'America/Los_Angeles') {
-      return `${pst} PST`;
-    } else if (timeZone === 'America/Chicago') {
-      return `${cst} CST`;
-    } else {
-      return `${est} EST`;
-    }
+    return `${pst}\n PST, ${est}\n EST, ${cst} CST`
+    // if (timeZone === 'America/New_York') {
+    //   return `${est} EST`;
+    // } else if (timeZone === 'America/Los_Angeles') {
+    //   return `${pst} PST`;
+    // } else if (timeZone === 'America/Chicago') {
+    //   return `${cst} CST`;
+    // } else {
+    //   return `${est} EST`;
+    // }
     // return date.toLocaleString('en-US', options)
   }
   let users_id;
@@ -144,6 +144,7 @@ const Reviews = () => {
               onChange={ratingChanged}
               size={24}
               isHalf={true}
+              decimalPlaces={1}
               emptyIcon={<i className="far fa-star"></i>}
               halfIcon={<i className="fa fa-star-half-alt"></i>}
               fullIcon={<i className="fa fa-star"></i>}
@@ -191,7 +192,7 @@ const Reviews = () => {
                   </div>
                 )}
                 {isEdit === id && <EditReview id={{ id }} onClose={() => setIsEdit(null)}
-                initialReview={reviews.find((r) => r.id === isEdit).text}
+                initialReview={reviews.find((r) => r.id === isEdit).review}
                 initialRating={reviews.find((r) => r.id === isEdit).rating}/>}
               </div>
             </div>
