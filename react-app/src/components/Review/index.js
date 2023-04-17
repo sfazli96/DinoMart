@@ -190,7 +190,9 @@ const Reviews = () => {
                     </button>
                   </div>
                 )}
-                {isEdit === id && <EditReview id={{ id }} onClose={() => setIsEdit(null)} />}
+                {isEdit === id && <EditReview id={{ id }} onClose={() => setIsEdit(null)}
+                initialReview={reviews.find((r) => r.id === isEdit).review}
+                initialRating={reviews.find((r) => r.id === isEdit).rating}/>}
               </div>
             </div>
           );

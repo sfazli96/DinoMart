@@ -7,11 +7,11 @@ import './editReview.css'
 import { useParams } from "react-router-dom";
 
 
-const EditReview = ({ id, onClose }) => {
+const EditReview = ({ id, onClose, initialReview, initialRating }) => {
     const dispatch = useDispatch()
     const productId = useParams()
-    const [rating, setRating] = useState(5)
-    const [review, setReview] = useState()
+    const [rating, setRating] = useState(initialRating)
+    const [review, setReview] = useState(initialReview)
     const [errors, setErrors] = useState([])
     // const [validationErrors, setValidationErrors] = useState([]);
     const reviewData = {
