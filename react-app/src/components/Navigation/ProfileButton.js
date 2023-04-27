@@ -56,7 +56,7 @@ function ProfileButton({ user }) {
             <div>{user.email}</div>
             <div className="booking-icon">
               <NavLink exact to={`/bookings`} className='icon'>
-                Create a Booking
+                Schedule a booking
               </NavLink>
             </div>
             <div className="my-bookings">

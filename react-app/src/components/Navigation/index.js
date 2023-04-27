@@ -14,10 +14,10 @@ function Navigation({ isLoaded }){
 		<div className='NavStart'>
 
 			<div className='Navbar'>
-			    <Toggle />
 				<div>
 					<NavLink className='home-page' exact to="/">Sam-Mart</NavLink>
 				</div>
+			    <Toggle />
 				<div className="nav-search">
 					<NavSearch  />
 				</div>

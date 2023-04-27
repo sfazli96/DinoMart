@@ -69,6 +69,12 @@
     border-radius: 10px;
 }
 
+.no-bookings {
+  padding-top: 90px;
+  padding-bottom: 14px;
+  text-align: center;
+}
+
 [data-theme='dark'] {
     --background: #282c34;
     --primary: white;

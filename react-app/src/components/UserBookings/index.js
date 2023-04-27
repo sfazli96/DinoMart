@@ -32,18 +32,19 @@ function UserBookings() {
         // setBookings(bookings.filter(booking => booking.id !== id));
     }
 
-    // if (!bookingObj.length) {
-    //     return (
-    //         <div>
-    //             <h2>You don't have any bookings</h2>
-    //         </div>
-    //     )
-    // }
-
-
-    if (!booking) {
-        return null
+    if (!bookingObj.length) {
+        return (
+            <div className='no-bookings'>
+                <h2>You don't have any bookings</h2>
+                <img src='https://i.pinimg.com/originals/63/be/5f/63be5f30749ff7be7bb4a633ffac763f.gif'></img>
+            </div>
+        )
     }
+
+
+    // if (!booking) {
+    //     return null
+    // }
 
     if (!user) {
         return (

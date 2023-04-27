@@ -20,6 +20,7 @@ function PrehistoricProducts() {
     return (
         <div className='whole-container'>
             <h1 className='welcome-title'>Welcome to Sam-Mart</h1>
+            <h2 className='purchase-animals'>Purchase prehistoric animals here</h2>
             <div className='banner-container'>
                 <img className='banner-image' src='https://idsb.tmgrup.com.tr/ly/uploads/images/2022/08/04/222563.jpg' alt='image not found'></img>
             </div>

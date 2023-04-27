@@ -30,6 +30,7 @@ const NavSearch = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           onKeyDown={enterKey}
+          placeholder="Search by name or size"
         />
         <button className="search-button" onClick={handleSearch}></button>
       </div>

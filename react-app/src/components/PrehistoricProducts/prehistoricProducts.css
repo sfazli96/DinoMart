@@ -58,6 +58,7 @@
 
 .welcome-title {
     text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 
@@ -194,4 +195,8 @@ body {
       grid-gap: 20px;
     }
 
+  }
+
+  .purchase-animals {
+    text-align: center;
   }
