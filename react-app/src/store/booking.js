@@ -34,31 +34,32 @@ export const getUserBooking = (user_id) => async (dispatch) => {
     }
   };
 
-export const addBookings = (user_id, bookingInfo) => async (dispatch) => {
-    // console.log('user_id', user_id)
-    // console.log('INFO_-----', bookingInfo)
+  export const addBookings = (user_id, bookingInfo) => async (dispatch) => {
+    const formData = new FormData()
+    formData.append("image_url", bookingInfo.image_url)
+    formData.append("name", bookingInfo.name)
+    formData.append("type", bookingInfo.type)
+    formData.append("user_id", bookingInfo.user_id);
+    formData.append("color", bookingInfo.color)
+    formData.append("birthday", bookingInfo.birthday)
+    formData.append("weight", bookingInfo.weight)
+    // console.log(bookingInfo.weight, 'WEIGHT----')
+    // console.log(bookingInfo, 'booking----')
     const response = await fetch(`/api/bookings/user/${user_id}/bookings`, {
         method: 'POST',
-        // body: JSON.stringify(bookingInfo)
-        body: JSON.stringify({
-            name: bookingInfo.name,
-            type: bookingInfo.type,
-            user_id: bookingInfo.user_id,
-            image_url: bookingInfo.image_url,
-            color: bookingInfo.color,
-            weight: bookingInfo.weight,
-            birthday: bookingInfo.birthday
-        }),
-        headers: {
-            'Content-Type': 'application/json'
-        }
+        body: formData,
+        // headers: {
+        //     'Content-Type': 'multipart/form-data'
+        // }
     })
+
     if (response.ok) {
         const booking = await response.json()
         dispatch(createBooking(booking))
         return booking
     }
 }
+
 
 export const deleteBooking = (booking_id) => async (dispatch) => {
     // console.log('booking_id', booking_id)

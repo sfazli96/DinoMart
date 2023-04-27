@@ -58,16 +58,16 @@ function Bookings() {
       return;
     }
 
-    try {
-      const imageUrlObj = new URL(imageUrl)
-      if (imageUrlObj.protocol !== 'http:' && imageUrlObj.protocol !== 'https:') {
-        setErrors(errors => [...errors, 'Please enter a valid image link (http/https protocol)']);
-        return;
-      }
-    } catch (error) {
-      setErrors(errors => [...errors, 'Please enter a valid image link']);
-      return;
-    }
+    // try {
+    //   const imageUrlObj = new URL(imageUrl)
+    //   if (imageUrlObj.protocol !== 'http:' && imageUrlObj.protocol !== 'https:') {
+    //     setErrors(errors => [...errors, 'Please enter a valid image link (http/https protocol)']);
+    //     return;
+    //   }
+    // } catch (error) {
+    //   setErrors(errors => [...errors, 'Please enter a valid image link']);
+    //   return;
+    // }
     const newBooking = dispatch(addBookings(parseInt(user.id), bookingInfo));
 
     if (newBooking) {
@@ -80,6 +80,11 @@ function Bookings() {
       history.push('/mybookings');
     }
   };
+
+  const updateImage = (e) => {
+    const file = e.target.files[0];
+    setImageUrl(file);
+}
 
   const typeOptions = ['T-rex', 'Triceratops', 'Pterodactyl', 'Stegosaurus', 'Velociraptor', 'Megalodon', 'Mammoth', 'Ankylosaurus', 'Sabre-Toothed Tiger'];
 
@@ -116,7 +121,7 @@ function Bookings() {
           ))}
         </select>
         </label>
-        <label className='booking-form-label'>
+        {/* <label className='booking-form-label'>
           Image Url:
         <input className='booking-input'
           type="text"
@@ -125,6 +130,14 @@ function Bookings() {
           placeholder="Image URL"
           required
           />
+        </label> */}
+        <label className="imagelabel">
+              Image
+              <input
+                  type="file"
+                  accept="image/*"
+                  onChange={updateImage}
+              />
         </label>
         <label className='booking-form-label'>
           Color:
