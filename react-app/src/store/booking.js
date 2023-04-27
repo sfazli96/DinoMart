@@ -45,7 +45,7 @@ export const getUserBooking = (user_id) => async (dispatch) => {
     formData.append("weight", bookingInfo.weight)
     // console.log(bookingInfo.weight, 'WEIGHT----')
     // console.log(bookingInfo, 'booking----')
-    const response = await fetch(`/api/bookings/user/${user_id}/bookings`, {
+    const response = await fetch(`/api/bookings/user/${bookingInfo.user_id}/bookings`, {
         method: 'POST',
         body: formData,
         // headers: {
@@ -68,7 +68,7 @@ export const deleteBooking = (booking_id) => async (dispatch) => {
     })
     if (response.ok) {
         const data = await response.json()
-        console.log('data', data)
+        // console.log('data', data)
         dispatch(removeBooking(data))
         // dispatch(loadBookings(data))
         return data
@@ -117,7 +117,7 @@ export const bookingsReducer = (state = initialState, action) => {
                   ...state,
                   allBookings: {
                     ...state.allBookings,
-                    [action.payload.id]: action.payload,
+                    [action.payload.booking.id]: action.payload.booking,
                   },
                 };
 
