@@ -84,29 +84,7 @@ const Cart = () => {
           [itemId]: 0,
 
         }));
-
-        // const newTotalPrice = totalPrice - itemPrice * quantity
-
-        // const updatedTotalPrice = prehistoricProducts.products.reduce(
-        //   (acc, product) => {
-        //     const productQuantity = quantities[product.id] || 0;
-        //     return acc + product.price * productQuantity;
-        //   },
-        //   newTotalPrice
-        // );
-
-        // setTotalPrice(updatedTotalPrice);
       };
-      // useEffect(() => {
-      //   let newTotalPrice = 0;
-      //   prehistoricProducts.products?.forEach(product => {
-      //     const productQuantity = quantities[product.id] || 0;
-      //     newTotalPrice += product.price * productQuantity;
-
-      //   });
-      //   console.log('newTotalPrice', newTotalPrice)
-      //   setTotalPrice(newTotalPrice);
-      // }, [cartItem, quantities, prehistoricProducts])
 
 
 
@@ -153,11 +131,9 @@ const Cart = () => {
       }
     return (
         <div className="root-cart-container">
-            <h1>({cartItem})</h1>
+            <h1>Shopping cart({cartItem})</h1>
                 <div className="cart-product-container">
                     {prehistoricProducts?.products && prehistoricProducts.products?.map(({id, name, image_url, price, size}) => {
-                        // let sub = price * quantity
-                        // let subTotal = parseInt(sub)
                         const quantity = quantities[id] || 1;
                         const subTotal = parseInt(price * quantity);
                         return (
