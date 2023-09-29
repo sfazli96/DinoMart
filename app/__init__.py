@@ -1,3 +1,22 @@
+"""
+Initialization Module
+
+This module defines the Flask application for SamMart, an e-commerce platform.
+It includes configurations, routes, and other settings for the application.
+
+The application uses Flask to create a web server, handles various API routes,
+manages user sessions, and provides access to the database using SQLAlchemy.
+Additionally, it integrates with other Flask extensions for functionality like
+login management, CSRF protection, and CORS handling.
+
+Routes:
+- `/api/search/<string:search>`: Handles product search based on the provided search query.
+- `/api/docs`: Provides a list of API routes and their corresponding docstrings.
+- `/<path:path>`: Serves the React frontend for client-side routing.
+- Error handler for 404 (not found) responses.
+"""
+
+
 import os
 from flask import Flask, render_template, request, session, redirect
 from flask_cors import CORS
