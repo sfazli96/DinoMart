@@ -1,27 +1,56 @@
-from flask import Blueprint, jsonify, request
-from app.models import Booking, User, db
-from flask_login import login_required, current_user
-from app.forms import BookingForm
+"""
+Booking Module
+
+This module defines Flask routes for managing bookings in a web application. It includes routes 
+for retrieving user bookings, creating new bookings, and deleting existing bookings. The routes 
+are protected by user authentication.
+
+Routes:
+    - `get_user_bookings`: Retrieve a list of bookings associated with a specific user.
+    - `create_booking`: Create a new booking for the current user.
+    - `delete_booking`: Delete a booking by its ID.
+
+Dependencies:
+    - Flask: The Flask web framework.
+    - Flask-Login: Used for user authentication.
+    - app.models: Contains the data models, including User and Booking.
+    - app.forms: Contains the form definitions, including BookingForm.
+    - AWS_helpers: Custom module for AWS S3 integration.
+"""
+
 from datetime import datetime
+from flask import Blueprint, jsonify, request
+from flask_login import login_required, current_user
+from app.models import Booking, User, db
+from app.forms import BookingForm
 from .AWS_helpers import (
     upload_file_to_s3, get_unique_filename)
-from flask import jsonify
 
 booking_routes = Blueprint('bookings', __name__)
+
 
 @booking_routes.route('/user/<int:user_id>')
 @login_required
 def get_user_bookings(user_id):
+    """
+    Retrieve a list of bookings associated with a specific user.
+
+    Args:
+        user_id (int): The ID of the user for whom to retrieve bookings.
+
+    Returns:
+        flask.Response: A JSON response containing the list of bookings associated with the user.
+
+    Raises:
+        HTTPException: If the user with the specified user_id is not found, a 404 error is returned.
+    """
     user = User.query.get(user_id)
-    # print('user', user)
     bookings = Booking.query.filter(Booking.user_id == user_id).all()
-    # print('bookings', bookings)
 
     if user is None:
         return {'message': 'User not found'}, 404
     booking_list = [booking.to_dict() for booking in bookings]
     return jsonify(bookings=booking_list)
-
 
 # @booking_routes.route('/user/<int:user_id>/bookings', methods=['POST'])
 # @login_required
@@ -49,6 +78,21 @@ def get_user_bookings(user_id):
 @booking_routes.route('/user/<int:user_id>/bookings', methods=['POST'])
 @login_required
 def create_booking(user_id):
+    """
+    Create a new booking for a specific user.
+
+    Args:
+        user_id (int): The ID of the user for whom to create the booking.
+
+    Returns:
+        flask.Response: A JSON response indicating the success or failure of the booking creation.
+
+    Notes:
+        This route expects a POST request with form data to create a new booking for the user.
+
+    Raises:
+        HTTPException: If there are validation errors in the form data, a 400 error is returned.
+    """
     data = request.files
     # print('data', data.get('name'))
     form = BookingForm(
@@ -76,7 +120,16 @@ def create_booking(user_id):
             return jsonify({"message": "There was a problem uploading the image file."}), 500
 
         url = upload["url"]
-        new_booking = Booking(image_url=url, name=form.name.data, type=form.type.data, color=form.color.data, weight=form.weight.data, birthday=form.birthday.data, user_id = user_id)
+        new_booking = Booking(
+            image_url=url,
+            name=form.name.data,
+            type=form.type.data,
+            color=form.color.data,
+            weight=form.weight.data,
+            birthday=form.birthday.data,
+            user_id=user_id
+        )
+
         db.session.add(new_booking)
         db.session.commit()
 
@@ -85,11 +138,26 @@ def create_booking(user_id):
     errors = {field.name: field.errors for field in form if field.errors}
     return jsonify({"errors": errors}), 400
 
-
-
 @booking_routes.route('/<int:booking_id>', methods=['DELETE'])
 @login_required
 def delete_booking(booking_id):
+    """
+    Delete a booking with the specified ID.
+
+    Args:
+        booking_id (int): The ID of the booking to be deleted.
+
+    Returns:
+        flask.Response: A JSON response indicating the success or failure of the deletion.
+
+    Notes:
+        This route allows the deletion of a booking, but only if the user is the owner of the booking.
+
+    Raises:
+        HTTPException: If the booking with the specified booking_id is 
+        not found, a 404 error is returned.
+        HTTPException: If the user is not authorized to delete the booking, a 401 error is returned.
+    """
     booking = Booking.query.get(booking_id)
     # print('BOOKING', booking)
     if not booking:

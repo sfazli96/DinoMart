@@ -1,8 +1,36 @@
+"""
+Authentication Module
+
+This module defines routes and functions for user authentication 
+using Flask and Flask-Login.
+
+Routes:
+- `/`: GET request for authenticating a user. Returns the user's 
+information if authenticated.
+- `/login`: POST request for logging a user in.
+- `/logout`: GET request for logging a user out.
+- `/signup`: POST request for creating a new user and logging them in.
+- `/unauthorized`: GET request to handle unauthorized access.
+
+Functions:
+- `validation_errors_to_error_messages(validation_errors)`: Converts WTForms 
+validation errors into a list of error messages.
+
+Please note that this module relies on the following imported modules and objects:
+- `Flask` from `flask`
+- `Blueprint`, `jsonify`, `session`, `request` from `flask`
+- `User`, `db` from `app.models`
+- `LoginForm`, `SignUpForm` from `app.forms`
+- `current_user`, `login_user`, `logout_user`, `login_required` from `flask_login`
+
+This module is part of the larger Flask application for user authentication.
+"""
+
 from flask import Blueprint, jsonify, session, request
+from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
-from flask_login import current_user, login_user, logout_user, login_required
 
 auth_routes = Blueprint('auth', __name__)
 
@@ -17,7 +45,6 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
-
 @auth_routes.route('/')
 def authenticate():
     """
@@ -26,7 +53,6 @@ def authenticate():
     if current_user.is_authenticated:
         return current_user.to_dict()
     return {'errors': ['Unauthorized']}
-
 
 @auth_routes.route('/login', methods=['POST'])
 def login():
@@ -44,7 +70,6 @@ def login():
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-
 @auth_routes.route('/logout')
 def logout():
     """
@@ -52,7 +77,6 @@ def logout():
     """
     logout_user()
     return {'message': 'User logged out'}
-
 
 @auth_routes.route('/signup', methods=['POST'])
 def sign_up():
@@ -72,7 +96,6 @@ def sign_up():
         login_user(user)
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-
 
 @auth_routes.route('/unauthorized')
 def unauthorized():
