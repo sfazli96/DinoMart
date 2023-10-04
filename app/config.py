@@ -1,5 +1,7 @@
 """
-    Configuration settings for the application.
+Configuration Modules
+    
+Configuration settings for the application. Stores keys, uri, and other settings.
 """
 import os
 

@@ -97,7 +97,6 @@ def get_unique_filename(filename):
     unique_filename = uuid.uuid4().hex
     return f"{unique_filename}.{ext}"
 
-
 def upload_file_to_s3(file, acl="public-read"):
     """
     Uploads a file to Amazon S3.
@@ -141,7 +140,6 @@ def upload_file_to_s3(file, acl="public-read"):
         return {"errors": str(error)}
 
     return {"url": f"{S3_LOCATION}{file.filename}"}
-
 
 def remove_file_from_s3(image_url):
     """

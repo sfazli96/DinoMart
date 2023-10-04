@@ -1,3 +1,24 @@
+"""
+User Routes Module
+
+This module defines routes and functions related to user management and bookings using Flask.
+
+Routes:
+    - '/' (GET): Retrieve a list of all users in the system along with their details.
+    - '/<int:id>' (GET): Retrieve a user by their ID and return their details in a dictionary.
+
+Dependencies:
+    - Flask: Flask is a micro web framework used for building web applications. It is used here to define and handle routes.
+    - Blueprint: Blueprint is a Flask feature that allows organizing routes and views into reusable components.
+    - jsonify: jsonify is a Flask function that converts Python dictionaries to JSON responses.
+    - login_required: login_required is a decorator from flask_login that restricts access to authenticated users.
+    - User, Booking: These are models from the 'app.models' module representing users and bookings in the system.
+    - BookingForm: BookingForm is a form class from the 'app.forms' module used for creating bookings.
+    - db: db is an instance of the SQLAlchemy database used for database operations.
+
+This module provides routes for retrieving user information and managing bookings. Users can be queried individually by their IDs, and a list of all users can be retrieved. Additionally, there is a commented-out route for creating bookings for users.
+"""
+
 from flask import Blueprint, jsonify
 from flask_login import login_required
 from app.models import User, Booking
@@ -16,7 +37,6 @@ def users():
     """
     users = User.query.all()
     return {'users': [user.to_dict() for user in users]}
-
 
 @user_routes.route('/<int:id>')
 @login_required
